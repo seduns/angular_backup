@@ -30,7 +30,7 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
       
       
       // These routes are visible to everyone
-      if(isAdmin || isOfficer || isManager) {
+      if(isAdmin || isOfficer || !isManager) {
         
         routes.add([
           {
@@ -51,7 +51,7 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
           path: '/survey', // Survey path
           parentName: 'Survey', // Parent route is the Survey Form
           name: 'Survey Information', // Survey menu item
-          iconClass: 'fas fa-clipboard', // Use correct class for the clipboard icon
+          iconClass: 'fas fa-info-circle', // Info icon for Survey Information
           order: 3, // Survey should be the first item under Survey Form
           layout: eLayoutType.application,
         },
@@ -60,7 +60,13 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
           path: '/bar-chart', // Home path
           parentName: 'Survey', // Parent route is the Survey Form
           name: 'Product', // Menu label
-          iconClass: 'fas fa-clipboard', // Use correct class for the clipboard icon
+          iconClass: 'fas fa-chart-bar', // Bar chart icon          order: 4, // Menu order
+          layout: eLayoutType.application, // Application layout type
+        },
+        {
+          path: '/chat-base', // Home path
+          name: 'BroRakyat', // Menu label
+          iconClass: 'fas fa-info-circle', // Info icon for Survey Information
           order: 4, // Menu order
           layout: eLayoutType.application, // Application layout type
         },

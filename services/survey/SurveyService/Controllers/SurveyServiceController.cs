@@ -241,6 +241,111 @@ namespace SurveyService.Controllers
         }
     }
 
+    [ApiController]
+[Route("[controller]")]
+public class FileItemController : ControllerBase
+{
+    private readonly SurveyServiceDbContext _context;
+
+    public FileItemController(SurveyServiceDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<fileEntity>>> GetFileDetails()
+    {
+        var file = await _context.FileEntitys.ToListAsync(); // Fetch all survey items from the database
+        return Ok(file); // Return the survey items
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<fileEntity>> GetFileDetail(int id)
+    {
+        var newFile = await _context.FileEntitys.FindAsync(id); // Find the survey by ID
+
+        if (newFile == null)
+        {
+            return NotFound(); // error 404 
+        }
+
+        return Ok(newFile); // Return the survey
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, [FromForm] string fileName, [FromForm] string fileType, [FromForm] string uploadedAt)
+    {
+        if (file == null || file.Length == 0)
+            return BadRequest("Invalid file.");
+
+        // Ensure the file is a .txt file
+        if (Path.GetExtension(file.FileName).ToLower() != ".txt")
+            return BadRequest("Only .txt files are allowed.");
+
+        using var reader = new StreamReader(file.OpenReadStream());
+        var content = await reader.ReadToEndAsync();
+
+        // Create the FileEntity with additional data
+        var fileEntity = new fileEntity
+        {
+            FileName = fileName,  // Use the passed file name
+            FileType = fileType,  // Use the passed file type
+            Content = content,
+            UploadedAt = DateTime.UtcNow // Server-side date (can be overridden with uploadedAt)
+        };
+
+        _context.FileEntitys.Add(fileEntity);
+        await _context.SaveChangesAsync();
+
+        return Ok("File uploaded and saved successfully.");
+    }
+
+    [HttpPut("{id}")]
+public async Task<IActionResult> UpdateFile(int id, [FromBody] UpdateFileRequest updatedFile)
+{
+    // Fetch the existing file entity
+    var existingFile = await _context.FileEntitys.FindAsync(id);
+
+    if (existingFile == null)
+    {
+        return NotFound("File not found.");
+    }
+
+    // Update the file properties
+    existingFile.Content = updatedFile.Content;
+
+    // Save changes to the database
+    _context.FileEntitys.Update(existingFile);
+    await _context.SaveChangesAsync();
+
+    return Ok(new { message = "File updated successfully." });
+}
+
+// DTO for the update request
+    public class UpdateFileRequest
+    {
+        public string Content { get; set; }
+    }
+
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProductDetail(int id)
+    {
+        var file = await _context.FileEntitys.FindAsync(id);
+        if (file == null)
+        {
+            return NotFound();
+        }
+
+        _context.FileEntitys.Remove(file); // Remove the file from the database
+        await _context.SaveChangesAsync(); // Save changes
+
+        return NoContent();
+    }
+}
+
+    
+
    
 
 
