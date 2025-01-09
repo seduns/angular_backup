@@ -1,0 +1,7 @@
+{
+  "packages": {
+    "Mymicroservice_7.MicroserviceName": {
+      "path": "Mymicroservice_7.MicroserviceName/Mymicroservice_7.MicroserviceName.abppkg"
+    }
+  }
+}

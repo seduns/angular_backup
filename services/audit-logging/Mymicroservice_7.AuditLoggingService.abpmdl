@@ -1,0 +1,39 @@
+{
+  "packages": {
+    "Mymicroservice_7.AuditLoggingService": {
+      "path": "Mymicroservice_7.AuditLoggingService/Mymicroservice_7.AuditLoggingService.abppkg"
+    },
+    "Mymicroservice_7.AuditLoggingService.Contracts": {
+      "path": "Mymicroservice_7.AuditLoggingService.Contracts/Mymicroservice_7.AuditLoggingService.Contracts.abppkg"
+    },
+    "Mymicroservice_7.AuditLoggingService.Tests": {
+      "path": "Mymicroservice_7.AuditLoggingService.Tests/Mymicroservice_7.AuditLoggingService.Tests.abppkg"
+    }
+  },
+  "imports": {
+    "Volo.Abp.PermissionManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    }
+  }
+}

@@ -1,0 +1,67 @@
+async sendData() {
+        this.loading = true;
+    
+          this.scrollToBottom();
+
+        
+        // Record the current time
+        const currentTime = new Date();
+        this.timeHistory.push({ timeResponse: currentTime });
+    
+        // Add user's prompt to chat history
+        const chatEntry = { prompt: this.prompt, response: '', sending: true };
+        this.chatHistory.push(chatEntry);
+    
+        const userPrompt = this.prompt; //save userprompt
+        this.prompt = '';  // Clear input field immediately
+
+        try {
+          // Fetch context from API for the current prompt
+          const context = await this.http
+            .get<string>('http://localhost:44305/api/scraper/notes', { responseType: 'text' as 'json' })
+            .toPromise();
+            
+            this.storeContext1 = context;
+    
+          if (userPrompt) {
+            let generatedResponse: string;
+            let generateSimpleQuestion: string;
+    
+            // Combine the previously accumulated context with the new user prompt
+            const fullContext = `${this.contextBefore} \nUser's question now: ${userPrompt} \nAnswer:`;
+            console.log('chat Accumulate: ',this.contextBefore);
+    
+            // Generate AI response with full context
+            generatedResponse = await this.geminiService.generateText(`${context} ${fullContext}`);
+    
+            // Handle AI response
+            chatEntry.response = generatedResponse || "Sorry, I couldn't generate an answer.";
+            
+            // Update the accumulated context with the new response
+            this.contextBefore += `\nUser's question before: ${userPrompt}\nResponse: ${generatedResponse}`;
+
+            const queResponse = `${generatedResponse + ' create a simple question that match with this information ' + context}`;
+
+            generateSimpleQuestion = await this.geminiService.generateText(`${queResponse}`);
+
+            this.simpleQuestion = `${generateSimpleQuestion}`;
+          }
+        } catch (error) {
+          console.error('Error generating response:', error);
+          chatEntry.response = 'Error generating response. Please try again.';
+        } finally {
+          this.loading = false;
+          chatEntry.sending = false;
+
+          this.startInactivityTimer();
+
+          
+          console.log('Chat Before', this.contextBefore);
+          // console.log('Chat History', this.chatHistory);
+          console.log('Simple Question: ', this.simpleQuestion);
+
+          this.scrollToBottom();
+
+          this.showSuggestedQuestion = false;
+        }
+      }

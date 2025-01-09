@@ -1,0 +1,35 @@
+{
+  "packages": {
+    "Mymicroservice_7.MicroserviceName": {
+      "path": "Mymicroservice_7.MicroserviceName/Mymicroservice_7.MicroserviceName.abppkg"
+    },
+    "Mymicroservice_7.MicroserviceName.Contracts": {
+      "path": "Mymicroservice_7.MicroserviceName.Contracts/Mymicroservice_7.MicroserviceName.Contracts.abppkg"
+    },
+    "Mymicroservice_7.MicroserviceName.Tests": {
+      "path": "Mymicroservice_7.MicroserviceName.Tests/Mymicroservice_7.MicroserviceName.Tests.abppkg"
+    }
+  },
+  "imports": {
+    "Volo.Abp.PermissionManagement": {
+      "version": "{{common.abp_framework_version}}",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "{{common.abp_framework_version}}",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "{{common.abp_framework_version}}",
+      "isInstalled": true
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "{{common.abp_framework_version}}",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "{{common.abp_commercial_version}}",
+      "isInstalled": true
+    }
+  }
+}

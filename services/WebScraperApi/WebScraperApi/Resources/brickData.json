@@ -1,0 +1,213 @@
+{
+    "platform": "Brick",
+    "description": "Brick is an online platform offered by Bank Rakyat, providing a wide range of Shariah-compliant financial products and services tailored to meet diverse financial needs. It is designed to ensure customers have access to secure and ethical financial solutions.",
+    "products": [
+      {
+        "brickProduct": "Personal Financing-i",
+        "description": "Obtain cash easily with Shariah-compliant Personal Financing-i. Offers convenient access to necessary funds.",
+        "childProducts": [
+            {
+                "name": "Personal Financing-i Public Sector",
+                "description": "Tailored for public sector employees with competitive profit rates.",
+                "concept": "Tawarruq",
+                "features": {
+                  "financingAmount": "Up to RM400,000",
+                  "financingTenure": "Up to 10 years",
+                  "guarantor": "Not required",
+                  "takafulCoverage": "Optional",
+                  "profitRate": "Fixed or floating"
+                },
+                "eligibility": {
+                  "citizenship": "Malaysian",
+                  "age": "18 to 60 years old (at end of financing tenure)",
+                  "income": "Minimum fixed monthly income of RM1,600 including fixed allowances",
+                  "employment": "Public sector, GLC Companies, GLC Subsidiary",
+                  "serviceDuration": "Minimum of 3 months in service"
+                },
+                "installmentMethod": [
+                  {
+                    "method": "Salary Transfer to Bank Rakyat",
+                    "eligibility": "Up to RM400,000"
+                  },
+                  {
+                    "method": "Biro Perkhidmatan Angkasa",
+                    "eligibility": "Up to RM400,000"
+                  },
+                  {
+                    "method": "Salary Deduction (PGM)",
+                    "eligibility": "Up to RM400,000"
+                  },
+                  {
+                    "method": "Electronic Payment",
+                    "eligibility": "Based on income multiplier or RM200,000, whichever is lower"
+                  }
+                ],
+                "incomeEligibility": [
+                  {
+                    "income": "RM1,000 – RM5,000",
+                    "eligibility": "5 times monthly gross salary"
+                  },
+                  {
+                    "income": "RM5,001 – RM10,000",
+                    "eligibility": "8 times monthly gross salary"
+                  },
+                  {
+                    "income": "More than RM10,000",
+                    "eligibility": "10 times monthly gross salary"
+                  }
+                ],
+                "fixedRate": [
+                    {
+                    "paymentType": [
+                        "Salary Transfer to Bank Rakyat",
+                        "Biro Perkhidmatan Angkasa",
+                        "Salary Deduction"
+                    ],
+                    "rates": [
+                        { "tenure": "Up to 1 Year", "profitRate": "3.42%" },
+                        { "tenure": "More than 1 Year - Up to 5 Years", "profitRate": "3.61%" },
+                        { "tenure": "More than 5 Years - Up to 10 Years", "profitRate": "3.95%" }
+                    ]
+                    },
+                    {
+                    "paymentType": ["Electronic Payment"],
+                    "rates": [
+                        { "tenure": "Up to 1 Year", "profitRate": "4.53%" },
+                        { "tenure": "More than 1 Year - Up to 5 Years", "profitRate": "4.76%" },
+                        { "tenure": "More than 5 Years - Up to 10 Years", "profitRate": "5.22%" }
+                    ]
+                    }
+                ],
+                "floatingRate": [
+                    {
+                    "paymentType": [
+                        "Biro Perkhidmatan Angkasa",
+                        "Salary Deduction"
+                    ],
+                    "rates": [
+                        { "tenure": "Up to 1 Year", "profitRate": "SBR + 2.42" },
+                        { "tenure": "More than 1 Year - Up to 5 Years", "profitRate": "SBR + 2.75" },
+                        { "tenure": "More than 5 Years - Up to 10 Years", "profitRate": "SBR + 2.77" }
+                    ]
+                    },
+                    {
+                    "paymentType": ["Salary Transfer to Bank Rakyat"],
+                    "rates": [
+                        { "tenure": "Up to 1 Year", "profitRate": "SBR + 3.78" },
+                        { "tenure": "More than 1 Year - Up to 5 Years", "profitRate": "SBR + 4.24" },
+                        { "tenure": "More than 5 Years - Up to 10 Years", "profitRate": "SBR + 4.07" }
+                    ]
+                    },
+                    {
+                    "paymentType": ["Electronic Payment"],
+                    "rates": [
+                        { "tenure": "Up to 1 Year", "profitRate": "SBR + 4.42" },
+                        { "tenure": "More than 1 Year - Up to 5 Years", "profitRate": "SBR + 4.75" },
+                        { "tenure": "More than 5 Years - Up to 10 Years", "profitRate": "SBR + 4.77" }
+                    ]
+                    }
+                ],
+                "notes": {
+                  "standardBaseRate": "3.00%",
+                  "additionalProfitRateWithoutTakaful": "1.50% over current profit rate",
+                  "ceilingRate": "Effective + 4.00%"
+                },
+                "documentsRequired": {
+                  "newApplication": [
+                    "Copy of MyKad/MyTentera",
+                    "Latest 3 months salary slip",
+                    "Latest 3 months Bank Statements of salary crediting account",
+                    "At least one of the following: Confirmation letter from employer, EA Form"
+                  ],
+                  "repeatedOverlapping": [
+                    "Copy of MyKad/MyTentera",
+                    "Latest 3 months salary slip",
+                    "Latest 3 months Bank Statements of salary crediting account"
+                  ]
+                },
+                "transactionCharges": {
+                  "wakalahFee": "RM28.30",
+                  "stampDutyFee": "0.5% of total financing",
+                  "latePaymentCharges": {
+                    "duringTenure": "1% per annum on outstanding monthly payment amount",
+                    "afterTenureExpiry": "Shall not exceed prevailing daily overnight Islamic Interbank Money Market rate"
+                  },
+                  "earlySettlementFee": "Rebate (Ibra’) given on deferred profit"
+                }
+            },
+          {
+            "name": "Personal Financing-i Private Sector",
+            "description": "Specifically designed for private sector employees to meet their financial needs.",
+            "concept": "Tawarruq"
+
+          },
+          {
+            "name": "Personal Financing-i for Pensioner",
+            "description": "A financing solution for pensioners with flexible repayment terms."
+          },
+          {
+            "name": "Personal Financing-i Debt Consolidation",
+            "description": "Helps consolidate debts into a single manageable financing plan."
+          }
+        ]
+      },
+      {
+        "brickProduct": "Home Financing-i",
+        "description": "Helps customers achieve their dream of owning a home. Provides competitive and Shariah-compliant home financing options.",
+        "childProducts": [
+          {
+            "name": "Home Financing-i Zero Entry Cost",
+            "description": "A Shariah-compliant home financing solution with zero entry costs. Includes financing for new homes, refinancing, and subsale properties with up to 95% financing."
+          }
+        ]
+      },    
+      {
+        "brickProduct": "Vehicle Financing-i",
+        "description": "A plan for new and existing Bank Rakyat car financing customers. Fully compliant with Islamic principles.",
+        "childProducts": [
+          {
+            "name": "Hire Purchase Vehicle Financing-i (An Naqlu 1)",
+            "description": "A Shariah-compliant vehicle financing solution based on the Al-Ijarah Thumma Al-Bai` (AITAB) concept, designed for purchasing new and unregistered reconditioned vehicles. Offers flexible terms, competitive rates, and adherence to Islamic principles."
+          },
+          {
+            "name": "Vehicle Financing-i (An Naqlu 2)",
+            "description": "A Shariah-compliant vehicle financing solution based on the Tawarruq concept, designed for the purchase of new and pre-owned vehicles. Offers flexible repayment terms and competitive rates while ensuring full compliance with Islamic principles."
+          }
+        ]
+      },
+      {
+        "brickProduct": "Takaful",
+        "description": "Offers Shariah-compliant protection for health, life, and general needs. Aligns with Islamic religious laws for comprehensive coverage.",
+        "childProducts": [
+          {
+            "name": "Takaful Amani",
+            "description": "A Shariah-compliant protection plan offering coverage for health, life, and personal accidents. Includes both individual and family protection options, with easy premium payment options and no medical examination required for most cases."
+          }
+        ]
+      },
+      {
+        "brickProduct": "Savings-i",
+        "description": "A safe deposit account based on the principles of Tawarruq and Qard. Allows flexible withdrawals at any time.",
+        "childProducts": [
+          {
+            "name": "Savings-i Account",
+            "description": "A safe deposit account based on the principles of Tawarruq and Qard. Allows flexible withdrawals at any time."
+          }
+        ]
+      },
+      {
+        "brickProduct": "Investment-i",
+        "description": "The Investment-i Account Rizq Plus provides opportunities for higher returns. Includes chances to win attractive prizes."
+      },
+      {
+        "brickProduct": "Pawn Broking-i",
+        "description": "Offers fast and easy cash financing of up to RM350,000. Features low profit charges."
+      },
+      {
+        "brickProduct": "Credit Card-i",
+        "description": "A MasterCard Credit Card-i with a financing limit. Charges profit for amounts not settled before the due date."
+      }
+    ]
+  }
+
+  

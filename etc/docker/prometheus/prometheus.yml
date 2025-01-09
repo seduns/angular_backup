@@ -1,0 +1,50 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'administration'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+    - targets: ['host.docker.internal:44360']
+  - job_name: 'authserver'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+    - targets: ['host.docker.internal:44378']
+  - job_name: 'identity'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+    - targets: ['host.docker.internal:44347']
+  - job_name: 'gdpr'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+      - targets: [ 'host.docker.internal:44387' ]
+  - job_name: 'filemanagement'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+      - targets: [ 'host.docker.internal:44333' ]
+  - job_name: 'saas'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+      - targets: [ 'host.docker.internal:44309' ]
+  - job_name: 'chat'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+      - targets: [ 'host.docker.internal:44339' ]
+  - job_name: 'auditlogging'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+      - targets: [ 'host.docker.internal:44335' ]
+  - job_name: 'web'
+    scheme: http
+    metrics_path: 'metrics'
+    static_configs:
+    - targets: ['host.docker.internal:44328']

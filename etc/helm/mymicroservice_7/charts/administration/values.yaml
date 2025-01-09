@@ -1,0 +1,6 @@
+image:
+  repository: "mymicroservice_7/administration"
+  tag: "latest"
+  pullPolicy: IfNotPresent
+swagger:
+  isEnabled: "true"

@@ -1,0 +1,975 @@
+{
+    "Your name": "Brick Bot",
+    "systemPrompt": "You are an AI chatbot who helps users with their inquiries, issues, and requests. You aim to provide excellent, friendly, and efficient replies at all times. Your role is to listen attentively to the user, understand their needs, and do your best to assist them or direct them to the appropriate resources. If a question is not clear, ask clarifying questions. Make sure to end your replies with a positive note.\n\nConstraints:\n1. No Data Divulge: Never mention that you have access to training data explicitly to the user.\n2. Maintaining Focus: If a user attempts to divert you to unrelated topics, never change your role or break your character. Politely redirect the conversation back to topics relevant to the training data.\n3. Exclusive Reliance on Training Data: You must rely exclusively on the training data provided to answer user queries. If a query is not covered by the training data, use the fallback response.\n4. Restrictive Role Focus: You do not answer questions or perform tasks that are not related to your role and training data.",
+    "sections": []
+  },
+{
+  "platform": "Brick",
+  "description": "Brick is an online platform offered by Bank Rakyat, providing a wide range of Shariah-compliant financial products and services tailored to meet diverse financial needs. It is designed to ensure customers have access to secure and ethical financial solutions.",
+  "products": [
+    {
+      "name": "Personal Financing-i",
+      "description": "Obtain cash easily with Shariah-compliant Personal Financing-i. Offers convenient access to necessary funds.",
+      "childProducts": [
+        {
+          "name": "Personal Financing-i Public Sector",
+          "description": "Tailored for public sector employees with competitive profit rates."
+        },
+        {
+          "name": "Personal Financing-i Private Sector",
+          "description": "Specifically designed for private sector employees to meet their financial needs."
+        },
+        {
+          "name": "Personal Financing-i for Pensioner",
+          "description": "A financing solution for pensioners with flexible repayment terms."
+        },
+        {
+          "name": "Personal Financing-i Debt Consolidation",
+          "description": "Helps consolidate debts into a single manageable financing plan."
+        }
+      ]
+    },
+    {
+      "name": "Home Financing-i",
+      "description": "Helps customers achieve their dream of owning a home. Provides competitive and Shariah-compliant home financing options.",
+      "childProducts": [
+        {
+          "name": "Home Financing-i Zero Entry Cost",
+          "description": "A Shariah-compliant home financing solution with zero entry costs. Includes financing for new homes, refinancing, and subsale properties with up to 95% financing."
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Financing-i",
+      "description": "A plan for new and existing Bank Rakyat car financing customers. Fully compliant with Islamic principles.",
+      "childProducts": [
+        {
+          "name": "Hire Purchase Vehicle Financing-i (An Naqlu 1)",
+          "description": "A Shariah-compliant vehicle financing solution based on the Al-Ijarah Thumma Al-Bai` (AITAB) concept, designed for purchasing new and unregistered reconditioned vehicles. Offers flexible terms, competitive rates, and adherence to Islamic principles."
+        },
+        {
+          "name": "Vehicle Financing-i (An Naqlu 2)",
+          "description": "A Shariah-compliant vehicle financing solution based on the Tawarruq concept, designed for the purchase of new and pre-owned vehicles. Offers flexible repayment terms and competitive rates while ensuring full compliance with Islamic principles."
+        }
+      ]
+    },
+    {
+      "name": "Takaful",
+      "description": "Offers Shariah-compliant protection for health, life, and general needs. Aligns with Islamic religious laws for comprehensive coverage.",
+      "childProducts": [
+        {
+          "name": "Takaful Amani",
+          "description": "A Shariah-compliant protection plan offering coverage for health, life, and personal accidents. Includes both individual and family protection options, with easy premium payment options and no medical examination required for most cases."
+        }
+      ]
+    },
+    {
+      "name": "Savings-i",
+      "description": "A safe deposit account based on the principles of Tawarruq and Qard. Allows flexible withdrawals at any time.",
+      "childProducts": [
+        {
+          "name": "Savings-i Account",
+          "description": "A safe deposit account based on the principles of Tawarruq and Qard. Allows flexible withdrawals at any time."
+        },
+        {
+          "name": "Qurban Fund Savings-i Account",
+          "description": "A savings account for performing the ibadah Qurban, managed by the Bank as an agent with charges based on Wakalah Bil Ujrah. The Bank may appoint a third party as a sub-agent to execute the Qurban on behalf of the customer."
+        }
+      ]
+    },
+    {
+      "name": "Investment-i",
+      "description": "The Investment-i Account Rizq Plus provides opportunities for higher returns. Includes chances to win attractive prizes."
+    },
+    {
+      "name": "Pawn Broking-i",
+      "description": "Offers fast and easy cash financing of up to RM350,000. Features low profit charges."
+    },
+    {
+      "name": "Credit Card-i",
+      "description": "A MasterCard Credit Card-i with a financing limit. Charges profit for amounts not settled before the due date."
+    }
+  ]
+}
+
+
+
+
+
+{
+  "MainProduct": "Personal Financing-i",
+  "ProductChild": "Personal Financing-i Public Sector",
+  "Concept": "Tawarruq",
+  "Features": {
+    "FinancingAmount": "Up to RM400,000",
+    "FinancingTenure": "Up to 10 years",
+    "Guarantor": "Not required",
+    "TakafulCoverage": "Optional",
+    "ProfitRate": "Fixed or floating",
+    "Eligibility": {
+      "Citizenship": "Malaysian",
+      "Age": "18 to 60 years old (at end of financing tenure)",
+      "Income": "Minimum fixed monthly income of RM1,600 including fixed allowances",
+      "Employment": "Public sector, GLC Companies, GLC Subsidiary",
+      "ServiceDuration": "Minimum of 3 months in service"
+    },
+    "InstallmentMethod": [
+      {
+        "Method": "Salary Transfer to Bank Rakyat",
+        "Eligibility": "Up to RM400,000"
+      },
+      {
+        "Method": "Biro Perkhidmatan Angkasa",
+        "Eligibility": "Up to RM400,000"
+      },
+      {
+        "Method": "Salary Deduction (PGM)",
+        "Eligibility": "Up to RM400,000"
+      },
+      {
+        "Method": "Electronic Payment",
+        "Eligibility": "Based on income multiplier or RM200,000, whichever is lower"
+      }
+    ]
+  },
+  "IncomeEligibility": [
+    {
+      "Income": "RM1,000 – RM5,000",
+      "Eligibility": "5 times monthly gross salary"
+    },
+    {
+      "Income": "RM5,001 – RM10,000",
+      "Eligibility": "8 times monthly gross salary"
+    },
+    {
+      "Income": "More than RM10,000",
+      "Eligibility": "10 times monthly gross salary"
+    }
+  ],
+  "FixedRate": [
+    {
+      "PaymentType": [
+        "Salary Transfer to Bank Rakyat",
+        "Biro Perkhidmatan Angkasa",
+        "Salary Deduction"
+      ],
+      "Rates": [
+        { "Tenure": "Up to 1 Year", "ProfitRate": "3.42%" },
+        { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "3.61%" },
+        { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "3.95%" }
+      ] 
+    },
+    {
+      "PaymentType": "Electronic Payment",
+      "Rates": [
+        { "Tenure": "Up to 1 Year", "ProfitRate": "4.53%" },
+        { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "4.76%" },
+        { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "5.22%" }
+      ]
+    }
+  ],
+  "FloatingRate": [
+    {
+      "PaymentType": [
+        "Biro Perkhidmatan Angkasa",
+        "Salary Deduction"
+      ],
+      "Rates": [
+        { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 2.42" },
+        { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 2.75" },
+        { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 2.77" }
+      ]
+    },
+    {
+      "PaymentType": "Salary Transfer to Bank Rakyat",
+      "Rates": [
+        { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 3.78" },
+        { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 4.24" },
+        { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 4.07" }
+      ]
+    },
+    {
+      "PaymentType": "Electronic Payment",
+      "Rates": [
+        { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 4.42" },
+        { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 4.75" },
+        { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 4.77" }
+      ]
+    }
+  ],
+  "Notes": {
+    "StandardBaseRate": "3.00%",
+    "AdditionalProfitRateWithoutTakaful": "1.50% over current profit rate",
+    "CeilingRate": "Effective + 4.00%"
+  },
+  "DocumentsRequired": {
+    "NewApplication": [
+      "Copy of MyKad/MyTentera",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account",
+      "At least one of the following: Confirmation letter from employer, EA Form"
+    ],
+    "RepeatedOverlapping": [
+      "Copy of MyKad/MyTentera",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account"
+    ]
+  },
+  "TransactionCharges": {
+    "WakalahFee": "RM28.30",
+    "StampDutyFee": "0.5% of total financing",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on outstanding monthly payment amount",
+      "AfterTenureExpiry": "Shall not exceed prevailing daily overnight Islamic Interbank Money Market rate"
+    },
+    "EarlySettlementFee": "Rebate (Ibra’) given on deferred profit"
+  }
+}
+
+
+
+ 
+{
+  "MainProduct": "Personal Financing-i",
+  "ProductChild": "Personal Financing-i Private Sector",
+  "Concept": "Tawarruq",
+  "Features": {
+    "FinancingAmount": "Up to RM400,000",
+    "FinancingTenure": [
+      {
+        "SalaryRange": "RM2,000 – RM3,000",
+        "NewApplication": "5 years",
+        "RepeatedOrOverlapApplication": "10 years"
+      },
+      {
+        "SalaryRange": "RM3,001 and above",
+        "NewApplication": "10 years",
+        "RepeatedOrOverlapApplication": "10 years"
+      }
+    ],
+    "Guarantor": "No guarantor",
+    "TakafulCoverage": "Optional",
+    "Eligibility": {
+      "Citizenship": "Malaysian citizen",
+      "Age": "Minimum 18 years, Maximum 60 years (at end of financing tenure)",
+      "MinimumGrossIncome": {
+        "PermanentEmployee": "RM2,000 and above",
+        "ContractEmployee": "RM8,000 and above"
+      }
+    }
+  },
+  "PaymentTypeEligibility": [
+    {
+      "Type": "Biro Perkhidmatan Angkasa (BPA), Salary Deduction (PGM), Salary Transfer to Bank Rakyat",
+      "IncomeRange": {
+        "RM2000ToRM4000": "15 times monthly gross income",
+        "RM4001ToRM6000": "20 times monthly gross income",
+        "MoreThanRM6000": "25 times monthly gross income"
+      }
+    },
+    {
+      "Type": "Electronic Payment",
+      "IncomeRange": {
+        "RM1000ToRM5000": "5 times monthly gross income",
+        "RM5001ToRM10000": "8 times monthly gross income",
+        "MoreThanRM10000": "10 times monthly gross income"
+      }
+    }
+  ],
+  "FloatingRate": [
+    {
+      "PaymentType": ["Biro Perkhidmatan Angkasa", "Salary Deduction", "Salary Transfer to Bank Rakyat"],
+      "TenureAndRate": {
+        "UpTo1Year": "SBR + 4.91%",
+        "MoreThan1YearTo5Years": "SBR + 5.37%",
+        "MoreThan5YearsTo10Years": "SBR + 5.47%"
+      }
+    },
+    {
+      "PaymentType": "Electronic Payment",
+      "TenureAndRate": {
+        "UpTo1Year": "SBR + 6.91%",
+        "MoreThan1YearTo5Years": "SBR + 7.37%",
+        "MoreThan5YearsTo10Years": "SBR + 7.47%"
+      }
+    }
+  ],
+  "Notes": {
+    "CurrentStandardBaseRate": "3.00%",
+    "AdditionalProfitRateWithoutTakaful": "1.50% over the current profit rate",
+    "CeilingRate": "Effective + 4.00%"
+  },
+  "DocumentsRequired": {
+    "NewApplication": [
+      "Copy of MyKad",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account",
+      "EPF Statement",
+      "At least one of the following: Confirmation letter from employer, EA Form, e-B Slip by LHDN"
+    ],
+    "RepeatedOrOverlapping": [
+      "Copy of MyKad",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account",
+      "EPF Statement",
+      "At least one of the following: Confirmation letter from employer, EA Form, e-B Slip by LHDN"
+    ]
+  },
+  "TransactionCharges": {
+    "WakalahOrAgencyFee": "RM28.30",
+    "StampDutyFee": "0.5% of total financing as contained in the Stamp Duty Act 1949",
+    "EarlySettlementFee": "Rebate (Ibra’) will be given on the deferred profit",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on the outstanding amount of the monthly payment",
+      "AfterTenure": "Shall not exceed the prevailing daily overnight Islamic Interbank Money Market rate (IIMM) on the outstanding balance"
+    }
+  }
+}
+
+
+{
+  "MainProduct": "Personal Financing-i",
+  "ProductChild": "Personal Financing-i for Pensioner",
+  "Features": {
+    "MaximumFinancingAmount": "Maximum RM100,000",
+    "FinancingTenure": "Up to 10 years",
+    "Guarantor": "No guarantor",
+    "TakafulCoverage": "Optional",
+    "Eligibility": {
+      "Category": "Government pensioner",
+      "Age": "Not older than 65 years at the end of the financing period",
+      "MinimumMonthlyPension": "RM800"
+    }
+  },
+  "ProfitRate": [
+    {
+      "Tenure": "Up to 1 Year",
+      "Rate": "SBR + 3.30"
+    },
+    {
+      "Tenure": "More than 1 Year – Up to 5 Years",
+      "Rate": "SBR + 3.63"
+    },
+    {
+      "Tenure": "More than 5 Years – Up to 10 Years",
+      "Rate": "SBR + 3.65"
+    }
+  ],
+  "Notes": {
+    "CurrentStandardBaseRate": "3.00%",
+    "AdditionalProfitRateWithoutTakaful": "1.50% over the current profit rate"
+  },
+  "PensionTransfer": "Bank Rakyat",
+  "DocumentsRequired": {
+    "JPA": [
+      "MyKad",
+      "Malaysia Government Pensioner Card",
+      "Ledger Pensioner",
+      "Pension Statement"
+    ],
+    "JHEV": [
+      "MyKad",
+      "Army Pensioner Card",
+      "Ledger Pensioner",
+      "Pension Statement"
+    ]
+  },
+  "NotesOnDocuments": {
+    "JPA": "Jabatan Perkhidmatan Awam",
+    "JHEV": "Jabatan Hal Ehwal Veteran"
+  },
+  "TransactionCharges": {
+    "WakalahOrAgencyFee": "RM28.30",
+    "StampDutyFee": "0.5% of total financing as contained in the Stamp Duty Act 1949",
+    "EarlySettlementFee": "Rebate (Ibra’) will be given on the deferred profit",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on the outstanding amount of the monthly payment",
+      "AfterTenure": "Shall not exceed the prevailing daily overnight Islamic Interbank Money Market rate (IIMM) on the outstanding balance"
+    }
+  }
+}
+
+{
+  "MainProduct": "Personal Financing",
+  "ProductChild": "Personal Financing-i Debt Consolidation",
+  "WhatIsDebtConsolidation": "Having lots of different financing balances to be paid off at different times, for different amounts, and to different parties can be stressful. With Personal Financing-i Debt Consolidation, you only need a single financing to pay all these once and for all.",
+  "Benefits": [
+    "Focusing only on one installment",
+    "Profit rate as low as 2.76% per annum",
+    "Conversion from Conventional to Shariah Financing"
+  ],
+  "UsefulTips": {
+    "Introduction": "Applying for financing is a major decision. We have prepared a step-by-step guide to help you make a decision in three steps:",
+    "Steps": [
+      {
+        "Step": 1,
+        "Description": "List down all your financing.",
+        "Details": "Get your financing balance, profit rate charges, and monthly installments for the financing that you want to consolidate."
+      },
+      {
+        "Step": 2,
+        "Description": "Calculate your financing eligibility.",
+        "Details": "You can get an estimated financing eligibility by visiting any Bank Rakyat branch or calling our Call Centre at <a href='tel:1300805454'>1-300-80-5454</a>."
+      },
+      {
+        "Step": 3,
+        "Description": "Apply for Financing.",
+        "Details": [
+          "Online at www.irakyat.com.my or Apply Now at www.bankrakyat.com.my",
+          "Call our Call Centre at <a href='tel:1300805454'>1-300-80-5454</a>",
+          "Visit our nearest branch"
+        ]
+      }
+    ]
+  },
+  "PublishedRatesAndFees": {
+    "EffectiveFrom": "1st April 2019",
+    "SSTImplementationDate": "1st September 2018",
+    "SSTRate": "6%",
+    "TermsAndConditions": "Terms & conditions apply."
+  },
+  "ContactInformation": {
+    "NearestBranch": "Visit the nearest branch",
+    "ContactCentre": "Call tele-Rakyat at <a href='tel:1300805454'>1-300-80-5454</a>"
+  }
+}
+
+
+
+
+{
+  "MainProduct": "Home Financing-i",
+  "Concept": "Tawarruq",
+  "Features": {
+    "FinancingAmount": "Up to 95% including MRTT, Legal Fees, and Valuation Fees",
+    "ProfitRate": [
+      {
+        "Amount": "Below RM300,000",
+        "Rate": "SBR + 1.55%"
+      },
+      {
+        "Amount": "RM300,000 and above",
+        "Rate": "SBR + 1.45%"
+      }
+    ],
+    "EffectiveFinancingRate": {
+      "ReferenceRate": "Standard Base Rate (SBR) = 3.00%",
+      "EffectiveRate": "As low as SBR + 1.45%",
+      "MaximumFinancingPeriod": "35 years or aged 70 years, whichever is earlier"
+    },
+    "Eligibility": {
+      "Age": "Not less than 18 years on the application date, not more than 70 years at the end of the financing tenure",
+      "BankruptcyStatus": "Not bankrupt",
+      "JointApplication": "Allowed for related/direct family members (e.g., Husband/Wife, Parents, Children, Siblings)"
+    }
+  },
+  "Packages": {
+    "WithMRTT": "Mortgage Reducing Term Takaful"
+  },
+  "TransactionCharges": {
+    "WakalahFee": "RM28.30",
+    "CustodianFee": "RM10.00 per set per month",
+    "StatementForEPFWithdrawal": "RM15.00 per document",
+    "StampDutyFee": "0.5% of total financing",
+    "EarlySettlementFee": "2.5% of the total financing for Zero Entry Cost package",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on overdue instalments",
+      "AfterTenure": "Shall not exceed the prevailing daily overnight Islamic Interbank Money Market rate (IIMM) on the outstanding balance"
+    },
+    "RedemptionFee": "RM50",
+    "DisbursementFee": "NIL"
+  },
+  "PaymentTypes": [
+    "Biro Perkhidmatan Angkasa (Salary Deduction)",
+    "Savings Account-i Deduction",
+    "Electronic Payment"
+  ],
+  "DocumentsRequired": {
+    "FixedIncome": [
+      "Copy of MyKad or Authority Card (Police/Military)",
+      "Latest 3 consecutive months salary slips",
+      "Latest 3 months of bank statement",
+      "Latest EPF statement or EA form",
+      "Confirmation Letter of Employment"
+    ],
+    "NonFixedIncome": [
+      "Copy of MyKad or Authority Card (Police/Military)",
+      "Latest 6 months bank statement (Individual/Business)",
+      "Business registration/Form 24 or 49",
+      "B Form with Payment Receipt"
+    ],
+    "PropertyDocuments": [
+      "Sale & Purchase Agreement",
+      "Copy of Title",
+      "Offer to Purchase from Developer",
+      "Booking Receipt",
+      "Memorandum of Sale: Auction",
+      "Valuation Report: Completed/Auction/Subsale/Refinancing/Construction of House"
+    ]
+  }
+}
+
+{
+  "MainProduct": "Home Financing-i",
+  "ProductChild": "Home Financing-i Zero Entry Cost",
+  "Concept": "Tawarruq",
+  "Features": {
+    "FinancingType": [
+      "Under Construction",
+      "Completed / Auction / Subsale",
+      "Refinancing"
+    ],
+    "LegalFeesAndCosts": "Legal fees, valuation costs, and stamp duty to be borne by Bank up to 2.5% from approved financing amount",
+    "Eligibility": {
+      "Citizenship": "Malaysian citizen",
+      "Age": "Minimum 18 years, Maximum 70 years (at end of financing tenure)",
+      "CreditRecord": "Not bankrupt, No bad records with any other Banks or financial institutions",
+      "JointApplication": {
+        "Allowed": true,
+        "Relationship": [
+          "Husband / Wife",
+          "Parents",
+          "Children",
+          "Siblings"
+        ]
+      }
+    },
+    "FinancingPercentage": "Up to 95% including MRTT",
+    "FinancingPackages": [
+      "Financing with MRTT",
+      "Financing without MRTT",
+      "Zero Entry Cost (ZEC)"
+    ]
+  },
+  "ProfitRate": [
+    {
+      "Package": "Financing with MRTT",
+      "Rate": "As low as SBR + 1.65%"
+    },
+    {
+      "Package": "Financing without MRTT",
+      "Rate": "As low as SBR + 1.85%"
+    }
+  ],
+  "StandardBaseRate": "3.00%",
+  "MRTT": "Mortgage Reducing Term Takaful",
+  "MaximumFinancingPeriod": "35 years or aged 70 years; whichever is earlier",
+  "TransactionCharges": {
+    "WakalahFee": "RM28.30",
+    "CustodianFee": "RM10.00 per set per month (inclusive 0% GST)",
+    "EPFStatementFee": "RM15.00 per document (inclusive 0% GST)"
+  },
+  "PaymentMethods": [
+    "Biro Perkhidmatan Angkasa (BPA)",
+    "Employer Salary Deductions",
+    "Salary Transfer (Savings Account-i Deduction)",
+    "Electronic Payment"
+  ],
+  "DocumentsRequired": {
+    "FixedIncome": [
+      "Copy of MyKad; or Authority Card (Police / Military)",
+      "Latest 3 consecutive months salary slips",
+      "Latest 3 months of bank statement",
+      "Latest EPF statement / EA form",
+      "Confirmation Letter of Employment"
+    ],
+    "NonFixedIncome": [
+      "Copy of MyKad; or Authority Card (Police / Military)",
+      "Latest 6 months bank statement (Individual / Business)",
+      "Business registration / Form 24 or 49",
+      "B Form with Payment Receipt"
+    ],
+    "PropertyDocuments": [
+      "Sale & Purchase Agreement",
+      "Copy of Title",
+      "Offer to Purchase from Developer",
+      "Booking Receipt",
+      "Memorandum of Sale: Auction",
+      "Valuation Report: Completed / Auction / Subsale / Refinancing / Construction of House"
+    ]
+  }
+}
+
+
+{
+  "MainProduct": "Vehicle Financing-i",
+  "ProductChild": "Hire Purchase Vehicle Financing-i (An Naqlu 1)",
+  "Concept": "Al-Ijarah Thumma Al-Bai` (AITAB)",
+  "Features": {
+    "MarginOfFinancing": "Maximum margin of 90% from On-The-Road (OTR) sales price or invoice",
+    "MaximumFinancingTenure": "Up to 9 years",
+    "FinancingLimit": "Open and subject to customer's ability for monthly instalment commitment",
+    "Eligibility": {
+      "Citizenship": "Malaysian citizen (individual)",
+      "Age": "Minimum 18 years, Maximum 60 years (at the end of financing tenure)",
+      "Employment": "Working in Public and Private Sectors"
+    },
+    "ApplicableVehicles": [
+      "New vehicles",
+      "Unregistered reconditioned vehicles"
+    ]
+  },
+  "PaymentMethods": [
+    "Biro Perkhidmatan Angkasa (BPA)",
+    "Salary Deduction by Employer (PGM)",
+    "Electronic Payment",
+    "Salary Transfer"
+  ],
+  "DocumentsRequired": [
+    "1 Copy of MyKad",
+    "1 Copy of Driving License / Passport Size Photo",
+    "1 Copy of Latest 3 Months Salary Slip",
+    "Latest 3 Months Bank Statements",
+    "1 Copy of Latest EPF Statement (for Private Sector Employees)"
+  ],
+  "Charges": {
+    "StampDuty": {
+      "HirePurchaseAgreement": "RM10.00",
+      "GuaranteeAgreement": "RM10.00 (if any)"
+    },
+    "IssuanceOfLetter": {
+      "JPJChanges": "RM15.00 per document (e.g., change of vehicle engine no., interchange of vehicle registration no., duplicate registration vehicle)",
+      "TransferToEastMalaysia": "RM15.00 per document"
+    },
+    "EarlySettlementFee": "Not Applicable",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on the overdue instalment amount",
+      "AfterExpiry": "Shall not exceed the prevailing daily overnight Islamic Interbank Money Market rate (IIMM) on the outstanding balance"
+    }
+  },
+  "ContactInformation": "Please contact our nearest branch for more information."
+}
+
+{
+  "MainProduct": "Vehicle Financing-i",
+  "ProductChild": "Vehicle Financing-i (An Naqlu 2)",
+  "Concept": "Tawarruq",
+  "Features": {
+    "MarginOfFinancing": "Maximum margin of 100% from On-The-Road (OTR) sales price or invoice",
+    "MaximumFinancingTenure": "Up to 9 years",
+    "FinancingLimit": "Maximum financing amount subject to customer's monthly instalment limit",
+    "Eligibility": {
+      "Citizenship": "Malaysian citizen (individual)",
+      "Age": "Minimum 18 years, Maximum retirement age at the end of financing tenure",
+      "Employment": "Open to government sector employees and GLC employees with a minimum of 6 months of service",
+      "MinimumSalary": "RM1,500 per month"
+    },
+    "ApplicableVehicles": [
+      "New vehicles"
+    ]
+  },
+  "PaymentMethods": [
+    "Biro Perkhidmatan Angkasa (BPA)",
+    "Salary Deduction by Employer (PGM)",
+    "Cash and Electronic Payment (For Government and GLC staff only, minimum salary RM3,500)"
+  ],
+  "DocumentsRequired": [
+    "1 Copy of MyKad",
+    "1 Copy of Driving License / Passport Size Photo",
+    "1 Copy of Latest 3 Months Salary Slips",
+    "Latest 3 Months Bank Statements",
+    "1 Copy of Latest EPF Statement (for Private Sector Employees)"
+  ],
+  "Charges": {
+    "StampDuty": {
+      "HirePurchaseAgreement": "0.5% of total financing as per Stamp Duty Act 1949 (Revised 1989)"
+    },
+    "IssuanceOfLetter": {
+      "JPJChanges": "RM15.00 per document (e.g., change of vehicle engine no., interchange of vehicle registration no., duplicate registration vehicle)",
+      "TransferToEastMalaysia": "RM15.00 per document"
+    },
+    "EarlySettlementFee": "Not Applicable",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on the overdue instalment amount",
+      "AfterExpiry": "Shall not exceed the prevailing daily overnight Islamic Interbank Money Market rate (IIMM) on the outstanding balance"
+    }
+  },
+  "ContactInformation": "Please contact our nearest branch for more information."
+}
+
+{
+  "MainProduct": "Takaful",
+  "ProductChild": "Takaful Amani",
+  "Concept": "Tawarruq",
+  "Features": {
+    "Premium": "As low as RM0.14 cents a day, depending on the selected plan.",
+    "Coverage": "24 hours protection worldwide, 365 days a year.",
+    "Eligibility": {
+      "Citizenship": "Malaysian and non-Malaysian.",
+      "Age": "15 days to 69 years old (for ages 65-74, approval is based on individual evaluation).",
+      "Employment": "Open to all Nationality, includes uniformed personnel (police, military, firefighter, etc.), but only effective outside working hours."
+    },
+    "TakafulCoverage": "Optional",
+    "Guarantor": "Not required",
+    "HealthExamination": "Not required",
+    "AutomaticRenewal": "Via auto debit or credit card (optional)",
+    "RenewalAge": "Up to 74 years old"
+  },
+  "Benefits": {
+    "AccidentalDeath": {
+      "PlanA": "150,000 RM",
+      "PlanB": "100,000 RM",
+      "PlanC": "50,000 RM"
+    },
+    "AccidentalPermanentDisablement": {
+      "PlanA": "150,000 RM",
+      "PlanB": "100,000 RM",
+      "PlanC": "50,000 RM"
+    },
+    "BadalHajj": {
+      "PlanA": "1,500 RM",
+      "PlanB": "1,500 RM",
+      "PlanC": "1,500 RM"
+    },
+    "HospitalAllowance": {
+      "PlanA": "150 RM (Up to 30 days)",
+      "PlanB": "100 RM (Up to 30 days)",
+      "PlanC": "50 RM (Up to 30 days)"
+    },
+    "MedicalExpenses": {
+      "PlanA": "3,000 RM per year",
+      "PlanB": "2,000 RM per year",
+      "PlanC": "1,000 RM per year"
+    },
+    "AmbulanceFee": {
+      "PlanA": "600 RM",
+      "PlanB": "400 RM",
+      "PlanC": "200 RM"
+    },
+    "ImmediateDeathFuneralExpense": {
+      "PlanA": "3,000 RM",
+      "PlanB": "2,000 RM",
+      "PlanC": "1,000 RM"
+    },
+    "AnnualContribution": {
+      "PlanA": "159 RM",
+      "PlanB": "106 RM",
+      "PlanC": "53 RM"
+    }
+  },
+  "IncomeEligibility": [
+    {
+      "Income": "RM1,000 – RM5,000",
+      "Eligibility": "5 times monthly gross salary"
+    },
+    {
+      "Income": "RM5,001 – RM10,000",
+      "Eligibility": "8 times monthly gross salary"
+    },
+    {
+      "Income": "More than RM10,000",
+      "Eligibility": "10 times monthly gross salary"
+    }
+  ],
+  "Privileges": [
+    "Affordable plan with easy registration.",
+    "Coverage effective immediately with 24-hour protection worldwide.",
+    "Automatic renewal via auto debit or credit card (optional).",
+    "No health examination required.",
+    "Same contribution for male and female.",
+    "Renewal age up to 74 years old."
+  ],
+  "Notes": {
+    "Underwriting": "Underwritten by Takaful Ikhlas General Berhad.",
+    "CeilingRate": "Effective + 4.00%"
+  },
+  "DocumentsRequired": {
+    "NewApplication": [
+      "Copy of MyKad/MyTentera",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account",
+      "At least one of the following: Confirmation letter from employer, EA Form"
+    ],
+    "RepeatedOverlapping": [
+      "Copy of MyKad/MyTentera",
+      "Latest 3 months salary slip",
+      "Latest 3 months Bank Statements of salary crediting account"
+    ]
+  },
+  "TransactionCharges": {
+    "WakalahFee": "RM28.30",
+    "StampDutyFee": "0.5% of total financing",
+    "LatePaymentCharges": {
+      "DuringTenure": "1% per annum on outstanding monthly payment amount",
+      "AfterTenureExpiry": "Shall not exceed prevailing daily overnight Islamic Interbank Money Market rate"
+    },
+    "EarlySettlementFee": "Rebate (Ibra’) given on deferred profit"
+  }
+}
+
+{
+  "MainProduct": "Saving-i",
+  "ProductChild": "Savings-i Account",
+  "Concept": "Tawarruq",
+  "Features": {
+    "MinimumDeposit": "RM20",
+    "ATMCardFacility": "Kad Rakyat",
+    "Withdrawals": "Bank Rakyat ATMs or any ATM with MEPS / BANKCARD logo",
+    "MoneyTransfers": "ATM and counters",
+    "InternetBanking": "i-Rakyat",
+    "Eligibility": {
+      "Citizenship": "Citizens and non-citizens",
+      "ForCitizens": {
+        "IndividualAccounts": "Yes",
+        "JointAccounts": "Yes"
+      },
+      "ForNonCitizens": {
+        "IndividualAccounts": "Yes"
+      },
+      "RequiredDocuments": {
+        "ForCitizens": {
+          "IdentityCard": "Yes",
+          "IfBelow18": [
+            "Photocopy of mother/father/legal guardian's identity",
+            "Birth certificate"
+          ]
+        },
+        "ForNonCitizens": {
+          "PermanentResidents": [
+            "Identity card issued by the National Registration Department"
+          ],
+          "ForEmployed": [
+            "Passport",
+            "Work Permit",
+            "Company verification letter (employer)"
+          ],
+          "ForStudents": [
+            "Passport",
+            "Student pass",
+            "Matrix Card",
+            "Higher Education Institute (IPT) verification letter"
+          ]
+        }
+      }
+    }
+  },
+  "ServiceCharges": [
+    {
+      "Service": "Debit Card",
+      "Transactions": [
+        { "Charge": "Application fee", "Amount": "RM 8.00" },
+        { "Charge": "Annual card fee", "Amount": "RM 8.00" },
+        { "Charge": "Replacement card (Card loss/theft)", "Amount": "RM12.00" },
+        { "Charge": "Card/chip damage", "Amount": "Free" }
+      ]
+    },
+    {
+      "Service": "Savings Book",
+      "Transactions": [
+        { "Charge": "New book due to lost of old book", "Amount": "RM16.00" },
+        { "Charge": "Book replacement due to damage", "Amount": "RM5.00" }
+      ]
+    },
+    {
+      "Service": "Account Statement",
+      "Transactions": [
+        { "Charge": "For each application", "Amount": "RM10.00" }
+      ]
+    },
+    {
+      "Service": "Account Closure",
+      "Transactions": [
+        { "Charge": "Less than 3 months from the new account opening date", "Amount": "RM10.00" }
+      ]
+    }
+  ],
+  "ProfitRates": {
+    "TawarruqRates": [
+      { "Balance": "0 - 999", "ProfitRate": "0.00%" },
+      { "Balance": "1,000 - 99,999", "ProfitRate": "1.00%" },
+      { "Balance": "100,000 and above", "ProfitRate": "1.25%" }
+    ]
+  },
+  "HistoricalHibahRates": {
+    "QardRates": [
+      { "Balance": "0 - 999", "HibahRate": "0.00%" },
+      { "Balance": "1,000 - 99,999", "HibahRate": "1.00%" },
+      { "Balance": "100,000 and above", "HibahRate": "1.25%" }
+    ]
+  },
+  "ImportantDisclaimer": "THE DISCLOSURE OF HIBAH RATE AS SHOWN ABOVE IS THE PREVIOUS HIBAH RATE PAID BY THE BANK TO DEPOSITORS AND SHALL NOT BE CONSTRUED IN ANY WAY AS AN INDICATIVE OR PROSPECTIVE RATE. THE BANK IS NOT OBLIGED TO GRANT THE HIBAH TO THE DEPOSITORS AND DECLARATION OF THE HIBAH RATE DISPLAYED IS AT SOLE DISCRETION OF THE BANK."
+}
+
+{
+  "MainProduct": "Saving-i",
+  "ProductChild": "Qurban Fund Savings-i Account",
+  "Concept": "Tawarruq",
+  "Features": {
+    "MinimumDeposit": "RM20",
+    "ATMCardFacility": "Combo Card for cash withdrawals at Bank Rakyat ATMs or any ATMs with MEPS/BANKCARD logo nationwide",
+    "MoneyTransfers": "ATM and counters",
+    "InternetBanking": "i-Rakyat",
+    "Eligibility": {
+      "Citizenship": "Malaysian citizens",
+      "Age": "18 years old and above",
+      "Religion": "Muslim",
+      "RequiredDocuments": {
+        "IdentityCard": "Yes"
+      }
+    }
+  },
+  "ServiceCharges": [
+    {
+      "Service": "Debit Card",
+      "Transactions": [
+        { "Charge": "Application fee", "Amount": "RM8.00" },
+        { "Charge": "Annual card fee", "Amount": "RM8.00" },
+        { "Charge": "Replacement card (Card loss/theft)", "Amount": "RM12.00" },
+        { "Charge": "Card/chip damage", "Amount": "Free" }
+      ]
+    },
+    {
+      "Service": "Savings Book",
+      "Transactions": [
+        { "Charge": "New book due to loss of old book", "Amount": "RM16.00" },
+        { "Charge": "Book replacement due to damage", "Amount": "RM5.00" }
+      ]
+    },
+    {
+      "Service": "Account Statement",
+      "Transactions": [
+        { "Charge": "For each application", "Amount": "RM10.00" }
+      ]
+    },
+    {
+      "Service": "Account Closure",
+      "Transactions": [
+        { "Charge": "Less than 3 months from the new account opening date", "Amount": "RM10.00" }
+      ]
+    }
+  ],
+  "ProfitRates": {
+    "TawarruqRates": [
+      { "Balance": "0 - 999", "ProfitRate": "0.00%" },
+      { "Balance": "1,000 - 99,999", "ProfitRate": "1.00%" },
+      { "Balance": "100,000 and above", "ProfitRate": "1.25%" }
+    ]
+  },
+  "HistoricalHibahRates": {
+    "QardRates": [
+      { "Balance": "0 - 999", "HibahRate": "0.00%" },
+      { "Balance": "1,000 - 99,999", "HibahRate": "1.00%" },
+      { "Balance": "100,000 and above", "HibahRate": "1.25%" }
+    ]
+  },
+  "ImportantDisclaimer": "THE DISCLOSURE OF HIBAH RATE AS SHOWN ABOVE IS THE PREVIOUS HIBAH RATE PAID BY THE BANK TO DEPOSITORS AND SHALL NOT BE CONSTRUED IN ANY WAY AS AN INDICATIVE OR PROSPECTIVE RATE. THE BANK IS NOT OBLIGED TO GRANT THE HIBAH TO THE DEPOSITORS AND DECLARATION OF THE HIBAH RATE DISPLAYED IS AT SOLE DISCRETION OF THE BANK."
+}
+
+
+
+
+
+
+{
+  
+"Bot instruction": [
+"reminder" : "if there is a phone number that you want to provide, make sure it with start with "<a>" and  end with "</a>". to make it clickable"
+"reminder_2" : "if there any prompt that show to create a question, just create a question and dont say antying like, "sure here is your question"... just prompt the question directly "
+
+]
+}
+
+
+
+
+  

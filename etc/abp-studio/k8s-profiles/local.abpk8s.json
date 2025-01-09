@@ -1,0 +1,15 @@
+{
+  "config": {
+    "context": "docker-desktop",
+    "namespace": "mymicroservice_7-local"
+  },
+  "metadata": {
+    "dotnetEnvironment": "Staging"
+  },
+  "services": {
+    "mymicroservice_7-local-identity": {
+    },
+    "mymicroservice_7-local-web": {
+    }
+  }
+}

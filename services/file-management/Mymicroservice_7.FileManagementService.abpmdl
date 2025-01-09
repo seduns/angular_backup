@@ -1,0 +1,43 @@
+{
+  "packages": {
+    "Mymicroservice_7.FileManagementService": {
+      "path": "Mymicroservice_7.FileManagementService/Mymicroservice_7.FileManagementService.abppkg"
+    },
+    "Mymicroservice_7.FileManagementService.Contracts": {
+      "path": "Mymicroservice_7.FileManagementService.Contracts/Mymicroservice_7.FileManagementService.Contracts.abppkg"
+    },
+    "Mymicroservice_7.FileManagementService.Tests": {
+      "path": "Mymicroservice_7.FileManagementService.Tests/Mymicroservice_7.FileManagementService.Tests.abppkg"
+    }
+  },
+  "imports": {
+    "Volo.Abp.PermissionManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.FileManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    }
+  }
+}

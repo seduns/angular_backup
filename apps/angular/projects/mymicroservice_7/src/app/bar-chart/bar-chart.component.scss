@@ -1,0 +1,344 @@
+canvas {
+    width: 100px;
+    height: 100px;
+}
+
+.chart-container {
+    width: 100vh;
+    height: 100vh; 
+}
+
+.admin-dashboard {
+    // background-color: rgb(255, 255, 255);
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.236);
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+    transition: 0.4s;
+    box-shadow: 0px 4px 6px #007bff;
+}
+
+.admin-dashboard:hover{
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px #ff6a0070;
+}
+
+.form-control { 
+    width: 100%;
+    max-width: 40vh;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #007bff00;
+    color: #343de3;
+    border: 2px solid #343de3;
+}
+
+.btn-primary:hover {
+    background-color: #007bff00;
+    color: #ff6a00;
+    border: 2px solid #ff6a00;
+}
+
+.financial-product {
+    // border: 1px solid white;
+    // background-color: #000000;
+    padding: 10px;
+    justify-content: start;
+    border-radius: 10px;
+    // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.428);
+}
+
+.card-controller {
+    // border: 1px solid black;
+    padding: 20px;
+}
+
+.card-personal {
+    border: 1px solid #343de3;
+    color: black;
+    width: 100%;
+    padding: 50px 20px;
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
+    background-color: #343de34b;
+    transition: 0.2s;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #343de300;
+}
+
+.card-personal:hover {
+    border: 1px solid #ff6a00a0;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    margin-top: 10px;
+    background-color: #ff6a00c3;
+    box-shadow: 0px 0px 10px #ff6a00c3;
+}
+
+.x-button {
+    width: 6vh;
+    border: none;
+    color: white;
+    margin-right: 10px;
+    background-color: #343de3;
+    border-radius: 20px;
+    transition: 0.1s;
+  }
+  
+  .x-button:hover {
+      width: 6vh;
+      border: none;
+      margin-right: 10px; 
+      background-color: #ff6a00;
+      border-radius: 5px;
+  }
+
+.card-overlay {
+    position: fixed; /* Stays in place */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 999; /* On top of other elements */
+}
+
+.card{ 
+    background-color: white; /* The actual box */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    width: 50%; /* Set a width for the content box */
+    max-width: 1000px; /* Prevent it from getting too wide */
+    min-height: 200px; /* Ensure it has some height */
+}
+
+.card-product-updt{ 
+    background-color: white; /* The actual box */
+    padding: 60px;
+    border-radius: 8px; /* Rounded corners for aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    width: 50%; /* Set a width for the content box */
+    max-width: 1000px; /* Prevent it from getting too wide */
+    min-height: 200px; /* Ensure it has some height */
+}
+
+/* Set a fixed height and enable vertical scroll only on tbody */
+.scrollable-tbody {
+    display: block;
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* Ensure column widths remain consistent across thead and tbody */
+.scrollable-tbody tr {
+    display: table;
+    width: 100%;
+}
+
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+th, td {
+border: 2px solid #ff44005c;
+border-left: none;
+border-right: none;
+padding: 8px;
+text-align: center;
+}
+
+th {
+background-color: #343de3;
+text-align: left;
+color: white;
+text-align: center;
+}
+
+.product-title {
+    margin-top: 10px;
+    color: rgb(0, 0, 0);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.title-text {
+    color: black;
+}
+
+.product-name-table {
+    color: rgb(0, 0, 0);
+}
+
+.index-no {
+    width: 40px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+.table-hover:hover {
+    background-color: #343de335;
+}
+
+th:hover{
+// background-color: #ff6a00;
+text-align: left;
+color: white;
+text-align: center;
+}
+
+.x-button { 
+    width: 6vh;
+    border: none;
+    color: white;
+    margin-right: 10px;
+    background-color: #343de3;
+    border-radius: 20px;
+    transition: 0.1s;
+}
+
+.x-button:hover {
+    width: 6vh;
+    border: none;
+    margin-right: 10px;
+    background-color: #ff6a00;
+    border-radius: 5px;
+}
+
+.card-box-1 {
+    display: flex;
+    // border: 1px solid white;
+    
+}
+
+.btn-success {
+    background-color: rgb(0, 201, 0);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: rgb(0, 141, 0);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: rgb(135, 0, 0);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+select {
+    background-color:#636bf998; /* Light blue background */
+    color: #ffffff; /* Text color */
+    border: 1px solid #007bff; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 5px; /* Padding */
+    font-size: 15px; /* Font size */
+    cursor: pointer; /* Pointer on hover */
+}
+
+
+
+
+
+li ,a {
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Position it absolutely */
+    margin-left: 40px;
+  }
+  
+  .dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown ul li {
+    padding: 5px 0;
+  }
+  
+  .dropdown ul li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .dropdown ul li a:hover {
+    text-decoration: none;
+  }
+
+.select-service {
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.344);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.304);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    user-select: none;    
+}
+
+.select-service:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+
+@media screen and (max-width: 730px){
+    .card-box-1 {
+        flex-direction: column;
+    }
+}
+
+
+

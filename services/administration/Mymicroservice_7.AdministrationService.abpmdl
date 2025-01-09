@@ -1,0 +1,55 @@
+{
+  "packages": {
+    "Mymicroservice_7.AdministrationService": {
+      "path": "Mymicroservice_7.AdministrationService/Mymicroservice_7.AdministrationService.abppkg"
+    },
+    "Mymicroservice_7.AdministrationService.Contracts": {
+      "path": "Mymicroservice_7.AdministrationService.Contracts/Mymicroservice_7.AdministrationService.Contracts.abppkg"
+    },
+    "Mymicroservice_7.AdministrationService.Tests": {
+      "path": "Mymicroservice_7.AdministrationService.Tests/Mymicroservice_7.AdministrationService.Tests.abppkg"
+    }
+  },
+  "imports": {
+    "Volo.Abp.PermissionManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict.Pro": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.TextTemplateManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "8.3.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "8.3.1",
+      "isInstalled": true
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+    "regions": [
+        {
+            "region": "KUALA LUMPUR",
+            "branches": [
+                {
+                    "branch": "CAWANGAN UTAMA",
+                    "address": "Cawangan Utama Menara Kembar, Tingkat Bawah, Menara Kembar Bank Rakyat, No 33, Jalan Travers, 50470, Federal Territory of Kuala Lumpur"
+                }
+            ]
+        },
+        {
+            "region": "SELANGOR",
+            "branches": [
+                {
+                    "branch": "SHAH ALAM",
+                    "address": "NO. F30 & F31, Vista Alam, Jalan Ikhtisas 14/1, Shah Alam, 40000, Selangor"
+                },
+                {
+                    "branch": "SUBANG PERDANA",
+                    "address": "No 39, Jalan Dinar GU 3/G, Seksyen U3, Taman Subang Perdana, Shah Alam, 40150, Selangor"
+                },
+                {
+                    "branch": "KUALA SELANGOR",
+                    "address": "Bank Rakyat Kuala Selangor, No. 2 Jalan Bendahara 1/1, Taman Bendahara, 45000, Selangor"
+                },
+                {
+                    "branch": "SUNGAI BULOH",
+                    "address": "No 91 & 93, Jalan Nautika A U20/A, Pusat Komersil TSB, Seksyen U20, Sungai Buloh, Shah Alam, 40160, Selangor"
+                },
+                {
+                    "branch": "SEKSYEN 23 SHAH ALAM",
+                    "address": "Bank Rakyat Cawangan Seksyen 23 Shah Alam, No. 23 & 35, Jalan Pelabur B/23 B, Seksyen 23 Shah Alam, 40300, Selangor"
+                },
+                {
+                    "branch": "PORT KLANG",
+                    "address": "No.2 & 4, Harbour Point Commercial Centre, Jalan Sungai Aur, Port Klang, 42000, Selangor"
+                },
+                {
+                    "branch": "PETALING JAYA",
+                    "address": "No.1-1,Jalan 14/22, Wisma Faderal Academy Ballet, Petaling Jaya, Selangor, 46100, Selangor"
+                }
+            ]
+        },
+        {
+            "region": "KELANTAN",
+            "branches": [
+                {
+                    "branch": "MACHANG",
+                    "address": "LOT 90-92, BGN USAHA SAMA SENTOSA JAYA DEV.SDN BHD, JALAN BAKAT, MACHANG, 18500, Kelantan"
+                },
+                {
+                    "branch": "PASIR MAS",
+                    "address": "PT315 & PT316, WISMA MAJLIS DAERAH PASIR MAS, JALAN PASIR PEKAN, 17000, Kelantan"
+                }
+            ]
+        }
+    ]
+}

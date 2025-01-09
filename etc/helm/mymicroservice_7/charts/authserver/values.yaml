@@ -1,0 +1,4 @@
+image:
+  repository: "mymicroservice_7/authserver"
+  tag: "latest"
+  pullPolicy: IfNotPresent

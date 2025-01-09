@@ -1,0 +1,21 @@
+global:
+  hosts:
+    authserver: "[RELEASE_NAME]-authserver"
+    webgateway: "[RELEASE_NAME]-webgateway"
+    kibana: "[RELEASE_NAME]-kibana"
+    grafana: "[RELEASE_NAME]-grafana"
+    angular: "[RELEASE_NAME]-angular"
+  connectionStrings:
+    administration: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_Administration; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    blobStoring: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_BlobStoring; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    identity: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_Identity; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    saas: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_SaasService; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    auditLogging: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_AuditLoggingService; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    gdpr: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_GdprService; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    filemanagement: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_FileManagementService; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+    chat: "Server=[RELEASE_NAME]-sqlserver,1433; Database=Mymicroservice_7_ChatService; User Id=sa; Password=myPassw@rd; TrustServerCertificate=True"
+  dotnetEnvironment: "Staging"
+  enablePII: "true"
+  stringEncryptionDefaultPassPhrase: "aCoFduWBgOD4RLve"
+  abpStudioClient:
+    isLinkEnabled: "true"

@@ -1,0 +1,4 @@
+image:
+  repository: "mymicroservice_7/angular"
+  tag: "latest"
+  pullPolicy: IfNotPresent

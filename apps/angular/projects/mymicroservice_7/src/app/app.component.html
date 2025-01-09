@@ -1,0 +1,16 @@
+
+<!-- admin view -->
+<span *ngIf="isAuthenticated">
+    <abp-loader-bar></abp-loader-bar> 
+    <abp-dynamic-layout></abp-dynamic-layout>
+    
+</span>
+
+
+<!-- user view -->
+<span *ngIf="!isAuthenticated">
+    <app-survey></app-survey>
+    <app-test-entity></app-test-entity> 
+</span>
+
+

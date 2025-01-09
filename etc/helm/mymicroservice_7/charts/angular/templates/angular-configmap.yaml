@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-configmap
+data:
+  dynamic-env.json: |-
+    {
+        "production": "true",
+        "application": {
+            "baseUrl": "{{ include "mymicroservice_7.hosts.angular" . }}",
+            "name": "Mymicroservice_7",
+            "logoUrl": ""
+        },
+        "oAuthConfig": {
+            "issuer": "{{ include "mymicroservice_7.hosts.authserver" . }}",
+            "redirectUri": "{{ include "mymicroservice_7.hosts.angular" . }}",
+            "requireHttps": "true",
+            "clientId": "Angular",
+            "responseType": "code",
+            "scope": "offline_access openid profile roles email phone AuthServer IdentityService AdministrationService SaasService AuditLoggingService GdprService ChatService FileManagementService",
+            "strictDiscoveryDocumentValidation": false,
+            "skipIssuerCheck": true
+        },
+        "apis": {
+            "default": {
+                "url": "{{ include "mymicroservice_7.hosts.webgateway" . }}",
+                "rootNamespace": "Mymicroservice_7"
+            }
+        }
+    }

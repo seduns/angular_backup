@@ -1,0 +1,7 @@
+{
+  "packages": {
+    "Mymicroservice_7.WebGateway": {
+      "path": "Mymicroservice_7.WebGateway/Mymicroservice_7.WebGateway.abppkg"
+    }
+  }
+}

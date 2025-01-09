@@ -1,0 +1,147 @@
+<h3 class="title-text">Add Product</h3>
+<!-- Form to create a new product -->
+<div class="admin-dashboard">
+
+  <div class="card-controller">
+
+    <div class="card-box-1">
+    
+  </div>
+
+  
+  <div class="financial-product">
+    <!-- Service selection dropdown -->
+    <!-- <h3>Select a Service</h3>
+    <select [(ngModel)]="newProduct.serviceName" (ngModelChange)="onServiceChange(newProduct.serviceName)" class="select-service">
+      <option value="" disabled>Select a service</option>
+      <option value="Personal Financing-i">Personal Financing-i</option>
+      <option value="Home Financing-i">Home Financing-i</option>
+      <option value="Vehicle Financing">Vehicle Financing</option>
+      <option value="Takaful">Takaful</option>
+      <option value="Saving-i">Saving-i</option>
+      <option value="Pawn Broking-i">Pawn Broking-i</option>
+      <option value="Credit Card-i">Credit Card-i</option>
+    </select> -->
+
+
+    <h3>Select a Service</h3>
+
+<!-- Buttons for selecting services -->
+<div class="service-buttons">
+  <div (click)="selectService('Personal Financing-i')" class="select-service">Personal Financing-i</div>
+  <div (click)="selectService('Home Financing-i')" class="select-service">Home Financing-i</div>
+  <div (click)="selectService('Vehicle Financing')" class="select-service">Vehicle Financing</div>
+  <div (click)="selectService('Takaful')" class="select-service">Takaful</div>
+  <div (click)="selectService('Saving-i')" class="select-service">Saving-i</div>
+  <div (click)="selectService('Pawn Broking-i')" class="select-service">Pawn Broking-i</div>
+  <div (click)="selectService('Credit Card-i')" class="select-service">Credit Card-i</div>
+</div>
+
+<!-- Show selected service name -->
+<div *ngIf="isCardVisible && selectedService" class="card-overlay">
+  <div class="card">
+    <button (click)="close()" class="x-button">X</button>
+    <div *ngIf="selectedService">
+      <h3 class="product-title" *ngIf="selectedService"> {{ selectedService }} Product</h3>
+      <form (ngSubmit)="create()">
+        <input
+          type="text"
+          placeholder="New product name"
+          class="form-control insert-product"
+          name="productName"
+          [(ngModel)]="newProduct.productName"
+          required
+          maxlength="40"
+        />
+        <button type="submit" class="btn btn-primary">Create new product</button>
+        
+        <span *ngIf="newProduct.productName.length > 40">Product cannot exceed 40 characters</span>
+      </form>
+    </div>
+
+
+
+    <!-- Product Table -->
+    <table>
+      <thead> 
+        <tr *ngIf="selectedService; let i = index"> 
+          <th class="index-no">No</th>
+          <th>Action</th>
+          <th>Product Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="filteredProducts.length > 0" class="scrollable-tbody product-table">
+        <tr *ngFor="let product of filteredProducts; let i = index" class="product-info">
+          <td class="product-name-table index-no">{{i + 1}}</td>
+          <td>
+            <!-- Action Button -->
+            <button (click)="edit(product)" class="btn btn-primary btn-edit update-product">
+              <i class="fa fa-edit"></i> Action
+            </button>
+  
+            <!-- Dropdown for View/Update options -->
+            <div *ngIf="selectedProduct === product" class="dropdown">
+              <ul>
+                <li><a (click)="viewUpdate(product)">View</a></li>
+              </ul>
+            </div>
+          </td>
+          <td class="product-name-table">{{ product.productName }}</td>
+          <td>
+            <button (click)="toggleActiveCreditCard(product)" 
+              [ngClass]="{'btn-success': product.isActive, 'btn-secondary': !product.isActive}">
+              {{ product.isActive ? 'Active' : 'Inactive' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="filteredProducts.length === 0 && selectedService">
+        <tr>
+          <td class="product-name-table" colspan="3">No products available for the selected service.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div *ngIf="showModal">
+  <div class="card-overlay">
+    <div class="card-product-updt">
+    
+      <!-- Close button to close the modal -->
+      <button (click)="closeUpdate()" class="x-button">X</button>
+    
+      <h4>Product Detail</h4>
+      
+      <!-- Two-way binding to the productName field -->
+      <input 
+        type="text" 
+        [(ngModel)]="selectedProduct.productName" 
+        maxlength="50" 
+        class="form-control insert-product"
+        placeholder="Enter product name">
+      <span *ngIf="selectedProduct.productName?.length === 50" style="color: red;">
+        Product name has reached the maximum length.
+      </span>
+
+      <!-- Update button triggers the updateProduct method -->
+      <button (click)="updateProduct()" class="btn btn-primary">
+        Update  
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+     
+
+

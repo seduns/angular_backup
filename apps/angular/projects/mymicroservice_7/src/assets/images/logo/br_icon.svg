@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="DESIGNED_BY_FREEPIK" data-name="DESIGNED BY FREEPIK" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e56f25;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #1071b8;
+      }
+
+      .cls-3 {
+        fill: #cdd6df;
+      }
+    </style>
+  </defs>
+  <circle class="cls-3" cx="28" cy="29.42" r="20.43"/>
+  <circle class="cls-2" cx="28" cy="29.42" r="17.5"/>
+  <polygon class="cls-1" points="25.03 19.57 30.09 19.57 25.6 27.29 28 31.7 18.79 31.7 16.35 27.43 20.42 27.43 25.03 19.57"/>
+  <polygon class="cls-1" points="38.55 30.96 36.07 35.37 31.54 27.67 26.51 27.6 31.03 19.57 35.95 19.55 33.96 23.09 38.55 30.96"/>
+  <polygon class="cls-1" points="21.93 37.07 19.32 32.73 28.25 32.6 30.79 28.27 35.54 36.16 33.13 40.45 31.04 36.96 21.93 37.07"/>
+</svg>

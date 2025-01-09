@@ -1,0 +1,135 @@
+{
+    "Product_Category": "Personal Financing-i",
+    "ProductChild": [
+      {
+        "name": "Personal Financing-i Public Sector",
+        "Concept": "Tawarruq"
+      }
+    ],
+    "Concept": "Tawarruq",
+    "Features": {
+      "FinancingAmount": "Up to RM400,000",
+      "FinancingTenure": "Up to 10 years",
+      "Guarantor": "Not required",
+      "TakafulCoverage": "Optional",
+      "ProfitRate": "Fixed or floating",
+      "Eligibility": {
+        "Citizenship": "Malaysian",
+        "Age": "18 to 60 years old (at end of financing tenure)",
+        "Income": "Minimum fixed monthly income of RM1,600 including fixed allowances",
+        "Employment": "Public sector, GLC Companies, GLC Subsidiary",
+        "ServiceDuration": "Minimum of 3 months in service"
+      },
+      "InstallmentMethod": [
+        {
+          "Method": "Salary Transfer to Bank Rakyat",
+          "Eligibility": "Up to RM400,000"
+        },
+        {
+          "Method": "Biro Perkhidmatan Angkasa",
+          "Eligibility": "Up to RM400,000"
+        },
+        {   
+          "Method": "Salary Deduction (PGM)",
+          "Eligibility": "Up to RM400,000"
+        },
+        {
+          "Method": "Electronic Payment",
+          "Eligibility": "Based on income multiplier or RM200,000, whichever is lower"
+        }
+      ]
+    },
+    "IncomeEligibility": [
+      {
+        "Income": "RM1,000 – RM5,000",
+        "Eligibility": "5 times monthly gross salary"
+      },
+      {
+        "Income": "RM5,001 – RM10,000",
+        "Eligibility": "8 times monthly gross salary"
+      },
+      {
+        "Income": "More than RM10,000",
+        "Eligibility": "10 times monthly gross salary"
+      }
+    ],
+    "FixedRate": [
+      {
+        "PaymentType": [
+          "Salary Transfer to Bank Rakyat",
+          "Biro Perkhidmatan Angkasa",
+          "Salary Deduction"
+        ],
+        "Rates": [
+          { "Tenure": "Up to 1 Year", "ProfitRate": "3.42%" },
+          { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "3.61%" },
+          { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "3.95%" }
+        ] 
+      },
+      {
+        "PaymentType": "Electronic Payment",
+        "Rates": [
+          { "Tenure": "Up to 1 Year", "ProfitRate": "4.53%" },
+          { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "4.76%" },
+          { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "5.22%" }
+        ]
+      }
+    ],
+    "FloatingRate": [
+      {
+        "PaymentType": [
+          "Biro Perkhidmatan Angkasa",
+          "Salary Deduction"
+        ],
+        "Rates": [
+          { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 2.42" },
+          { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 2.75" },
+          { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 2.77" }
+        ]
+      },
+      {
+        "PaymentType": "Salary Transfer to Bank Rakyat",
+        "Rates": [
+          { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 3.78" },
+          { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 4.24" },
+          { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 4.07" }
+        ]
+      },
+      {
+        "PaymentType": "Electronic Payment",
+        "Rates": [
+          { "Tenure": "Up to 1 Year", "ProfitRate": "SBR + 4.42" },
+          { "Tenure": "More than 1 Year - Up to 5 Years", "ProfitRate": "SBR + 4.75" },
+          { "Tenure": "More than 5 Years - Up to 10 Years", "ProfitRate": "SBR + 4.77" }
+        ]
+      }
+    ],
+    "Notes": {
+      "StandardBaseRate": "3.00%",
+      "AdditionalProfitRateWithoutTakaful": "1.50% over current profit rate",
+      "CeilingRate": "Effective + 4.00%"
+    },
+    "DocumentsRequired": {
+      "NewApplication": [
+        "Copy of MyKad/MyTentera",
+        "Latest 3 months salary slip",
+        "Latest 3 months Bank Statements of salary crediting account",
+        "At least one of the following: Confirmation letter from employer, EA Form"
+      ],
+      "RepeatedOverlapping": [
+        "Copy of MyKad/MyTentera",
+        "Latest 3 months salary slip",
+        "Latest 3 months Bank Statements of salary crediting account"
+      ]
+    },
+    "TransactionCharges": {
+      "WakalahFee": "RM28.30",
+      "StampDutyFee": "0.5% of total financing",
+      "LatePaymentCharges": {
+        "DuringTenure": "1% per annum on outstanding monthly payment amount",
+        "AfterTenureExpiry": "Shall not exceed prevailing daily overnight Islamic Interbank Money Market rate"
+      },
+      "EarlySettlementFee": "Rebate (Ibra’) given on deferred profit"
+    }
+  }
+  

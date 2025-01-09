@@ -1,0 +1,528 @@
+/* Styles for the home component */
+.card-bg-image {
+  position: absolute;
+  width: 630px;
+  height: auto;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.starting-content {
+  position: relative;
+  z-index: 2;
+}
+
+.surveyList {
+  border: 1px solid black;
+  width: 50vh;
+  border: none;
+  color: black;
+}
+
+.star-section {
+  border: 1px solid black;
+  width: 50vh;
+  border: none;
+  color: black;
+  
+}
+
+.comment-section{
+  border: 1px solid black;
+  width: 50vh;
+  border: none;
+  color: black;
+  
+} 
+
+// th, td {
+//     padding: 8px;
+//     border: 1px solid #d66700;
+// }    
+    
+// th {
+      
+//       // background-color: rgb(33, 33, 204);
+//   text-align: left;
+//   color: rgb(129, 125, 125);
+// }
+
+.chart-container {
+  color: black;
+}
+
+.chart-title {
+  display: flex;
+  justify-content: center;
+}
+
+.summary-controller {
+  display: flex;
+  justify-content: center;
+  padding: 20px; 
+}
+
+.bar-chart-box {
+  transition: 0.4s;
+  background-color: white;
+  box-shadow: 0px 4px 6px #ff6a0070;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+canvas {  
+  width: 500px;
+}
+
+.bar-chart-box:hover{
+  box-shadow: 0px 4px 6px #343de385;
+  // background-color: white;
+}
+
+.summary-box {
+  // background-color: white;  
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: 0.4s;
+  width: 100%;
+  box-shadow: 0px 4px 6px #ff6a0070;
+
+}
+
+.summary-box:hover{
+  // background-color: white;  
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px #343de385;
+  
+}
+
+.pdf-title {
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(85, 255, 0);
+}
+
+.print-section {
+  border: 1px solid rgb(85, 255, 0);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  // padding: 10px;
+  width: 600px;
+  height: 700px;
+  
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: black;
+}
+
+th, td {
+  padding: 10px 30px;
+  // color: white;
+}
+
+td {
+  border: 1px solid white;
+}
+
+
+
+  th {
+    color: rgba(0, 0, 0, 0.522);
+  }
+
+  h3 {
+    color: black;
+  }
+
+  .service-name-1 th {
+    background-color: #31006af3;
+  }
+  
+  
+  
+  th {
+    text-align: center;
+    border: 1px solid #2600ff;
+    border-left: none;
+    border-right: none;
+}
+
+
+        // <!-- <div class="survey-summary">
+        //       <h3>Survey Submission Status</h3>
+        //       <p>Total: {{ totalSubmissions }}</p>
+        //       <p>Personal Financing: {{ personalFinancingCount }}</p>
+        //       <p>Home Financing: {{ homeFinancingCount }}</p>
+        //       <p>Vehicle Financing: {{ vehicleFinancingCount }}</p>
+        //       <p>Takaful: {{ takafulCount }}</p>
+        //       <p>Saving: {{ savingCount }}</p>
+        //       <p>Credit Card: {{ creditCardCount }}</p>
+        //     </div> -->
+
+
+.total-each-survey {
+  // border-left: 1px solid #d66700;
+  background-color: #5057e9ae;
+}
+
+.fa-star {
+  color: rgb(255, 255, 0);
+  font-size: 10px;
+}
+
+.service-text {
+  color: rgb(255, 255, 255);
+}
+
+.service-name-1 {
+  background-color: #343de38e;
+
+}
+
+.service-name {
+  background-color: #343de38e;
+  color: rgba(0, 0, 0, 0.515);
+  position:relative;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  position: relative;
+  width: 30vh;
+  padding: 10px 0vh;    
+  text-align: center;
+  transition: 0.3s;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.service-name:hover{
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  position: relative;
+  margin-left: -10px;
+  width: 30vh;
+  padding: 20px 0vh;  
+  background-color: #ff6a00;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.593);
+}
+
+.service-name-total-submit {
+  background-color: #1d25bc8e;
+  color: rgba(0, 0, 0, 0.515);
+  font-weight: 500;
+  position:relative;
+
+}
+
+.personal:hover {
+  margin-left: -16px;
+}
+
+.product-hover:hover {
+  background-color: #343de335;
+}
+
+.service-name-total{
+  background-color: #343de38e;
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+}
+  
+.star-counter:hover{  
+  background-color: #343de335;
+}
+
+.btn-print {
+  width: 20vh;
+  margin-bottom: 10px;
+}
+
+.filter-box-1 {
+  display: flex;
+  // border: 1px solid black;
+}
+
+.btn-manager {
+  margin-top: 10px;
+}
+
+.sticky-button {
+  position: relative; /* Default position */
+  transition: all 0.3s ease; /* Smooth transition when it becomes sticky */
+  z-index: 1000; /* To ensure it stays above other content */
+}
+.sticky-button.stuck {
+  position: fixed; /* Becomes fixed when scrolled down */
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Optional: Place it in a specific position on the screen */
+}
+
+
+
+.all-filter-box-date {
+  margin-top: 10px;
+  width: 100%;
+  transition: 0.5s;
+  margin: 0;
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  // border: 1px solid black;
+}
+
+.date-input {
+  margin: 10px;
+}
+
+.btn-primary {
+  background-color: rgba(255, 255, 255, 0);
+  color: #343de3;
+  border: 2px solid #343de3;
+}
+
+.btn-primary:hover {
+  background-color: #ff6a0000;
+  border: 2px solid #ff6a00;  
+  color: #ff6a00;
+}
+
+.no-star {
+  color: rgb(166, 0, 0);
+}
+
+.th, td {
+  border: 2px solid #ff44005c;
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.product-header-table { 
+  background-color: #31006af3;
+}
+
+.x-button {
+  width: 6vh;
+  border: none;
+  color: white;
+  margin-right: 10px;
+  background-color: #343de3;
+  border-radius: 20px;
+  transition: 0.1s;
+}
+
+.x-button:hover {
+    width: 6vh;
+    border: none;
+    margin-right: 10px; 
+    background-color: #ff6a00;
+    border-radius: 5px;
+}
+
+.financial-product {
+    margin-top: 10px;
+    backdrop-filter: blur(10px);          /* Blur the background */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 10px;                 /* Rounded corners for aesthetics */
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.328); /* Subtle shadow for depth */
+    padding: 20px;      
+}
+
+.card-overlay {
+  position: fixed; /* Stays in place */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 999; /* On top of other elements */
+}
+
+.card-overlay-card-2 {
+  position: fixed; /* Stays in place */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-color: rgba(0, 0, 0, 0.29); /* Transparent black overlay */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: start; /* Center vertically */
+  z-index: 999; /* On top of other elements */
+  padding-top: 10px;
+}
+
+.card{ 
+  background-color: white; /* The actual box */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners for aesthetics */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  width: 50%; /* Set a width for the content box */
+  max-width: 1000px; /* Prevent it from getting too wide */
+  min-height: 200px; /* Ensure it has some height */
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 50px;
+  padding: 10px;
+  text-align: center;
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 10px;                 /* Rounded corners for aesthetics */
+  padding: 20px;       
+  box-shadow: 0px 4px 6px #ff6a0044;
+  transition: 0.4s;
+}
+
+.button-group:hover {
+  box-shadow: 0px 4px 6px #343de385;
+}
+
+.total-submit-survey {
+  margin: 10px;
+  font-size: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px #ff6a0070;
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 10px;                 /* Rounded corners for aesthetics */
+  padding: 20px;       
+  transition: 0.4s;
+  box-shadow: 0px 4px 6px #ff6a0044;
+}
+
+.total-submit-survey:hover {
+  box-shadow: 0px 4px 6px #343de385;
+}
+
+.total-submission-box {
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+.date-filter-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 10px;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px #ff6a0070;
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 10px;                 /* Rounded corners for aesthetics */
+  padding: 20px;       
+  box-shadow: 0px 4px 6px #ff6a0044;
+  transition: 0.4s; 
+}
+  
+.date-filter-box:hover {
+  box-shadow: 0px 4px 6px #343de385; 
+}
+
+select {
+  background-color:#636bf998; /* Light blue background */
+  color: #ffffff; /* Text color */
+  border: 1px solid #007bff; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  padding: 5px; /* Padding */
+  font-size: 12px; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+}
+
+.buton-product-export {
+  margin-top: 20px;
+  width: 24vh;
+  transition: 0.4s;
+  text-align: center;
+  font-size: 12px;
+
+}
+
+.select-date {
+  width: 100%;
+  margin: 10px;
+}
+
+
+.buton-row {
+  display: flex;  
+  justify-content: end;
+}
+
+.buton-product-export:hover{
+  margin-top: 20px;
+  width: 30vh;
+  font-size: 12px;
+}
+
+.date-box {
+  display: flex;
+  // border: 1px solid black;
+}
+
+.year-box-date {
+  display: column;
+  // border: 1px solid black;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+
+
+
+@media (min-width: 1199px) {
+  .h-lg-100 {
+    height: 100% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .h-md-100 {
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 700px) {
+  th, td {
+    padding: 8px;
+  }
+
+  .survey-summary-2{
+    border: 1px solid rgba(14, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .survey-summary-2:hover{
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: none;
+  }
+}

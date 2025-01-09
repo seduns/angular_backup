@@ -1,0 +1,318 @@
+{
+  "id": "779f6c6c-542f-4a6f-b327-548758da30e3",
+  "template": "microservice",
+  "versions": {
+    "LeptonX": "3.0.2",
+    "AbpFramework": "8.3.1",
+    "AbpCommercial": "8.3.1",
+    "AbpStudio": "0.9.1"
+  },
+  "folders": {
+    "items": {
+      "services": {},
+      "apps": {},
+      "gateways": {}
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/abp-studio/run-profiles/Default.abprun.json"
+    }
+  },
+  "modules": {
+    "Mymicroservice_7.AdministrationService": {
+      "path": "services/administration/Mymicroservice_7.AdministrationService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.IdentityService": {
+      "path": "services/identity/Mymicroservice_7.IdentityService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.SaasService": {
+      "path": "services/saas/Mymicroservice_7.SaasService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.ChatService": {
+      "path": "services/chat/Mymicroservice_7.ChatService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.AuditLoggingService": {
+      "path": "services/audit-logging/Mymicroservice_7.AuditLoggingService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.GdprService": {
+      "path": "services/gdpr/Mymicroservice_7.GdprService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.FileManagementService": {
+      "path": "services/file-management/Mymicroservice_7.FileManagementService.abpmdl",
+      "folder": "services"
+    },
+    "Mymicroservice_7.AuthServer": {
+      "path": "apps/auth-server/Mymicroservice_7.AuthServer.abpmdl",
+      "folder": "apps"
+    },
+    "Mymicroservice_7.WebGateway": {
+      "path": "gateways/web/Mymicroservice_7.WebGateway.abpmdl",
+      "folder": "gateways"
+    }
+  },
+  "k8sProfiles": {
+    "local": {
+      "path": "etc/abp-studio/k8s-profiles/local.abpk8s.json"
+    }
+  },
+  "commands": {
+    "helmBuildDotnetImage": {
+      "triggerTargets": [
+        "HELM_CHARTS_ROOT",
+        "HELM_MAIN_CHART",
+        "HELM_SUB_CHART"
+      ],
+      "executionTargets": [
+        "HELM_MAIN_CHART",
+        "HELM_SUB_CHART"
+      ],
+      "displayName": "Build Docker Image(s)",
+      "workingDirectory": "etc/helm",
+      "terminalCommand": "./build-image.ps1 -ProjectPath {{metadata.projectPath}} -ImageName {{metadata.imageName}} -ProjectType {{metadata.projectType}}",
+      "condition": "{{metadata.projectPath != null && metadata.imageName != null && metadata.projectType != null}}"
+    },
+    "helmInstallChart": {
+      "triggerTargets": [
+        "HELM_CHARTS_ROOT",
+        "HELM_MAIN_CHART"
+      ],
+      "executionTargets": [
+        "HELM_MAIN_CHART"
+      ],
+      "displayName": "Install Chart(s)",
+      "workingDirectory": "etc/helm",
+      "terminalCommand": "./install.ps1 -ChartName {{chart.name}} -Namespace {{profile.namespace}} -ReleaseName {{chart.name}}-{{profile.name}} -DotnetEnvironment {{metadata.dotnetEnvironment}} {{~if metadata.k8ssuffix}} -User {{metadata.k8ssuffix}}{{end}}",
+      "requireConfirmation": "true",
+      "confirmationText": "Are you sure to install the chart(s) for the profile {{ profile.name }}?"
+    },
+    "helmUninstallChart": {
+      "triggerTargets": [
+        "HELM_CHARTS_ROOT",
+        "HELM_MAIN_CHART"
+      ],
+      "executionTargets": [
+        "HELM_MAIN_CHART"
+      ],
+      "displayName": "Uninstall Chart(s)",
+      "workingDirectory": "etc/helm",
+      "terminalCommand": "./uninstall.ps1 -Namespace {{profile.namespace}} -ReleaseName {{chart.name}}-{{profile.name}} {{~if metadata.k8ssuffix}} -User {{metadata.k8ssuffix}}{{end}}",
+      "requireConfirmation": "true",
+      "confirmationText": "Are you sure to uninstall the chart(s) for the profile {{profile.name}}?"
+    },
+    "kubernetesRedeploy": {
+      "triggerTargets": [
+        "KUBERNETES_SERVICE"
+      ],
+      "executionTargets": [
+        "KUBERNETES_SERVICE"
+      ],
+      "displayName": "Redeploy",
+      "workingDirectory": "etc/helm",
+      "terminalCommand": "./build-image.ps1 -ProjectPath {{chart.metadata.projectPath}} -ImageName {{chart.metadata.imageName}} -ProjectType {{chart.metadata.projectType}} &&& ./install.ps1 -ChartName {{mainChart.name}} -Namespace {{profile.namespace}} -ReleaseName {{mainChart.name}}-{{profile.name}} -DotnetEnvironment {{mainChart.metadata.dotnetEnvironment}} {{~if metadata.k8ssuffix}} -User {{metadata.k8ssuffix}}{{end}}",
+      "requireConfirmation": "true",
+      "confirmationText": "Are you sure to redeploy the related chart '{{chart.name}}' for the service '{{name}}'?",
+      "condition": "{{chart != null && chart.metadata.projectPath != null && chart.metadata.imageName != null && chart.metadata.projectType != null}}"
+    },
+    "createTlsSecret": {
+      "triggerTargets": [
+        "HELM_CHARTS_ROOT"
+      ],
+      "executionTargets": [
+        "HELM_CHARTS_ROOT"
+      ],
+      "displayName": "Create Self-Signed TLS secret",
+      "workingDirectory": "etc/helm",
+      "terminalCommand": "./create-tls-secrets.ps1 -Namespace {{profile.namespace}} {{~if metadata.k8ssuffix}} -User {{metadata.k8ssuffix}}{{end}}"
+    }
+  },
+  "helm": {
+    "charts": {
+      "mymicroservice_7": {
+        "name": "mymicroservice_7",
+        "path": "etc/helm/mymicroservice_7",
+        "charts": {
+          "administration": {
+            "name": "administration",
+            "path": "etc/helm/mymicroservice_7/charts/administration",
+            "metadata": {
+              "projectPath": "../../services/administration/Mymicroservice_7.AdministrationService/Mymicroservice_7.AdministrationService.csproj",
+              "imageName": "mymicroservice_7/administration",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-administration$"
+            ]
+          },
+          "angular": {
+            "name": "angular",
+            "path": "etc/helm/mymicroservice_7/charts/angular",
+            "metadata": {
+              "projectPath": "../../apps/angular",
+              "imageName": "mymicroservice_7/angular",
+              "projectType": "angular"
+            },
+            "services": [
+              ".*-angular$"
+            ]
+          },
+          "auditlogging": {
+            "name": "auditlogging",
+            "path": "etc/helm/mymicroservice_7/charts/auditlogging",
+            "metadata": {
+              "projectPath": "../../services/audit-logging/Mymicroservice_7.AuditLoggingService/Mymicroservice_7.AuditLoggingService.csproj",
+              "imageName": "mymicroservice_7/auditlogging",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-auditlogging$"
+            ]
+          },
+          "authserver": {
+            "name": "authserver",
+            "path": "etc/helm/mymicroservice_7/charts/authserver",
+            "metadata": {
+              "projectPath": "../../apps/auth-server/Mymicroservice_7.AuthServer/Mymicroservice_7.AuthServer.csproj",
+              "imageName": "mymicroservice_7/authserver",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-authserver$"
+            ]
+          },
+          "chat": {
+            "name": "chat",
+            "path": "etc/helm/mymicroservice_7/charts/chat",
+            "metadata": {
+              "projectPath": "../../services/chat/Mymicroservice_7.ChatService/Mymicroservice_7.ChatService.csproj",
+              "imageName": "mymicroservice_7/chat",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-chat$"
+            ]
+          },
+          "elasticsearch": {
+            "name": "elasticsearch",
+            "path": "etc/helm/mymicroservice_7/charts/elasticsearch",
+            "metadata": {}
+          },
+          "filemanagement": {
+            "name": "filemanagement",
+            "path": "etc/helm/mymicroservice_7/charts/filemanagement",
+            "metadata": {
+              "projectPath": "../../services/file-management/Mymicroservice_7.FileManagementService/Mymicroservice_7.FileManagementService.csproj",
+              "imageName": "mymicroservice_7/filemanagement",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-filemanagement"
+            ]
+          },
+          "gdpr": {
+            "name": "gdpr",
+            "path": "etc/helm/mymicroservice_7/charts/gdpr",
+            "metadata": {
+              "projectPath": "../../services/gdpr/Mymicroservice_7.GdprService/Mymicroservice_7.GdprService.csproj",
+              "imageName": "mymicroservice_7/gdpr",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-gdpr$"
+            ]
+          },
+          "grafana": {
+            "name": "grafana",
+            "path": "etc/helm/mymicroservice_7/charts/grafana",
+            "metadata": {}
+          },
+          "identity": {
+            "name": "identity",
+            "path": "etc/helm/mymicroservice_7/charts/identity",
+            "metadata": {
+              "projectPath": "../../services/identity/Mymicroservice_7.IdentityService/Mymicroservice_7.IdentityService.csproj",
+              "imageName": "mymicroservice_7/identity",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-identity$"
+            ]
+          },
+          "kibana": {
+            "name": "kibana",
+            "path": "etc/helm/mymicroservice_7/charts/kibana",
+            "metadata": {}
+          },
+          "prometheus": {
+            "name": "prometheus",
+            "path": "etc/helm/mymicroservice_7/charts/prometheus",
+            "metadata": {}
+          },
+          "rabbitmq": {
+            "name": "rabbitmq",
+            "path": "etc/helm/mymicroservice_7/charts/rabbitmq"
+          },
+          "redis": {
+            "name": "redis",
+            "path": "etc/helm/mymicroservice_7/charts/redis"
+          },
+          "saas": {
+            "name": "saas",
+            "path": "etc/helm/mymicroservice_7/charts/saas",
+            "metadata": {
+              "projectPath": "../../services/saas/Mymicroservice_7.SaasService/Mymicroservice_7.SaasService.csproj",
+              "imageName": "mymicroservice_7/saas",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-saas$"
+            ]
+          },
+          "sqlserver": {
+            "name": "sqlserver",
+            "path": "etc/helm/mymicroservice_7/charts/sqlserver"
+          },
+          "webgateway": {
+            "name": "webgateway",
+            "path": "etc/helm/mymicroservice_7/charts/webgateway",
+            "metadata": {
+              "projectPath": "../../gateways/web/Mymicroservice_7.WebGateway/Mymicroservice_7.WebGateway.csproj",
+              "imageName": "mymicroservice_7/webgateway",
+              "projectType": "dotnet"
+            },
+            "services": [
+              ".*-webgateway$"
+            ]
+          }
+        },
+        "metadata": {}
+      }
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": [
+        "^/metrics$"
+      ]
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "microservice",
+    "createdAbpStudioVersion": "0.9.1",
+    "uiFramework": "angular",
+    "databaseProvider": "ef",
+    "databaseManagementSystem": "sqlserver",
+    "theme": "leptonx",
+    "themeStyle": "system",
+    "mobileFramework": "none",
+    "progressiveWebApp": "",
+    "publicWebsite": "false",
+    "socialLogin": ""
+  }
+}
