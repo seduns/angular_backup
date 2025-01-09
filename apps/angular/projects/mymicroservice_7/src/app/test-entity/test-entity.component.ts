@@ -144,7 +144,7 @@ export class TestEntityComponent implements OnInit {
         try {
           // Fetch context from API for the current prompt
           const context = await this.http
-            .get<string>('http://localhost:44305/FileItem', { responseType: 'text' as 'json' })
+            .get<string>('http://localhost:44305/api/scraper/notes', { responseType: 'text' as 'json' })
             .toPromise();
             
             this.storeContext1 = context;
