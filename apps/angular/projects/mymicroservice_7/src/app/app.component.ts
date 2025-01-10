@@ -1,7 +1,6 @@
 import { AuthService } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
-import { LoginParams } from '@abp/ng.core/lib/models/auth';
-import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-root',
@@ -9,52 +8,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  title = 'mymicroservice_7'
+  title = 'mymicroservice_7';
 
   isAuthenticated: boolean = false;
+  userName: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService) {
     this.isAuthenticated = this.authService.isAuthenticated;
   }
 
   ngOnInit(): void {
     // Check if the user is authenticated
     this.isAuthenticated = this.authService.isAuthenticated;
-    
 
-    // Get the current route
-    const currentRoute = this.router.url;
-
-    // If the user is not authenticated and trying to access the admin route
-    if (!this.isAuthenticated && this.isAdminRoute(currentRoute)) {
-      const loginParams: LoginParams = {
-        username: '',   // Replace with actual username
-        password: '',   // Replace with actual password
-        rememberMe: false,
-        redirectUrl: '',
-        
-      };
-
-      // Attempt to log the user in
-      this.authService.login(loginParams).subscribe({
-        next: (response) => {
-          console.log('User logged in:', response);
-          this.isAuthenticated = true;  // Set authentication state to true
-        },
-        error: (error) => {
-          console.error('Login failed:', error);
-          // Optionally, navigate to a different route if login fails
-          this.router.navigate(['/']); // Redirect to home or another page
-        }
-      });
-    } else if (this.isAuthenticated) {
-      console.log('User is already authenticated');
+    if (this.isAuthenticated) {
+      this.setUserDetails(); // Retrieve user details
+    } else {
+      console.log('User is not authenticated');
     }
   }
 
-  // Method to check if the current route is an admin route
-  private isAdminRoute(route: string): boolean {
-    return route.startsWith('/survey'); // Adjust based on your actual admin path
+  private setUserDetails(): void {
+    const token = this.authService.getAccessToken(); // Get the access token
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);
+
+      // Extract user details (assuming 'name' claim is present)
+      this.userName = decodedToken?.preferred_username || 'Unknown User';
+
+      console.log(decodedToken);
+
+      console.log('Logged-in user:', this.userName);
+    } else {
+      console.log('No token available');
+    }
   }
 }

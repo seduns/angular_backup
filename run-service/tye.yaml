@@ -2,68 +2,68 @@ name: my-application
 services:
 
   - name: auth-server
-    project: D:\abpTest\SurveyForm3 - 2\apps\auth-server\Mymicroservice_7.AuthServer\Mymicroservice_7.AuthServer.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\apps\auth-server\Mymicroservice_7.AuthServer\Mymicroservice_7.AuthServer.csproj
     bindings:
       - port: 44378
         protocol: http
 
   - name: gateway
-    project: D:\abpTest\SurveyForm3 - 2\gateways\web\Mymicroservice_7.WebGateway\Mymicroservice_7.WebGateway.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\gateways\web\Mymicroservice_7.WebGateway\Mymicroservice_7.WebGateway.csproj
     bindings:
     
       - port: 44305
         protocol: http
 
   - name: administration
-    project: D:\abpTest\SurveyForm3 - 2\services\administration\Mymicroservice_7.AdministrationService\Mymicroservice_7.AdministrationService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\administration\Mymicroservice_7.AdministrationService\Mymicroservice_7.AdministrationService.csproj
     bindings:
       - port: 44360
         protocol: http
 
   - name: audit-logging
-    project: D:\abpTest\SurveyForm3 - 2\services\audit-logging\Mymicroservice_7.AuditLoggingService\Mymicroservice_7.AuditLoggingService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\audit-logging\Mymicroservice_7.AuditLoggingService\Mymicroservice_7.AuditLoggingService.csproj
     bindings:
       - port: 44335
         protocol: http
 
   - name: chat
-    project: D:\abpTest\SurveyForm3 - 2\services\chat\Mymicroservice_7.ChatService\Mymicroservice_7.ChatService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\chat\Mymicroservice_7.ChatService\Mymicroservice_7.ChatService.csproj
     bindings:
       - port: 44339
         protocol: http
 
   - name: file-management
-    project: D:\abpTest\SurveyForm3 - 2\services\file-management\Mymicroservice_7.FileManagementService\Mymicroservice_7.FileManagementService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\file-management\Mymicroservice_7.FileManagementService\Mymicroservice_7.FileManagementService.csproj
     bindings:
       - port: 44333
         protocol: http
 
   - name: gdpr
-    project: D:\abpTest\SurveyForm3 - 2\services\gdpr\Mymicroservice_7.GdprService\Mymicroservice_7.GdprService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\gdpr\Mymicroservice_7.GdprService\Mymicroservice_7.GdprService.csproj
     bindings:
       - port: 44387
         protocol: http
 
   - name: identity
-    project: D:\abpTest\SurveyForm3 - 2\services\identity\Mymicroservice_7.IdentityService\Mymicroservice_7.IdentityService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\identity\Mymicroservice_7.IdentityService\Mymicroservice_7.IdentityService.csproj
     bindings:
       - port: 44347
         protocol: http
         
   - name: saas
-    project: D:\abpTest\SurveyForm3 - 2\services\saas\Mymicroservice_7.SaasService\Mymicroservice_7.SaasService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\saas\Mymicroservice_7.SaasService\Mymicroservice_7.SaasService.csproj
     bindings:
       - port: 44309
         protocol: http
 
   - name: survey
-    project: D:\abpTest\SurveyForm3 - 2\services\survey\SurveyService\SurveyService.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\survey\SurveyService\SurveyService.csproj
     bindings:
       - port: 5081
         protocol: http
 
   - name: chatbot
-    project: D:\abpTest\SurveyForm3 - 2\services\WebScraperApi\WebScraperApi\WebScraperApi.csproj
+    project: D:\abpTest\SurveyForm3 - 2 - COPY\services\WebScraperApi\WebScraperApi\WebScraperApi.csproj
     bindings:
       - port: 5222
         protocol: http

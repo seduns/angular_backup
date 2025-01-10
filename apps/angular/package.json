@@ -27,6 +27,7 @@
     "@angular/platform-browser": "~18.1.0",
     "@angular/platform-browser-dynamic": "~18.1.0",
     "@angular/router": "~18.1.0",
+    "@auth0/angular-jwt": "^5.2.0",
     "@google/generative-ai": "^0.21.0",
     "@volo/abp.commercial.ng.ui": "~8.3.1",
     "@volo/abp.ng.account": "~8.3.1",

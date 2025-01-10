@@ -188,7 +188,7 @@ export class HomeComponent implements AfterViewInit {
       ...this.CreditCardProduct
     ];
 
-    console.log("Mapped Products with Ratings:", this.products);
+    // console.log("Mapped Products with Ratings:", this.products);
 
     if (this.authService.isAuthenticated) {
       const token = this.authService.getAccessToken();
@@ -215,7 +215,7 @@ export class HomeComponent implements AfterViewInit {
         this.CalculateServiceType();
         this.updateBarChart();
         this.calculatePersonalRating(this.startDate, this.endDate); // add here
-        console.log('Survey Data: ', this.surveys);
+        // console.log('Survey Data: ', this.surveys);
 
       },
       (error) => {
@@ -925,7 +925,7 @@ resetCreditRatings(): void {
     this.productService.get().subscribe(
       (response: surveyItemDto[]) => {
         this.productList = response;
-        console.log('All products loaded:', this.productList); // Log all products initially loaded
+        // console.log('All products loaded:', this.productList); // Log all products initially loaded
       },
       (error) => {
         console.error('Error loading products:', error);
@@ -1055,7 +1055,7 @@ calculateProductRatings(prodId: number, startDate: Date, endDate: Date): number[
         this.endDate = new Date(year, month - 1, lastDay);
     }
 
-    console.log(`Date range set from: ${this.startDate} to ${this.endDate}`);
+    // console.log(`Date range set from: ${this.startDate} to ${this.endDate}`);
 }
 
   

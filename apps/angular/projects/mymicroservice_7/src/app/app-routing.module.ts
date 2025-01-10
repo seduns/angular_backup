@@ -13,16 +13,18 @@ const routes: Routes = [
     pathMatch: 'full', 
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     canActivate: [authGuard, permissionGuard],
+    
   },
   {
     path: 'bar-chart',  
     component: BarChartComponent,
+    canActivate: [authGuard, permissionGuard],
   },
  
   {
     path: 'survey',
     component: SurveyComponent,
-    canActivate: [authGuard, permissionGuard],
+    
   },
   {
     path: 'dashboard',

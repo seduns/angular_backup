@@ -51,35 +51,40 @@ export class BarChartComponent implements OnInit {
 }
 
   // PERSONAL FINANCING
-  create(): void { 
-
+  create(): void {
+    // Validate input fields
     if (!this.newProduct.serviceName || !this.newProduct.productName) {
       console.error('Service name and product name are required.');
-      alert('Fail to create product');
+      alert('Failed to create product. Please provide both service name and product name.');
       return;
     }
-    
-    
+  
+    // Call the product service to create a new product
     this.productService.create(this.newProduct).subscribe(
       (createdProduct) => {
-        console.log('New product created successfully', createdProduct);
-
+        console.log('New product created successfully:', createdProduct);
+  
+        // Reset newProduct after successful creation
         this.newProduct = {
-          productName: '',
-          serviceName: this.newProduct.serviceName,   
-          isActive: true,
-        }        
-
+          productName: '', // Reset the product name
+          serviceName: '', // Reset the service name as well
+          isActive: true,   // Set default active status
+        };
+  
+        // Reload product list and apply filter
         this.loadProduct();
         this.filterProducts();
-        alert('Product create successfully');
+  
+        alert('Product created successfully!');
       },
       (error) => {
-        console.error('Failed to create product', error);
-        alert('Failed to create new product');
+        // Handle failure
+        console.error('Failed to create product:', error);
+        alert('Failed to create new product. Please try again later.');
       }
     );
   }
+  
 
   deleteProduct(id: string): void { 
     this.productService.delete(id).subscribe(() => {

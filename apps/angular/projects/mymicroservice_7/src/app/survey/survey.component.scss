@@ -31,6 +31,7 @@ a, i, u{
     color: black;
     padding: 15px;
     position: relative;
+    display: hide;
 }
 
 .nav-bar-2 {
@@ -124,11 +125,22 @@ main {
     width: 100%;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(182, 220, 255) 0%, rgb(231, 213, 202) 100%);
+    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(182, 220, 255) 0%, rgb(231, 213, 202) 100%);
     // background-image: url(../../assets/images/back_image.jpg);
+    background-image: url(https://brick.bankrakyat.com.my/QR2B-MAIN-BANNER-FA-en.3a699405503ec307.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.brick-website {
+  height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
+  background-image: url('../../assets/images/brick-web.png'); /* Path to your image */
+  background-size: cover; /* Make the image cover the whole div */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Avoid repeating the image */
+}
+
 
 // SURVEY FORM 
 .form-controller {

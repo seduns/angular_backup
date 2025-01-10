@@ -48,7 +48,7 @@ export class TestEntityComponent implements OnInit {
   }
 
       title = 'gemini-test';
-      prompt: string = '';
+      prompt: string = '';  
       response: string = '';  
       loading: boolean = false;
       timeResponse: Date;
