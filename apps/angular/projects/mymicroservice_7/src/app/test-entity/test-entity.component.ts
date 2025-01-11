@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GeminiService } from './gemini.service';
@@ -45,6 +45,19 @@ export class TestEntityComponent implements OnInit {
   closeChatBot2() { 
     this.showChatBot2 = !this.showChatBot2
 
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.checkMediaQuery(); // Re-check on window resize
+  }
+
+  checkMediaQuery(): void {
+    const isSmallScreen = window.matchMedia('(max-width: 650px)').matches;
+    if (isSmallScreen) {
+      this.isFullScreen = false; // Set to false when media query matches
+    }
+    // console.log('Screen size checked, isFullScreen:', this.isFullScreen);
   }
 
       title = 'gemini-test';
@@ -144,7 +157,7 @@ export class TestEntityComponent implements OnInit {
         try {
           // Fetch context from API for the current prompt
           const context = await this.http
-            .get<string>('http://localhost:44305/api/scraper/notes', { responseType: 'text' as 'json' })
+            .get<string>('http://localhost:44305/FileItem', { responseType: 'text' as 'json' })
             .toPromise();
             
             this.storeContext1 = context;
@@ -155,7 +168,7 @@ export class TestEntityComponent implements OnInit {
     
             // Combine the previously accumulated context with the new user prompt
             const fullContext = `${this.contextBefore} \nUser's question now: ${userPrompt} \nAnswer:`;
-            console.log('chat Accumulate: ',this.contextBefore);
+            // console.log('chat Accumulate: ',this.contextBefore);
     
             // Generate AI response with full context
             generatedResponse = await this.geminiService.generateText(`${context} ${fullContext}`);
@@ -183,7 +196,7 @@ export class TestEntityComponent implements OnInit {
 
           
           // console.log('Chat Before', this.contextBefore);
-          console.log('Chat History', this.chatHistory);
+          // console.log('Chat History', this.chatHistory);
           // console.log('Simple Question: ', this.simpleQuestion);
 
           this.scrollToBottom();

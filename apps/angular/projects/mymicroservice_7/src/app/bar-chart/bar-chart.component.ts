@@ -51,40 +51,35 @@ export class BarChartComponent implements OnInit {
 }
 
   // PERSONAL FINANCING
-  create(): void {
-    // Validate input fields
+  create(): void { 
+
     if (!this.newProduct.serviceName || !this.newProduct.productName) {
       console.error('Service name and product name are required.');
-      alert('Failed to create product. Please provide both service name and product name.');
+      alert('Fail to create product');
       return;
     }
-  
-    // Call the product service to create a new product
+    
+    
     this.productService.create(this.newProduct).subscribe(
       (createdProduct) => {
-        console.log('New product created successfully:', createdProduct);
-  
-        // Reset newProduct after successful creation
+        console.log('New product created successfully', createdProduct);
+
         this.newProduct = {
-          productName: '', // Reset the product name
-          serviceName: '', // Reset the service name as well
-          isActive: true,   // Set default active status
-        };
-  
-        // Reload product list and apply filter
+          productName: '',
+          serviceName: this.newProduct.serviceName,   
+          isActive: true,
+        }        
+
         this.loadProduct();
         this.filterProducts();
-  
-        alert('Product created successfully!');
+        alert('Product create successfully');
       },
       (error) => {
-        // Handle failure
-        console.error('Failed to create product:', error);
-        alert('Failed to create new product. Please try again later.');
+        console.error('Failed to create product', error);
+        alert('Failed to create new product');
       }
     );
   }
-  
 
   deleteProduct(id: string): void { 
     this.productService.delete(id).subscribe(() => {
@@ -291,9 +286,14 @@ isCardVisible: boolean = false;
 
 selectService(serviceName: string): void {
   this.selectedService = serviceName;
-  this.isCardVisible = true; // Show the card when a service is selected via button
+  this.isCardVisible = true;
+  this.newProduct.serviceName = serviceName;  // Set the selected service name to newProduct object
   this.onServiceChange(serviceName);
+
+  console.log(this.newProduct.productName);  // Now this should have the product name value
+  console.log(this.newProduct.serviceName); // Now this should have the selected service name
 }
+
 
 
   

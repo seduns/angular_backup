@@ -1,0 +1,44 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="file-upload">
+        <input type="file" class="choose-file" (change)="onFileSelected($event)" accept=".txt" />
+        <button type="submit">Upload</button>
+    </div>
+</form>
+
+<div class="chatbase">
+    <!-- Dark Overlay and Centered Card -->
+    <div *ngIf="editingFileId" class="card-overlay">
+        <div class="card">
+            <h2>Editing: {{ editingFileName }}</h2>
+            <textarea [(ngModel)]="editingFileContent" class="editor-textarea"></textarea>
+            <div class="editor-actions">
+                <button class="save-btn" (click)="updateFileContent()">Save</button>
+                <button class="cancel-btn" (click)="cancelEditing()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- File List Table -->
+    <table *ngIf="files.length > 0 && !editingFileId">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Uploaded At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of files">
+                <td>{{ file.fileName }}</td>
+                <td>{{ file.uploadedAt | date: 'shortDate' }}</td>
+                <td>
+                    <button (click)="downloadFile(file.id)">Download</button>
+                    <button (click)="deleteFile(file.id)">Delete</button>
+                    <button (click)="loadFileForEditing(file.id)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

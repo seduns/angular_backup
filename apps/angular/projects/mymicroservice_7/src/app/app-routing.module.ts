@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SurveyComponent } from './survey/survey.component';
 import { HomeComponent } from './home/home.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { ChatBaseComponent } from './chat-base/chat-base.component';
 // import { TestEntityComponent } from './test-entity/test-entity.component';
 
 const routes: Routes = [
@@ -14,6 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     canActivate: [authGuard, permissionGuard],
     
+  },
+  {
+    path: 'chat-base',  
+    component: ChatBaseComponent,
+    canActivate: [authGuard, permissionGuard],
   },
   {
     path: 'bar-chart',  

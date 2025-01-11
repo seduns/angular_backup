@@ -27,20 +27,21 @@ a, i, u{
 .nav-bar { 
     text-align: center;
     width: 100%;
-    background-color: #035FA8;
+    background-color: #020c14;
     color: black;
     padding: 15px;
     position: relative;
-    display: hide;
+    display: none;
 }
 
-.nav-bar-2 {
+.nav-bar-2 {    
     width: 100%;
     background-color: #e7e8e9;
     color: black;
     padding: 15px;
     position: relative;
     text-align: start;
+    display: none;
     
 }
 
@@ -94,6 +95,7 @@ small {
 
 footer {
     background-color: #007bff;
+    display: none;
 }   
 
 .name {
@@ -130,16 +132,22 @@ main {
     background-image: url(https://brick.bankrakyat.com.my/QR2B-MAIN-BANNER-FA-en.3a699405503ec307.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    display: none;
 }
 
 .brick-website {
-  height: 100vh; /* Full height of the viewport */
-  width: 100vw; /* Full width of the viewport */
-  background-image: url('../../assets/images/brick-web.png'); /* Path to your image */
-  background-size: cover; /* Make the image cover the whole div */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Avoid repeating the image */
+    width: 100px; /* Full width of the viewport */
+    height: 100px; /* Full height of the viewport */
+    background-image: url(../../assets/images/brick-web.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Prevent scrolling */
+    display: none;
 }
+
 
 
 // SURVEY FORM 
@@ -158,6 +166,7 @@ main {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.409);
 
     background-color: rgba(255, 255, 255, 0.199);
+    display: none;
     
     // transition: 1s;
 }
@@ -593,10 +602,22 @@ select {
     font-size: 24px;
 }
   
-// body {
-//     // background: rgb(2,0,36);
-//     // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(55, 147, 233) 0%, rgb(231, 213, 202) 100%);
-// }
+body {
+    background-image: url(../../assets/images/brick-web.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0px; /* Moves the image 20px down */
+    background-attachment: scroll;
+}
+
+div {
+    height: 2000px; /* For testing scrolling */
+}
+
+
+
+
+
 
 .input-text {
     width: 40vh;

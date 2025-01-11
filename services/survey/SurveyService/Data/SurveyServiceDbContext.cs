@@ -31,5 +31,6 @@ namespace SurveyService.Data
         // Define DbSets for the entities
         public DbSet<surveyItem> surveyItems { get; set; }
         public DbSet<AllProduct> AllProducts { get; set; }
+        public DbSet<fileEntity> FileEntitys { get; set; }
     }
 }
