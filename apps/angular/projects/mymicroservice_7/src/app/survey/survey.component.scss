@@ -27,14 +27,14 @@ a, i, u{
 .nav-bar { 
     text-align: center;
     width: 100%;
-    background-color: #020c14;
+    background-color: #035FA8;
     color: black;
     padding: 15px;
     position: relative;
     display: none;
 }
 
-.nav-bar-2 {    
+.nav-bar-2 {
     width: 100%;
     background-color: #e7e8e9;
     color: black;
@@ -127,28 +127,12 @@ main {
     width: 100%;
     justify-content: center;
     padding: 2rem;
-    // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(182, 220, 255) 0%, rgb(231, 213, 202) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(182, 220, 255) 0%, rgb(231, 213, 202) 100%);
     // background-image: url(../../assets/images/back_image.jpg);
-    background-image: url(https://brick.bankrakyat.com.my/QR2B-MAIN-BANNER-FA-en.3a699405503ec307.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: none;
 }
-
-.brick-website {
-    width: 100px; /* Full width of the viewport */
-    height: 100px; /* Full height of the viewport */
-    background-image: url(../../assets/images/brick-web.png);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    overflow: hidden; /* Prevent scrolling */
-    display: none;
-}
-
-
 
 // SURVEY FORM 
 .form-controller {
@@ -166,7 +150,6 @@ main {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.409);
 
     background-color: rgba(255, 255, 255, 0.199);
-    display: none;
     
     // transition: 1s;
 }
@@ -183,6 +166,7 @@ main {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    display: none;
 }
 
 .box-image {
@@ -602,22 +586,10 @@ select {
     font-size: 24px;
 }
   
-body {
-    background-image: url(../../assets/images/brick-web.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 0px; /* Moves the image 20px down */
-    background-attachment: scroll;
-}
-
-div {
-    height: 2000px; /* For testing scrolling */
-}
-
-
-
-
-
+// body {
+//     // background: rgb(2,0,36);
+//     // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(55, 147, 233) 0%, rgb(231, 213, 202) 100%);
+// }
 
 .input-text {
     width: 40vh;
@@ -999,6 +971,29 @@ text-align: center;
     color: #ff6a00;
 }
 
+.brick-website {
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    background-image: url(../../assets/images/brick-web.png);
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-position-y: 0px;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ensure no overflow issues */
+    height: 100%; /* Match full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+
 
   
 
@@ -1007,7 +1002,7 @@ text-align: center;
         border: 2px solid rgb(13, 0, 255);
         flex-direction: column;
     }
-
+    
     .box-image {
         margin: 10px 0px;
         background-size: 200px;

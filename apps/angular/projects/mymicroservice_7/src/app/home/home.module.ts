@@ -8,4 +8,6 @@ import { HomeComponent } from './home.component';
   declarations: [HomeComponent],
   imports: [SharedModule, HomeRoutingModule, PageModule],
 })
+
+
 export class HomeModule {}

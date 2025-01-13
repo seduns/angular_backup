@@ -90,6 +90,26 @@ export class TestEntityComponent implements OnInit {
         }
       }
 
+      isBottom: boolean = false; 
+
+
+      onScroll() {
+        const container = this.chartContainer.nativeElement;
+        
+        // Define a threshold value (e.g., 50px from the bottom)
+        const threshold = 10;
+      
+        // Check if the user is at the bottom within the threshold
+        const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + threshold;
+        
+        // Set isBottom to true only if not at the bottom (and within threshold)
+        this.isBottom = !isAtBottom;
+      
+        // console.log(this.isBottom);  // Log whether the user is at the bottom
+      }
+      
+
+
     promptSend(question: string) {
       this.prompt = question;
 
@@ -168,7 +188,7 @@ export class TestEntityComponent implements OnInit {
     
             // Combine the previously accumulated context with the new user prompt
             const fullContext = `${this.contextBefore} \nUser's question now: ${userPrompt} \nAnswer:`;
-            // console.log('chat Accumulate: ',this.contextBefore);
+            console.log('chat Accumulate: ',this.contextBefore);
     
             // Generate AI response with full context
             generatedResponse = await this.geminiService.generateText(`${context} ${fullContext}`);
@@ -196,7 +216,7 @@ export class TestEntityComponent implements OnInit {
 
           
           // console.log('Chat Before', this.contextBefore);
-          // console.log('Chat History', this.chatHistory);
+          console.log('Chat History', this.chatHistory);
           // console.log('Simple Question: ', this.simpleQuestion);
 
           this.scrollToBottom();
@@ -205,6 +225,12 @@ export class TestEntityComponent implements OnInit {
         }
       }
 
+      clearChat(): void { 
+        this.chatHistory = [];
+        this.contextBefore = ''; 
+        console.log('Chat History', this.chatHistory);
+        console.log('Context Before', this.contextBefore);
+      }
 
       autoShowTimeOut: any; 
       showSuggestedQuestion: boolean = false;

@@ -1,4 +1,4 @@
-import { CoreModule, provideAbpCore, withOptions } from '@abp/ng.core';
+import { AuthService, CoreModule, provideAbpCore, withOptions } from '@abp/ng.core';
 import { provideAbpOAuth } from '@abp/ng.oauth';
 import { provideSettingManagementConfig } from '@abp/ng.setting-management/config';
 import { provideFeatureManagementConfig } from '@abp/ng.feature-management';
@@ -31,6 +31,7 @@ import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { NgxPrintModule } from 'ngx-print';
 import { TestEntityComponent } from './test-entity/test-entity.component';
+import { RouteInitializationService } from './bar-chart/auth-service/routeInitializedService';
 
 @NgModule({
   declarations: [AppComponent],
@@ -56,10 +57,13 @@ import { TestEntityComponent } from './test-entity/test-entity.component';
 ],
   providers: [
     APP_ROUTE_PROVIDER,
+    RouteInitializationService,
+    AuthService,
     provideAbpCore(
       withOptions({
         environment,
         registerLocaleFn: registerLocale(),
+        
       }),
     ),
     provideAbpOAuth(),

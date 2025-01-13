@@ -1,115 +1,323 @@
-<button *ngIf="!showChat && !showChatBot2" class="btn btn-primary btn-show" (click)="openChat()">
-  ChatBot
+<button
+    *ngIf="!showChat && !showChatBot2"
+    class="btn btn-primary btn-show"
+    (click)="openChat()">
+    ChatBot
 </button>
 
 <div class="container">
-  <div class="circle"></div>
-  <div class="box"></div>
+    <div class="circle"></div>
+    <div class="box"></div>
 </div>
 
+<div
+    class="test"
+    [ngClass]="{'show' : showChat, 'fullScreen' : isFullScreen , 'closeChatBot' : !showChat}">
+    <div class="title-chat-bot">
+        <p>BroRakyat</p>
+        <div class="bank-logo"></div>
 
+        <div class="btn-container">
 
-<div class="test" [ngClass]="{'show' : showChat, 'fullScreen' : isFullScreen , 'closeChatBot' : !showChat}">  
-  <div class="title-chat-bot">
-    <p>BroRakyat</p>
-    <div class="bank-logo"></div>
-    
-    <button  class="x-button" (click)="closeChat()">X</button>
-    <button  class="full-screen-btn" (click)="viewfullScren()">fullscreen</button>
-  </div>
-  
-  <!-- <p *ngIf="!response && !loading">Hi! Im Ai bot</p> -->
-  <div class="generate-text" [ngClass]="{'fullScreen' : isFullScreen}" #chatContainer>
-
-    <div *ngIf="chatHistory.length === 0" class="bot-chat">
-      <span>ask something!</span>
-    </div>
-
-    <button class="btn btn-primary btn-curious"  *ngIf="isClose" (click)="showSuggestChat()">?</button>
-    <button class="btn btn-primary btn-down"  (click)="scrollToBottom()"><i class="fa fa-arrow-down"></i></button>
-    
-    
-    
-    <div *ngFor="let chat of chatHistory; let i = index"  >
-      <div class="chat-content"  #chatContainer >
-        <div class="user-chat"  #chatContainer>
-          <p>{{ chat.prompt }}</p>
-          <div *ngIf="timeHistory[i]?.timeResponse">
-            <small class="send-chat" *ngIf="!chat.sending && timeHistory[i].timeResponse">{{ getTimeAgo(timeHistory[i].timeResponse) }}</small> <!-- Show time if not sending -->
-            <small class="send-chat-loading"  #chatContainer *ngIf="chat.sending">sending</small> <!-- Check if it's sending -->
-          </div>
-        </div>
-          
-        <div class="chat-content">
-          <div class="bot-chat"  [ngClass]="{'loading-state': loading && i === chatHistory.length - 1}"  >
-            <div *ngIf="loading && i === chatHistory.length - 1"></div>
-            <span class="bot-response" *ngIf="!loading || i !== chatHistory.length - 1" [innerHTML]="formatTextWithParagraphs(chat.response)" ></span>
-            <div *ngIf="timeHistory[i]?.timeResponse">
-              <small class="respone-chat" *ngIf="!chat.sending && timeHistory[i].timeResponse">{{ getTimeAgo(timeHistory[i].timeResponse) }}</small> <!-- Show time if not sending -->
-            </div>
-          </div>
-        </div>
-            
-        
-        <div *ngIf="i === chatHistory.length - 1 && chatHistory.length > 1 && !chat.sending && !prompt && simpleQuestion && showSuggestedQuestion"   class="suggested-question" >
-          <div class="btn-suggest">
-            <div class="container-suggest-que">
-              <small class="text-suggest">Try this suggested question:</small>
-              <button class="x-suggest"  (click)="closeSuggest()">X</button>
-            </div>
-            <button 
-            class="btn-change-question" 
-            (click)="changeQuestion()" 
-            [disabled]="isChange"   
-            [ngClass]="{'btn-disable-change': isChange}">
-            Change Question
-          </button> 
-          <div *ngIf="isChange" class="show-loading" [ngClass]="{'hidden' : !showSuggestedQuestion}"></div>
-          <button 
-          class="simpleQue" 
-          [disabled]="isChange"   
-          [ngClass]="{'btn-disable-question': isChange}" 
-          (click)="promptSend(simpleQuestion)">
-          <small class="change-color-que">{{ simpleQuestion }}</small>
+        <button class="x-button" (click)="closeChat()">X</button>
+        <button class="x-button" (click)="clearChat()">
+          <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1056 860"  width="30px" height="30px">
+            <defs>
+              <style>
+                .cls-1 {
+                  stroke-width: 0px;
+                }
+              </style>
+            </defs>
+            <g>
+              <path class="cls-1" d="m257.04,371.42h-.02c-20.22,0-33.97-20.56-26.22-39.23,46.24-111.39,156.07-189.73,284.2-189.73s237.94,78.34,284.18,189.73c7.75,18.67-6.01,39.23-26.22,39.23h0c-11.42,0-21.77-6.84-26.14-17.39-37.7-90.9-127.28-154.82-231.81-154.82s-194.11,63.93-231.81,154.82c-4.38,10.55-14.72,17.39-26.14,17.39Z"/>
+              <g>
+                <path class="cls-1" d="m726.85,303.39h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(263.98 1024.77) rotate(-72.77)"/>
+                <path class="cls-1" d="m661.34,349.33h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(1328.9 959.76) rotate(-162.77)"/>
+              </g>
+            </g>
+            <g>
+              <path class="cls-1" d="m798.96,511.78h.02c20.22,0,33.97,20.56,26.22,39.23-46.24,111.39-156.07,189.73-284.2,189.73s-237.94-78.34-284.18-189.73c-7.75-18.67,6.01-39.23,26.22-39.23h0c11.42,0,21.77,6.84,26.14,17.39,37.7,90.9,127.28,154.82,231.81,154.82s194.11-63.93,231.81-154.82c4.38-10.55,14.72-17.39,26.14-17.39Z"/>
+              <g>
+                <path class="cls-1" d="m128.07,520.09h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(821.6 494.53) rotate(107.23)"/>
+                <path class="cls-1" d="m243.01,474.14h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(163.63 -71.83) rotate(17.23)"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <button *ngIf="!isFullScreen" class="full-screen-btn" (click)="viewfullScren()">
+            <svg
+                id="Layer_2"
+                data-name="Layer 2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1056 860"  
+                width="30px"
+                height="30px">
+                <defs>  
+                    <style>
+                        .cls-1 {
+                            stroke-width: 0;
+                        }
+                    </style>
+                </defs>
+                <rect class="cls-1" x="117.45" y="79.4" width="330.89" height="61.28"/>
+                <rect
+                    class="cls-1"
+                    x="607.66"
+                    y="79.4"
+                    width="330.89"
+                    height="61.28"
+                    transform="translate(1546.21 220.09) rotate(180)"/>
+                <rect
+                    class="cls-1"
+                    x="607.66"
+                    y="749.36"
+                    width="330.89"
+                    height="61.28"
+                    transform="translate(1546.21 1560) rotate(180)"/>
+                <rect
+                    class="cls-1"
+                    x="20.43"
+                    y="652.34"
+                    width="255.32"
+                    height="61.28"
+                    transform="translate(-534.89 831.06) rotate(-90)"/>
+                <rect
+                    class="cls-1"
+                    x="20.43"
+                    y="176.43"
+                    width="255.32"
+                    height="61.28"
+                    transform="translate(-58.98 355.15) rotate(-90)"/>
+                <rect
+                    class="cls-1"
+                    x="780.26"
+                    y="652.34"
+                    width="255.32"
+                    height="61.28"
+                    transform="translate(224.94 1590.89) rotate(-90)"/>
+                <rect
+                    class="cls-1"
+                    x="780.26"
+                    y="176.43"
+                    width="255.32"
+                    height="61.28"
+                    transform="translate(700.85 1114.98) rotate(-90)"/>
+                <rect class="cls-1" x="117.45" y="749.36" width="330.89" height="61.28"/>
+            </svg>
+        </button>
+        <button
+            *ngIf="isFullScreen"
+            class="full-screen-btn minimize"
+            (click)="viewfullScren()">
+            <svg
+                id="Layer_2"
+                data-name="Layer 2"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1056 860"
+                width="30px"
+                height="30px">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            stroke-width: 0;
+                        }
+                    </style>
+                </defs>
+                <g>
+                    <path
+                        class="cls-1"
+                        d="m461.62,229.11h224.68v61.28h-224.68c-16.91,0-30.64-13.73-30.64-30.64h0c0-16.91,13.73-30.64,30.64-30.64Z"
+                        transform="translate(818.39 -298.89) rotate(90)"/>
+                    <path
+                        class="cls-1"
+                        d="m558.64,326.13h224.68c16.91,0,30.64,13.73,30.64,30.64h0c0,16.91-13.73,30.64-30.64,30.64h-224.68v-61.28h0Z"/>
+                    <rect
+                        class="cls-1"
+                        x="515.87"
+                        y="204.75"
+                        width="324.21"
+                        height="61.28"
+                        transform="translate(1323.82 -77.56) rotate(135)"/>
+                </g>
+                <g>
+                    <path
+                        class="cls-1"
+                        d="m344.77,562.16h224.68v61.28h-224.68c-16.91,0-30.64-13.73-30.64-30.64h0c0-16.91,13.73-30.64,30.64-30.64Z"
+                        transform="translate(-151.01 1034.59) rotate(-90)"/>
+                    <path
+                        class="cls-1"
+                        d="m186.47,465.14h224.68c16.91,0,30.64,13.73,30.64,30.64h0c0,16.91-13.73,30.64-30.64,30.64h-224.68v-61.28h0Z"
+                        transform="translate(628.27 991.55) rotate(-180)"/>
+                    <rect
+                        class="cls-1"
+                        x="160.35"
+                        y="586.52"
+                        width="324.21"
+                        height="61.28"
+                        transform="translate(-341.95 408.77) rotate(-45)"/>
+                </g>
+            </svg>
         </button>
       </div>
-      </div>
-  
 
+    </div>
 
-          </div>
+    <!-- <p *ngIf="!response && !loading">Hi! Im Ai bot</p> -->
+    <div
+        class="generate-text"
+        (scroll)="onScroll()"
+        [ngClass]="{'fullScreen' : isFullScreen}"
+        #chatContainer>
+
+        <div *ngIf="chatHistory.length === 0" class="bot-chat">
+            <span class="text-before-ask">ask something!</span>
         </div>
-      </div>
 
-      <div class="center-box-submit"  [ngClass]="{'fullScreen' : isFullScreen}">
+        <button
+            class="btn btn-primary btn-curious"
+            *ngIf="isClose"
+            (click)="showSuggestChat()">?</button>
+        <button class="btn btn-primary btn-down" *ngIf="isBottom  && chatHistory[0]" [ngClass]="{'fullScreen' : isFullScreen}" (click)="scrollToBottom()">
+            <i class="fa fa-arrow-down"></i>
+        </button>
+
+        <div *ngFor="let chat of chatHistory; let i = index">
+            <div class="chat-content" #chatContainer>
+                <div class="user-chat" #chatContainer [ngClass]="{'fullScreen' : isFullScreen}">
+                    <p>{{ chat.prompt }}</p>
+                    <div *ngIf="timeHistory[i]?.timeResponse">
+                        <small class="send-chat" *ngIf="!chat.sending && timeHistory[i].timeResponse">{{ getTimeAgo(timeHistory[i].timeResponse) }}</small>
+                        <!-- Show time if not sending -->
+                        <small
+                            class="send-chat-loading"
+                            #chatContainer
+                            *ngIf="chat.sending">sending</small>
+                        <!-- Check if it's sending -->
+                    </div>
+                </div>
+
+                <div class="chat-content">
+                    <div
+                        class="bot-chat"
+                        [ngClass]="{'loading-state': loading && i === chatHistory.length - 1, 'fullScreen' : isFullScreen}">
+                        <div *ngIf="loading && i === chatHistory.length - 1"></div>
+                        <span
+                            class="bot-response"
+                            [ngClass]="{}"
+                            *ngIf="!loading || i !== chatHistory.length - 1"
+                            [innerHTML]="formatTextWithParagraphs(chat.response)"></span>
+                        <div *ngIf="timeHistory[i]?.timeResponse">
+                            <small
+                                class="respone-chat"
+                                *ngIf="!chat.sending && timeHistory[i].timeResponse">{{ getTimeAgo(timeHistory[i].timeResponse) }}</small>
+                            <!-- Show time if not sending -->
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                *ngIf="i === chatHistory.length - 1 && chatHistory.length > 1 && !chat.sending && !prompt && simpleQuestion && showSuggestedQuestion"
+                    class="suggested-question" [ngClass]="{'fullScreen' : isFullScreen}">
+                    <div class="btn-suggest">
+                        <div class="container-suggest-que" >
+                            <small class="text-suggest">Try this suggested question:</small>
+                            <button class="x-suggest" (click)="closeSuggest()">X</button>
+                        </div>
+                        <button
+                            class="btn-change-question"
+                            (click)="changeQuestion()"
+                            [disabled]="isChange"
+                            [ngClass]="{'btn-disable-change': isChange, 'fullScreen' : isFullScreen}">
+                            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1056 860"  width="30px" height="30px">
+                              <defs>
+                                <style>
+                                  .cls-1 {
+                                    stroke-width: 0px;
+                                  }
+                                </style>
+                              </defs>
+                              <g>
+                                <path class="cls-1" d="m257.04,371.42h-.02c-20.22,0-33.97-20.56-26.22-39.23,46.24-111.39,156.07-189.73,284.2-189.73s237.94,78.34,284.18,189.73c7.75,18.67-6.01,39.23-26.22,39.23h0c-11.42,0-21.77-6.84-26.14-17.39-37.7-90.9-127.28-154.82-231.81-154.82s-194.11,63.93-231.81,154.82c-4.38,10.55-14.72,17.39-26.14,17.39Z"/>
+                                <g>
+                                  <path class="cls-1" d="m726.85,303.39h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(263.98 1024.77) rotate(-72.77)"/>
+                                  <path class="cls-1" d="m661.34,349.33h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(1328.9 959.76) rotate(-162.77)"/>
+                                </g>
+                              </g>
+                              <g>
+                                <path class="cls-1" d="m798.96,511.78h.02c20.22,0,33.97,20.56,26.22,39.23-46.24,111.39-156.07,189.73-284.2,189.73s-237.94-78.34-284.18-189.73c-7.75-18.67,6.01-39.23,26.22-39.23h0c11.42,0,21.77,6.84,26.14,17.39,37.7,90.9,127.28,154.82,231.81,154.82s194.11-63.93,231.81-154.82c4.38-10.55,14.72-17.39,26.14-17.39Z"/>
+                                <g>
+                                  <path class="cls-1" d="m128.07,520.09h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(821.6 494.53) rotate(107.23)"/>
+                                  <path class="cls-1" d="m243.01,474.14h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(163.63 -71.83) rotate(17.23)"/>
+                                </g>
+                              </g>
+                            </svg>
+                        </button>
+                        <div
+                            *ngIf="isChange"
+                            class="refresh-question"
+                            [ngClass]="{'hidden' : !showSuggestedQuestion, 'fullScreen' : isFullScreen}">
+                            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1056 860"  width="30px" height="30px">
+                              <defs>
+                                <style>
+                                  .cls-1 {
+                                    stroke-width: 0px;
+                                  }
+                                </style>
+                              </defs>
+                              <g>
+                                <path class="cls-1" d="m257.04,371.42h-.02c-20.22,0-33.97-20.56-26.22-39.23,46.24-111.39,156.07-189.73,284.2-189.73s237.94,78.34,284.18,189.73c7.75,18.67-6.01,39.23-26.22,39.23h0c-11.42,0-21.77-6.84-26.14-17.39-37.7-90.9-127.28-154.82-231.81-154.82s-194.11,63.93-231.81,154.82c-4.38,10.55-14.72,17.39-26.14,17.39Z"/>
+                                <g>
+                                  <path class="cls-1" d="m726.85,303.39h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(263.98 1024.77) rotate(-72.77)"/>
+                                  <path class="cls-1" d="m661.34,349.33h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(1328.9 959.76) rotate(-162.77)"/>
+                                </g>
+                              </g>
+                              <g>
+                                <path class="cls-1" d="m798.96,511.78h.02c20.22,0,33.97,20.56,26.22,39.23-46.24,111.39-156.07,189.73-284.2,189.73s-237.94-78.34-284.18-189.73c-7.75-18.67,6.01-39.23,26.22-39.23h0c11.42,0,21.77,6.84,26.14,17.39,37.7,90.9,127.28,154.82,231.81,154.82s194.11-63.93,231.81-154.82c4.38-10.55,14.72-17.39,26.14-17.39Z"/>
+                                <g>
+                                  <path class="cls-1" d="m128.07,520.09h185.76c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-168.5c-9.53,0-17.26-7.73-17.26-17.26v-42.47h0Z" transform="translate(821.6 494.53) rotate(107.23)"/>
+                                  <path class="cls-1" d="m243.01,474.14h161.05c8.45,0,15.32,6.86,15.32,15.32v29.09c0,8.45-6.86,15.32-15.32,15.32h-185.76v-35.01c0-13.64,11.07-24.71,24.71-24.71Z" transform="translate(163.63 -71.83) rotate(17.23)"/>
+                                </g>
+                              </g>
+                            </svg>
+                          </div>
+                        <button
+                            class="simpleQue"
+                            [disabled]="isChange"
+                            [ngClass]="{'btn-disable-question': isChange}"
+                            (click)="promptSend(simpleQuestion)">
+                            <small class="change-color-que">{{ simpleQuestion }}</small>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="center-box-submit" [ngClass]="{'fullScreen' : isFullScreen}">
 
         <div class="chat-bot-submit">
-          <small class="show-text">AI-generated content may be incorrect</small>
-          
-          <textarea type="text" placeholder="Message here..." name="" id="message-input" class="user-input-text"     (input)="onPromptInput()" [(ngModel)]="prompt"></textarea>
-          
-          <button  class="btn-send" 
-          [disabled]="!prompt || loading" id="send-button" 
-          (click)="sendData()"  
-          [ngClass]="{'btn-disabled': !prompt}" > <i class="fa fa-paper-plane"></i></button> 
+            <small class="show-text">AI-generated content may be incorrect</small>
+
+            <textarea
+                type="text"
+                placeholder="Message here..."
+                name=""
+                id="message-input"
+                class="user-input-text"
+                (input)="onPromptInput()"
+                [(ngModel)]="prompt"></textarea>
+
+            <button
+                class="btn-send"
+                [disabled]="!prompt || loading"
+                id="send-button"
+                (click)="sendData()"
+                [ngClass]="{'btn-disabled': !prompt || loading}">
+                <i class="fa fa-paper-plane"></i>
+            </button>
         </div>
-      
-    </div>  
-</div>    
 
-
-
-
-
-  <!-- <button *ngIf="!showChat && !showChatBot2" class="btn btn-primary btn-show-2" (click)="openChatbot2()">Chat bot 2</button>
-
-  <div class="test-2" [ngClass]="{'show2' : showChatBot2}">  
-    
-      <button  class="x-button-2" (click)="closeChatBot2()">X</button>
-    <iframe
-    src="https://www.chatbase.co/chatbot-iframe/b739rVb_S9DimXhrJHBNt"
-    width="100%"
-    style="height: 100%; min-height: 700px"
-    frameborder="0"
-  ></iframe>
-  </div>     -->
+    </div>
+</div>

@@ -8,10 +8,10 @@ import { ChatBaseComponent } from './chat-base/chat-base.component';
 // import { TestEntityComponent } from './test-entity/test-entity.component';
 
 const routes: Routes = [
+
   {
     path: 'app',
     component: HomeComponent,
-    pathMatch: 'full', 
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     canActivate: [authGuard, permissionGuard],
     
@@ -23,13 +23,14 @@ const routes: Routes = [
   },
   {
     path: 'bar-chart',  
-    component: BarChartComponent,
+    component: BarChartComponent, 
     canActivate: [authGuard, permissionGuard],
   },
- 
+  
   {
     path: 'survey',
     component: SurveyComponent,
+    canActivate: [authGuard, permissionGuard],
     
   },
   {

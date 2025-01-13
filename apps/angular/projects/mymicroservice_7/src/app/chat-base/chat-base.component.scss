@@ -1,70 +1,168 @@
 .chatbase {
-    border: 1px solid black;
-    padding: 30vh;
-    background-color: rgb(93, 93, 86);
+
+     // border: 1px solid #343de3;
+     margin-top: 30px;
+     border-radius: 10px;
+     padding: 10px;
+     transition: 0.4s;
+     padding-bottom: 20px;   
+     backdrop-filter: blur(10px);          /* Blur the background */
+     -webkit-backdrop-filter: blur(10px); /* Safari support */
+     border-radius: 10px;                 /* Rounded corners for aesthetics */
+     box-shadow: 0px 4px 6px #0004ff7a;
+     transition: 0.4s; 
+
+}
+
+.table-container {
+  width: 100%; /* You can set this to a fixed width if needed */
+  position: relative;
+  margin: auto;
+  white-space: nowrap;
+  padding-bottom: 50px;
+  padding-left: 10px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-  
-    thead {
-      background-color: #007bff; // Blue header
-      color: #fff;
-  
-      th {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd;
-      }
-    }
-  
-    tbody {
-      tr {
-        border: 1px solid #ddd;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: #f1f1f178; // Light gray when hovering
-        }
-  
-        td {
-          padding: 10px;
-          border: 1px solid #ddd;
-        }
-  
-        button {
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 5px 10px;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-  
-          &:hover {
-            background-color: #0056b3; // Darker blue for button hover
-          }
-        }
-      }
-    }
-  }
+  width: 100%; /* Ensure the table takes full width */
+  min-width: 800px; /* Set a minimum width for the table */
+}
+
+th, td {
+  border: 2px solid #ff44005c;
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #343de3;
+  text-align: left;
+  color: white;
+  text-align: center;
+}
+
+.table-hover {
+  transition: 0s;
+}
+
+.table-hover:hover {
+  background-color: #343de32d;
+}
+
+tr {
+  padding: 20px;
+}
+
+tr:hover {
+  padding: 20px;
+  background-color: rgba(20, 12, 251, 0.229);
+}
+
 
   .choose-file {
     padding: 5px;
     background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.455);
+    border-radius: 10px;
+    cursor: pointer;
   }
 
   .file-upload {
-    border: 1px solid black;
+    border: 1px solid #343de3;
+    border-radius: 10px;
+    width: 100%;
+    transition: 0.5s;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.466);
+    width: 100%;
     justify-content: space-around;
 
   }
+  
+  /* Action Button Styling */
+.action-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.action-list-hover {
+  display: flex;
+  justify-content: center;
+}
+
+/* Action List Styling */
+.action-list {
+  list-style: none;
+  margin-top: 40px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  position: absolute;
+  background-color: rgb(255, 255, 253);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.393);
+}
+
+.action-list li {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.action-list li button {
+  padding: 8px 12px;
+  background-color: #2c83d0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.action-list li button:hover {
+  background-color: #034d85;
+}
+
+.action-list li .btn-download {
+  background-color: green;
+}
+
+.action-list li .btn-delete {
+  background-color: red;
+}
+
+.action-list li .btn-edit {
+  background-color: blue;
+}
+
+.action-list li .btn-download:hover {
+  background-color: rgb(0, 94, 0);
+}
+
+.action-list li .btn-delete:hover {
+  background-color: rgb(181, 0, 0);
+}
+
+.action-list li .btn-edit:hover {
+  background-color: rgb(0, 0, 198);
+}
+
+
+  
 
 
 .input-data {
@@ -99,8 +197,7 @@ table {
     width: 100%;
     font-family: monospace;
   }
-
- /* Dark Overlay */
+/* Dark Overlay */
 .card-overlay {
   position: fixed; /* Stays in place */
   top: 0;
@@ -124,8 +221,87 @@ table {
   max-width: 1000px; /* Prevent it from getting too wide */
   min-height: 200px; /* Ensure it has some height */
   text-align: center; /* Center text */
-  overflow-y: auto;
+  overflow-y: auto; /* Enables scrolling if content overflows */
+  max-height: 90vh; /* Limit the height to 80% of the viewport height */
+  top: 1%;
+  bottom: 5%;
 }
+
+/* Dark Overlay */
+.card-overlay-2 {
+  position: fixed; /* Stays in place */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-color: rgba(0, 0, 0, 0.694); /* Transparent black overlay */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 999; /* On top of other elements */
+}
+
+/* Card Content */
+.card-2{
+  background-color: white; /* The actual box */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners for aesthetics */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  width: 50%; /* Set a width for the content box */
+  max-width: 1000px; /* Prevent it from getting too wide */
+  min-height: 200px; /* Ensure it has some height */
+  text-align: center; /* Center text */
+  overflow-y: auto; /* Enables scrolling if content overflows */
+  max-height: 90vh; /* Limit the height to 80% of the viewport height */
+  top: 1%;
+  bottom: 5%;
+}
+
+
+/* Label Styles */
+.card-2 label {
+  font-size: 1.1rem; /* Adjust the font size for labels */
+  font-weight: bold; /* Optional: Make the labels bold */
+  display: block; /* Ensure labels are displayed as blocks */
+  text-align: center; /* Center-align the text */
+  margin-bottom: 5px; /* Add spacing below the label */
+}
+
+/* Input Fields */
+.card-2 input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  text-align: center; /* Center-align text in inputs */
+}
+
+/* Readonly Fields */
+.card-2 input[readonly] {
+  background-color: #f9f9f9;
+  color: #666;
+}
+
+/* Close Button */
+.card-2 button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card-2 button:hover {
+  background-color: #0056b3;
+}
+
+
 
 /* Textarea inside the Card */
 .editor-textarea {
@@ -134,11 +310,29 @@ table {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  margin: 15px 0;
   font-size: 14px;
-  font-family: monospace;
   resize: none;
   box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.info-column {
+}
+
+.info-column .btn-info {
+  background-color: yellow;
+  right: 0;
+  
+}
+
+
+.required-form {
+  resize: none;
+  width: 100%;
+  height: 80px;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* Buttons in the Card */
@@ -165,4 +359,11 @@ table {
 .cancel-btn {
   background-color: #f44336;
   color: white;
+}
+
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 5px;
 }

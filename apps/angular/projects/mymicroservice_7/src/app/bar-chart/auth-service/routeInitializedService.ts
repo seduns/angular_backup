@@ -1,26 +1,54 @@
-import { eLayoutType, RoutesService } from '@abp/ng.core';
-import { APP_INITIALIZER } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { RoutesService, eLayoutType } from '@abp/ng.core';
 import { AuthService } from '@abp/ng.core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
-export const APP_ROUTE_PROVIDER = [
-  { provide: APP_INITIALIZER, useFactory: configureRoutes, deps: [RoutesService, AuthService], multi: true },
-];
+@Injectable({
+  providedIn: 'root',
+})
+export class RouteInitializationService {
+  private routesInitialized = new BehaviorSubject<boolean>(false); // BehaviorSubject to track route initialization status
 
-function configureRoutes(routes: RoutesService, authService: AuthService) {
-  return () => new Promise<void>((resolve) => {
-    const token = authService.getAccessToken();
-    const payload = parseJwt(token);
-    console.log('Token:', token || 'No token');
+  constructor(
+    private routesService: RoutesService,
+    private authService: AuthService
+  ) {}
+
+  initializeRoutes(): void {
+    const token = this.authService.getAccessToken();
+    if (token) {
+      const payload = this.parseJwt(token);
+      this.setRoutesBasedOnRoles(payload);
+    }
+  
+    // Directly check if the user is authenticated
+    if (this.authService.isAuthenticated && !this.routesInitialized.value) {
+      this.initializeRoutes(); // Initialize routes when user logs in
+      this.routesInitialized.next(true); // Ensure routes are not re-added
+    }
+  }
+  
+  private parseJwt(token: string): any {
+    try {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);
+      return decodedToken;
+    } catch (error) {
+      console.error('Invalid JWT token:', error);
+      return null;
+    }
+  }
+
+  private setRoutesBasedOnRoles(payload: any): void {
     const roles = payload?.role ? (Array.isArray(payload.role) ? payload.role : [payload.role]) : [];
     const isManager = roles.includes('manager');
     const isAdmin = roles.includes('admin');
     const isOfficer = roles.includes('officer');
 
-    // Base routes for all users
     const baseRoutes = [
       {
-        path: '/app',  
+        path: '/app',
         name: 'Home',
         iconClass: 'fas fa-home',
         order: 1,
@@ -28,7 +56,6 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
       },
     ];
 
-    // Survey routes for non-officer roles
     const surveyRoutes = [
       {
         name: 'Survey',
@@ -54,7 +81,6 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
       },
     ];
 
-    // Chat route for admins
     const adminRoutes = [
       {
         path: '/chat-base',
@@ -65,31 +91,11 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
       },
     ];
 
-    // Routes for specific roles (admin, officer, etc.)
     const roleSpecificRoutes = [
       ...(isAdmin ? adminRoutes : []), // Admin routes
       ...(isOfficer || !isManager ? surveyRoutes : []), // Survey routes for officers or non-managers
     ];
 
-    // Add base and role-specific routes
-    routes.add([...baseRoutes, ...roleSpecificRoutes]);
-
-    // Resolve the promise after adding routes
-    resolve();
-  });
-}
-
-function parseJwt(token: string): any {
-  try {
-    if (!token) return null;
-    const payloadBase64 = token.split('.')[1];
-    const payloadJson = atob(payloadBase64);
-    const jwtHelper = new JwtHelperService();
-    const decodedToken = jwtHelper.decodeToken(token); // Decode the JWT token
-    console.log(decodedToken);
-    return JSON.parse(payloadJson);
-  } catch (error) {
-    console.error('Invalid JWT token:', error);
-    return null;  
+    this.routesService.add([...baseRoutes, ...roleSpecificRoutes]);
   }
 }

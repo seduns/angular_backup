@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SurveyService.Data;
 
@@ -11,9 +12,11 @@ using SurveyService.Data;
 namespace SurveyService.Migrations
 {
     [DbContext(typeof(SurveyServiceDbContext))]
-    partial class SurveyServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250111233237_latest-migrations-5")]
+    partial class latestmigrations5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,10 +57,6 @@ namespace SurveyService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ChangesMade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -74,10 +73,6 @@ namespace SurveyService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReasonChanges")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

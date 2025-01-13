@@ -241,6 +241,8 @@ namespace SurveyService.Controllers
         }
     }
 
+    //FILE
+
     [ApiController]
 [Route("[controller]")]
 public class FileItemController : ControllerBase
@@ -273,7 +275,7 @@ public class FileItemController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, [FromForm] string fileName, [FromForm] string fileType, [FromForm] string uploadedAt)
+    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, [FromForm] string fileName, [FromForm] string fileType)
     {
         if (file == null || file.Length == 0)
             return BadRequest("Invalid file.");
@@ -284,6 +286,9 @@ public class FileItemController : ControllerBase
 
         using var reader = new StreamReader(file.OpenReadStream());
         var content = await reader.ReadToEndAsync();
+        var EditBy = await reader.ReadToEndAsync();
+        var ReasonChanges = await reader.ReadToEndAsync();
+        var ChangesMade = await reader.ReadToEndAsync();
 
         // Create the FileEntity with additional data
         var fileEntity = new fileEntity
@@ -291,7 +296,11 @@ public class FileItemController : ControllerBase
             FileName = fileName,  // Use the passed file name
             FileType = fileType,  // Use the passed file type
             Content = content,
-            UploadedAt = DateTime.UtcNow // Server-side date (can be overridden with uploadedAt)
+            EditBy = EditBy,
+            ReasonChanges = ReasonChanges,
+            ChangesMade = ChangesMade,
+            UploadedAt = DateTime.Now, // Server-side date (can be overridden with uploadedAt)
+            EditedDate = null // Server-side date (can be overridden with uploadedAt)
         };
 
         _context.FileEntitys.Add(fileEntity);
@@ -300,32 +309,55 @@ public class FileItemController : ControllerBase
         return Ok("File uploaded and saved successfully.");
     }
 
-    [HttpPut("{id}")]
+  [HttpPut("{id}")]
 public async Task<IActionResult> UpdateFile(int id, [FromBody] UpdateFileRequest updatedFile)
 {
-    // Fetch the existing file entity
-    var existingFile = await _context.FileEntitys.FindAsync(id);
-
-    if (existingFile == null)
+    try
     {
-        return NotFound("File not found.");
+        // Validate input
+        if (string.IsNullOrEmpty(updatedFile.Content))
+        {
+            return BadRequest("File content cannot be empty.");
+        }
+
+        // Fetch the existing file entity
+        var existingFile = await _context.FileEntitys.FindAsync(id);
+
+        if (existingFile == null)
+        {
+            return NotFound($"File with ID {id} not found.");
+        }
+
+        // Update the file properties
+        existingFile.Content = updatedFile.Content;
+        existingFile.EditBy = updatedFile.EditBy;
+        existingFile.ReasonChanges = updatedFile.ReasonChanges;
+        existingFile.ChangesMade = updatedFile.ChangesMade;
+        existingFile.EditedDate = DateTime.Now; // Update the timestamp
+
+        // Save changes to the database
+        _context.FileEntitys.Update(existingFile);
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "File updated successfully." });
     }
-
-    // Update the file properties
-    existingFile.Content = updatedFile.Content;
-
-    // Save changes to the database
-    _context.FileEntitys.Update(existingFile);
-    await _context.SaveChangesAsync();
-
-    return Ok(new { message = "File updated successfully." });
+    catch (Exception ex)
+    {
+        // Log the exception details (you can use a logger instead of Console.WriteLine)
+        Console.WriteLine($"Error updating file with ID {id}: {ex.Message}");
+        return StatusCode(500, "An error occurred while updating the file.");
+    }
 }
 
 // DTO for the update request
-    public class UpdateFileRequest
-    {
-        public string Content { get; set; }
-    }
+public class UpdateFileRequest
+{
+    public string Content { get; set; }
+    public string EditBy { get; set; }
+    public string ReasonChanges { get; set; }
+    public string ChangesMade { get; set; }
+}
+
 
 
     [HttpDelete("{id}")]

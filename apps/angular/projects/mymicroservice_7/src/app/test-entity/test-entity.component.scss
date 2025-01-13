@@ -5,7 +5,7 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.425);
     right: 0;
     bottom: 0;
-    // transition: 0.1s;
+    // transition: 1s;
     opacity: 0;
     display: flex;
     flex-direction: column; /* Ensure the button and other content stack vertically */
@@ -21,6 +21,16 @@
         backdrop-filter: blur(20px); /* Optional: additional blur for content if needed */
 }
 
+@keyframes closeChat {
+    0% {
+        width: 60vh;
+    }
+    100% {
+        width: 0vh;
+    }
+}
+
+
 .test.show::before {
     content: '';
     position: absolute;
@@ -34,9 +44,10 @@
     background-position: center;
     filter: blur(10px); /* Apply blur effect */
     z-index: -1; /* Ensure it stays behind the content */
-    transition: 0.2s;
+    transition: none;
     animation: showImage 1s ease;
 }
+
 
 .test.closeChatBot::before {
     content: '';
@@ -51,8 +62,7 @@
     background-position: center;
     filter: blur(10px); /* Apply blur effect */
     z-index: -1; /* Ensure it stays behind the content */
-    transition: 0.2s;
-    animation: closeImage 0.3s ;
+    transition: none;
 }
 
 @keyframes closeImage {
@@ -77,23 +87,6 @@
     }
 }
 
-
-// .test-2 {
-//     width: 0vh;
-//     height: 100vh;
-//     // border: 1px solid black;
-//     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.425);
-//     right: 0;
-//     bottom: 0;
-//     transition: 0.5s;
-//     opacity: 0;
-//     display: flex;
-//     flex-direction: column; /* Ensure the button and other content stack vertically */
-//     box-sizing: border-box;
-//     background-color: #9ec9f8;
-//     position: fixed;
-// }
-
 .test.show{
     height: 100vh;
     opacity: 1;
@@ -103,6 +96,27 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px; 
     background-repeat: no-repeat;
+    animation: openChat 0.5s;
+}
+
+.test.show.closeChatBot {
+    animation: closeChat 1s;
+}
+
+
+.text-before-ask {
+    white-space: nowrap;
+}
+
+@keyframes openChat {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 60vh;
+        opacity: 1;
+    }
 }
 
 
@@ -115,6 +129,7 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px; 
     background-color: rgba(0, 0, 0, 0.514);
+    transition: none;
 }
 
 .test.fullScreen::before {
@@ -129,7 +144,7 @@
     background-position: center;
     filter: blur(10px); /* Apply blur effect */
     z-index: -1; /* Ensure it stays behind the content */
-    transition: 0.2s;
+    transition: none;
     // animation: showImageFullScreen 0.5s ease;
     background-color: rgba(0, 0, 0, 0.514);
 }
@@ -264,11 +279,13 @@
 }
 
 .btn-change-question {
-    background-color: rgba(0, 0, 255, 0.155);
-    padding: 10px;
+    background-color: transparent;
+    // padding: 10px;
     display: flex; 
     justify-content: start;
     border-radius: 10px;
+    width: 40px;
+    height: 40px;
     border: none;
     color: white;
     transition: 0.2s;
@@ -276,7 +293,7 @@
 }
 
 .btn-change-question:hover {
-    background-color: rgba(0, 0, 255, 0.321);
+    // background-color: rgba(0, 0, 255, 0.321);
     text-shadow: 0px 0px 2px white;
 }
 
@@ -371,17 +388,35 @@
     /* Add slide-in animation */
     animation: slideInFromTop 0.5s ease-out;
   }
+
+  .suggested-question.fullScreen .btn-suggest .container-suggest-que .text-suggest {
+    font-size: 17px; /* Adjust this to your desired size */
+}
+
+  .suggested-question.fullScreen .btn-change-question {
+    font-size: 17px; /* Adjust this to your desired size */
+}
+
+  .suggested-question.fullScreen .simpleQue .change-color-que {
+    font-size: 17px; /* Adjust this to your desired size */
+}
+
   
   /* When the element is being hidden, apply the slide-out animation */
   
   
 
-
+.btn-container {
+    // border: 1px solid white;
+    width: 100%;
+    margin-left: auto;
+    display: flex;
+    justify-content: end;
+}
 
 
 .x-button {
     margin-bottom: 10px;
-    margin-left: auto;
     margin-right: 10px;
     background-color: transparent;
     font-size: 15px;
@@ -391,22 +426,103 @@
     border: none;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.148);
+    transition: 0.3s;
+    white-space: nowrap;
+
 }
 
 .full-screen-btn {
     margin-bottom: 10px;
-    margin-left: auto;
+    padding: 10px 15px; /* Adjust padding for better appearance */
+    right: 0;
     margin-right: 10px;
     background-color: transparent;
     font-size: 15px;
     color: rgb(78, 78, 78); /* Updated for better visibility */
-    padding: 10px 15px; /* Adjust padding for better appearance */
     cursor: pointer;
     border: none;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.148);
+    transition: 0.3s;
+
+  }
+.full-screen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.214); 
+}
+  
+  .full-screen-btn svg {
+    fill: rgb(78, 78, 78); /* Set initial color */
+    transition: 0.3s;
 }
 
+.full-screen-btn:hover svg {
+    fill: rgb(0, 0, 0); /* Change color on hover */
+}
+
+.minimize svg {
+    fill: rgb(78, 78, 78); /* Set initial color */
+    transition: 0.3s;
+}
+
+.minimize:hover svg {
+    fill: rgb(0, 0, 0); /* Change color on hover */
+}
+
+.x-button:hover {
+    background-color: rgba(0, 0, 0, 0.214); 
+    color: rgb(0, 0, 0);
+}
+
+.btn-change-question svg {
+    fill: rgb(78, 78, 78); /* Set initial color */
+    transition: 0.3s;
+}
+
+.btn-change-question.fullScreen svg {
+    fill: rgba(250, 244, 244, 0.566); /* Set initial color */
+    transition: 0.3s;
+}
+
+.btn-change-question:hover svg {
+    fill: rgb(0, 0, 0); /* Change color on hover */
+    transition: 0.3s;
+    animation: spinQuestion 0.3s;
+    
+}
+
+.refresh-question svg{
+    animation: spinQuestion 1s infinite linear;
+    fill: rgb(78, 78, 78); /* Set initial color */
+    transition: 0.1s;
+}
+
+.refresh-question.fullScreen svg{
+    animation: spinQuestion 1s infinite linear;
+    fill: rgba(250, 244, 244, 0.365); /* Set initial color */
+    transition: 0.1s;
+}
+
+.x-button svg {
+    fill: rgb(78, 78, 78); /* Set initial color */
+    transition: 0.3s;
+    // animation: spinQuestion 1s infinite linear;
+}
+
+.x-button:hover svg {
+    fill: rgb(0, 0, 0); /* Change color on hover */
+    transform: rotate(360deg);   
+}
+
+@keyframes spinQuestion {
+    0% {
+        transform: rotate(0deg);   
+        
+    }
+    100% {
+    transform: rotate(360deg);   
+
+    }
+}
 
 .x-button-2 {
     position: absolute; /* Allows for precise placement */
@@ -423,10 +539,6 @@
     background-color: rgba(0, 0, 0, 0.148);
 }
 
-.x-button:hover {
-    background-color: rgba(0, 0, 0, 0.214); 
-    color: rgb(0, 0, 0);
-}
 
 .x-button-2:hover {
     background-color: rgba(0, 0, 0, 0.214); 
@@ -491,7 +603,7 @@
     height: 100vh;
     // word-wrap: break-word;
     overflow-y:auto;
-    overflow-x:hide;
+    overflow-x:hidden;
     margin-top: 75px;
     // border: 1px solid rgba(0, 0, 0, 0.4);
     mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
@@ -512,10 +624,27 @@
     align-items: center;
     display: flex;
     bottom: 100px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.218);
     border: 1px solid rgba(0, 0, 0, 0.107);
     color: rgba(0, 0, 0, 0.188);
     transition: 0.3s;
+    border-radius: 10px;
+    border: none;
+}
+
+
+.btn-down.fullScreen {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    bottom: 100px;
+    background-color: #6d5af876;
+    border: 1px solid rgba(0, 0, 0, 0.107);
+    border: none;
+    color: rgba(0, 0, 0, 0.188);
+    transition: 0.3s;
+    left: 50%;
+    transform: translateX(-50%); /* Adjust to exactly center */
 }
 
 .btn-curious {
@@ -538,6 +667,8 @@
 .btn-down:hover {
     background-color: #6c5af8;
     color: white;
+    box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.307);
+
 }
 
 .generate-text::-webkit-scrollbar { 
@@ -575,6 +706,30 @@
     word-wrap: break-word; /* Ensures the text wraps when it reaches the boundary */
     overflow-wrap: break-word; /* Ensures long words break within the width */
     max-width: 90%; /* Prevents chat bubble from exceeding the container width */
+}
+
+.bot-chat { 
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px 10px 10px 2px;
+    background-color: #ffffff;
+    color: rgb(53, 51, 51);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.193);
+    margin-bottom: 10px;
+    text-align: left; /* Aligns text inside the bubble to the left */
+    align-self: flex-start; /* Aligns the bubble to the start of the container */
+    word-wrap: break-word; /* Ensures the text wraps when it reaches the boundary */
+    overflow-wrap: break-word; /* Ensures long words break within the width */
+    max-width: 90%; /* Prevents chat bubble from exceeding the container width */
+    transition: 0.2s;
+}
+
+.user-chat.fullScreen p {
+    font-size: 17px;
+}
+
+.bot-chat.fullScreen span{
+    font-size: 17px;
 }
 
 
@@ -624,18 +779,8 @@
     
 }
 
-.bot-chat { 
-    display: inline-block; /* Makes the chat bubble fit its content */
-    padding: 10px;
-    border-radius: 10px 10px 10px 2px;
-    background-color: #ffffff;
-    color: rgb(53, 51, 51);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.193);
-    margin-bottom: 10px;
-    text-align: left; /* Aligns text inside the bubble to the left */
-    align-self: flex-start; /* Aligns the bubble to the start of the container */
-    transition: 0.2s;
-}
+
+  
 
 
 
@@ -655,6 +800,7 @@
 .user-input-text::placeholder {
     color: rgba(0, 0, 0, 0.719);
     padding-left: 0px;
+    text-wrap: nowrap;
 }
 
 
@@ -676,6 +822,7 @@
     white-space: none;
     
 }
+
 
 .btn-send {
     // background-image: url(../asset/Artboard\ 4.svg);
@@ -748,6 +895,7 @@
     color: white;
     right: 0;
     text-shadow: 0px 0px 1px rgb(255, 255, 255);
+    white-space: nowrap;
 }
 
 .loading-spin {
@@ -811,6 +959,10 @@
     .full-screen-btn {
         display: none;
     }
+
+    
+
+    
     
 }
 
