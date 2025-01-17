@@ -50,12 +50,11 @@ export class BarChartComponent implements OnInit {
     isActive: true 
 }
 
-  // PERSONAL FINANCING
   create(): void { 
 
     if (!this.newProduct.serviceName || !this.newProduct.productName) {
       console.error('Service name and product name are required.');
-      alert('Fail to create product');
+      alert('Fail to create produc  t, Please insert product name');
       return;
     }
     
@@ -166,9 +165,18 @@ export class BarChartComponent implements OnInit {
 
   // Function to open the modal with product details
   viewUpdate(product: surveyItemDto): void {
+
+    this.isCardVisible = false;
+
     this.selectedProduct = product;
     this.showModal = true;
     this.showProductUpdtSide = !this.showProductUpdtSide;
+  }
+
+  isAddNew: boolean = false;
+
+  showAddNew(): void {
+    this.isAddNew = !this.isAddNew;
   }
 
   // Function to close the modal
@@ -179,9 +187,12 @@ export class BarChartComponent implements OnInit {
     this.newProduct.serviceName = '';
     this.newProduct.productName = '';
     this.isCardVisible = null;
+    this.isAddNew = false;
   }
 
   closeUpdate(): void {
+    this.isCardVisible = true;
+
     this.showModal = false;
     this.loadProduct(); 
     
@@ -189,6 +200,7 @@ export class BarChartComponent implements OnInit {
 
   closeAfterUpadte(): void { 
     this.showModal = false;
+    this.isCardVisible = true;
   }
 
   

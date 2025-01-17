@@ -73,11 +73,37 @@ namespace SurveyService.Controllers
         [HttpPost]
         public async Task<ActionResult<surveyItem>> CreateSurveyDetail(surveyItem newSurveyItem)
         {
-            _context.surveyItems.Add(newSurveyItem); // Add new survey to the database
-            await _context.SaveChangesAsync(); // Save changes
+            // Validate input (optional but recommended)
+            if (newSurveyItem == null)
+            {
+                return BadRequest("Survey item cannot be null.");
+            }
 
-            return CreatedAtAction(nameof(GetSurveyDetail), new { id = newSurveyItem.Id }, newSurveyItem); // Return the created survey with a 201 status code
+            // Map the input to a new SurveyItems entity
+            var surveyItem = new surveyItem
+            {
+                Name = newSurveyItem.Name,
+                EmailAddress = newSurveyItem.EmailAddress,
+                phoneNumber = newSurveyItem.phoneNumber,
+                Comment = newSurveyItem.Comment,
+                FinancingType = newSurveyItem.FinancingType,
+                StarRating = newSurveyItem.StarRating,
+                SubmissionDate = DateTime.Now, // Auto-generate submission date
+                prodId = newSurveyItem.prodId // Assign Foreign Key (if applicable)
+            };
+
+            // Add the survey item to the database
+            _context.surveyItems.Add(surveyItem);
+            await _context.SaveChangesAsync(); // Save changes to the database
+
+            // Return the created survey with a 201 status code
+            return CreatedAtAction(
+                nameof(GetSurveyDetail), // Method to get a single survey detail
+                new { id = surveyItem.Id }, // Route values for the created item
+                surveyItem // The created survey item
+            );
         }
+
 
         // Delete by Id 
         [HttpDelete("{id}")]

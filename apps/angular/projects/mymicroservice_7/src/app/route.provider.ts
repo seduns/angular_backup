@@ -11,12 +11,12 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
   return () => new Promise<void>((resolve) => {
     const token = authService.getAccessToken();
     const payload = parseJwt(token);
-    console.log('Token:', token || 'No token');
+    // console.log('Token:', token || 'No token');
     const roles = payload?.role ? (Array.isArray(payload.role) ? payload.role : [payload.role]) : [];
     const isManager = roles.includes('manager');
     const isAdmin = roles.includes('admin');
     const isOfficer = roles.includes('officer');
-
+    
     // Base routes for all users
     const baseRoutes = [
       {
@@ -42,7 +42,7 @@ function configureRoutes(routes: RoutesService, authService: AuthService) {
         name: 'Survey Information',
         iconClass: 'fas fa-info-circle',
         order: 3,
-        layout: eLayoutType.application,
+        layout: eLayoutType.application,  
       },
       {
         path: '/bar-chart',
@@ -86,7 +86,7 @@ function parseJwt(token: string): any {
     const payloadJson = atob(payloadBase64);
     const jwtHelper = new JwtHelperService();
     const decodedToken = jwtHelper.decodeToken(token); // Decode the JWT token
-    console.log(decodedToken);
+    // console.log(decodedToken);
     return JSON.parse(payloadJson);
   } catch (error) {
     console.error('Invalid JWT token:', error);

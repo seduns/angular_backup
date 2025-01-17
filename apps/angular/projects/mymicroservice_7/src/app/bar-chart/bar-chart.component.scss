@@ -190,6 +190,10 @@ text-align: center;
     color: rgb(0, 0, 0);
 }
 
+.product-name-table.hide {
+    display: none;
+}
+
 .index-no {
     width: 40px;
     text-align: center;
@@ -281,56 +285,107 @@ select {
 }
 
 
-
-
-
-li ,a {
+.dropdown {
     list-style: none;
-    text-decoration: none;
-    cursor: pointer;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the dropdown itself */
+    padding: 10px;
+    position: relative;
+    background-color: rgb(255, 255, 253);   
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.393);
 }
 
-.dropdown {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    position: absolute; /* Position it absolutely */
-    margin-left: 40px;
-  }
-  
-  .dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .dropdown ul li {
-    padding: 5px 0;
-  }
-  
-  .dropdown ul li a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .dropdown ul li a:hover {
-    text-decoration: none;
-  }
+.dropdown ul {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the <li> items horizontally */
+    width: 100%; /* Ensure the dropdown takes full width */
+    padding: 0px 10px; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.dropdown li {
+    display: flex;
+    justify-content: center; /* Center the <a> inside <li> */
+    width: 100%; /* Make the <li> span the full width of the dropdown */
+}
+
+.dropdown li a {
+    padding: 8px 12px;
+    background-color: #2c83d0;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Center the text inside the <a> */
+    display: block; /* Make <a> behave like a block for full-width effect */
+    width: 100%; /* Ensure the <a> spans the full width of the <li> */
+    max-width: 200px; /* Optional: Limit the width for better visuals */
+}
+
+.dropdown li a:hover {
+    background-color: #034d85;
+    color: white;
+}
+
+
 
 .select-service {
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.344);
+    border: none;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.304);
     cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.315);
     display: flex;
     flex-direction: row;
     user-select: none;    
+    margin-top: 10px;
+    text-align: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 14px;
 }
 
 .select-service:hover {
-    background-color: rgba(0, 0, 0, 0.14);
+    background-color: rgba(0, 0, 255, 0.629);
+    color: white;
+}
+
+.container-button-edit {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-add-new {
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 255, 0.438);
+    border-radius: 5px;
+    transition: 0.3s;
+    color: white;
+
+}
+
+.btn-add-new:hover {    
+    background-color: rgba(0, 0, 255, 0.683);
+    color: rgba(0, 0, 0, 0.692);
+
+}
+
+.btn-add-new.hide {
+    display: none;
+}
+
+.form-update-product {
+    // border: 1px solid black;
+    margin-top: 10px;
 }
 
 

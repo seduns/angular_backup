@@ -1,7 +1,7 @@
 # Define the full path for your Tye YAML file and Docker Compose file
-$dockerComposeFilePath = "D:\abpTest\SurveyForm3 - 2 - COPY\etc\docker\docker-compose.infrastructure.yml"
-$tyeFilePath = "D:\abpTest\SurveyForm3 - 2 - COPY\run-service"
-$AngularFilePath = "D:\abpTest\SurveyForm3 - 2 - COPY\apps\angular"
+$dockerComposeFilePath = "E:\DEV\Survey_Form_3_Backup\angular\etc\docker\docker-compose.infrastructure.yml"
+$tyeFilePath = "E:\DEV\Survey_Form_3_Backup\angular\run-service"
+$AngularFilePath = "E:\DEV\Survey_Form_3_Backup\angular\apps\angular"
 
 # Create the Docker network and run Docker Compose
 docker network create mymicroservice_7 --label=mymicroservice_7
@@ -18,3 +18,4 @@ Start-Process "cmd.exe" -ArgumentList "/C", "cd $AngularFilePath && yarn start"
 
 # Exit with the same exit code as the Tye process (if necessary)
 exit $LASTEXITCODE
+        

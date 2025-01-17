@@ -1,272 +1,305 @@
-<!-- <span>   -->
-  <!-- <h1>SURVEY STATUS</h1> -->
+<!-- <span> -->
+<!-- <h1>SURVEY STATUS</h1> -->
 
-  <!-- <button (click)="generatePdf()" class="btn btn-primary btn-print">Print</button> -->
-  
-  
-    <!-- Product filter dropdown -->
+<!-- <button (click)="generatePdf()" class="btn btn-primary
+btn-print">Print</button> -->
 
-      <!-- Only show the filtered results after a product is selected -->
-      <div *ngIf="selectedProduct2 && selectedProduct2.length">
-        <div class="card-overlay">
-          <div class="card">
+<!-- Product filter dropdown -->
+
+<!-- Only show the filtered results after a product is selected -->
+<div *ngIf="selectedProduct2 && selectedProduct2.length">
+    <div class="card-overlay">
+        <div class="card">
             <button (click)="close()" class="x-button">X</button>
             <div class="financial-product">
-              <h3>{{ selectedProduct2[0]?.serviceName }} Product</h3>
-              <table>
-                <thead class="product-header-table">
-                  <tr>
-                    <th>No</th>
-                    <th>Product Name</th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>  
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>  
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="product-table-body">
-                  <tr *ngFor="let product of selectedProduct2; let i = index" class="product-hover">
-                    <td>{{i + 1}}</td>
-                    <td>{{ product.productName }}</td>
-                    <td *ngFor="let rating of product.ratings">{{ rating }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="buton-row">
-                <button class="btn btn-primary buton-product-export" (click)="exportToExcel2()">Export to Excel</button>
-              </div>
+                <h3>{{ selectedProduct2[0]?.serviceName }}
+                    Product</h3>
+                <table >
+                    <thead class="product-header-table">
+                        <tr>
+                            <th>No</th>
+                            <th>Product Name</th>
+                            <th>
+                                <span class="fa fa-star checked"></span>
+                            </th>
+                            <th>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </th>
+                            <th>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </th>
+                            <th>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </th>
+                            <th>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="product-table-body">
+                        <tr
+                            *ngFor="let product of selectedProduct2; let i = index"
+                            class="product-hover">
+                            <td>{{i + 1}}</td>
+                            <td>{{ product.productName }}</td>
+                            <td class="rating-count" *ngFor="let rating of product.ratings" [ngClass]="{'bold-text' : rating}" >{{ rating }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="buton-row">
+                    <button class="btn btn-primary buton-product-export" (click)="exportToExcel2()">Export to Excel</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>j
+</div>
 
-      <div class="filter-box-1">  
-        <div class="all-filter-box-date">
-          
-          <div class="button-group">
+<div class="filter-box-1">
+    <div class="all-filter-box-date">
+
+        <div class="button-group">
             <button class="btn btn-primary btn-manager" (click)="exportToExcel()">Export to Excel</button>
-            <button class="btn btn-primary btn-reset-filter btn-manager" (click)="resetFilters()">Reset Filter</button> 
-          </div>
-          <div class="total-submit-survey">
+            <button
+                class="btn btn-primary btn-reset-filter btn-manager"
+                (click)="resetFilters()">Reset Filter</button>
+        </div>
+        <div class="total-submit-survey">
             <div class="total-submission-box">Total Submission</div>
             {{totalSubmissions}}
-          </div>
-          
-          <div class="date-filter-box">
-
-            <button class="btn btn-primary"(click)="toggleDateClick()">Date</button>
-
-          
-          </div>
         </div>
-      </div>
 
-      <div class="summary-box">
-        
-          <div class="summary-controller">
-            <div id="content">
-            <div class="survey-summary-2">
-              <h3>Star Submission Status</h3>
-              <span>Click on the product category to view the rating of each product</span>
+        <div class="date-filter-box">
 
-              <table>
-                <thead class="service-name-1">
-                  <tr>
-                    <th class="service-text">Service</th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>  
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>  
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th>
+            <!-- <button class="btn btn-primary" (click)="toggleDateClick()">Date</button>
+            -->
+
+            <!-- <button (click)="closeDate()" class="x-button">X</button> -->
+            <div class="container">
+
+                <!-- <p class="total-submission-box">Date</p> -->
+
+                <div class="date-box">
+                    <div class="date-select">
+
+                        <div class="date-container-date">
+                            <div class="todayDate" >
+                                <div class="prompt-date" *ngIf="showDateDay">{{todayDate | date : 'dd/MM/yyyy'}}</div>
+                                <div class="prompt-day" *ngIf="showDateDay">{{todayDate | date : 'EEEE'}}</div>
+                                <div class="prompt-7-last-day-date" *ngIf="showSevenLastDay">({{sevenDayStart | date : 'EE'}})
+                                    {{sevenDayStart | date : 'dd/MM/yyyy'}}
+                                    - ({{sevenDayEnd | date : 'EE'}})
+                                    {{sevenDayEnd | date : 'dd/MM/yyyy'}}</div>
+                                <div class="prompt-day" *ngIf="isSelectMonth">{{monthNameMapping[promptMonthSelect]}}
+                                </div>
+                                <div class="prompt-day" *ngIf="isSelectYear">{{promptYearSelect}}
+                                </div>
+                                <div class="prompt-day" *ngIf="isSelectYearAll ">{{promptYearSelect | date : 'yyyy'}} - {{promptYearSelectEnd | date : 'yyyy'}}
+                                </div>
+                            </div>
+                            <!-- <label for="">Data</label> -->
+                            <div class="title-date-container-date" [ngClass]="{'hide' : isCustom}">
+                                <!-- <select class="select-date" [(ngModel)]="selectedMonth"
+                                [disabled]="selectedYear === 'All'"> -->
+                                <button class="btn-date-on" (click)="onToday()">Today</button>
+                                <button class="btn-date-on" (click)="yesterday()">Yesterday</button>
+                                <button class="btn-date-on" (click)="last7Days()">Last 7day</button>
+                                <button class="btn-date-on" (click)="customDate()">Year</button>
+                            </div>
+                            <div class="custom-container" *ngIf="isCustom">
+                                
+                                <!-- Year Selection -->
+                                <div class="year-box-date">
+                                    <button class="btn-close-year" (click)="customDate()">x</button>
+                                    <div class="title-select-year">
+                                        <p>Year</p>
+                                        <select
+                                            class="select-date"
+                                            [(ngModel)]="selectedYear"
+                                            (ngModelChange)="setDefaultDateRange()"
+                                            (change)="onDateChange()">
+                                            <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Year Selection -->
+    
+                                <!-- Month Selection -->
+                                <div class="year-box-date">
+                                    <div class="title-select-year">
+                                        <p>Month</p>
+                                        <select
+                                            class="select-date"
+                                            [(ngModel)]="selectedMonth"
+                                            (ngModelChange)="setDefaultDateRange()"
+                                            (change)="onDateChange()"
+                                            [disabled]="selectedYear === 'All'"
+                                            [ngClass]="{'disable-month' : selectedYear === 'All'}">
+                                            <option *ngFor="let month of monthOptions" [value]="month.value">{{ month.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Month Selection -->
+                            </div>
+                        </div>
+
                         
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                    </th>
-                    <th class="service-text">
-                      Total Submission
-                    </th>
-                  </tr>
-                </thead>
-      
-                  <thead >
-                    <tr class="star-counter">
-                      <div class="service-name" (click)="setSelectedProduct('Personal Financing-i')" >Personal Financing-i</div>
-                      <th>{{totalPersonalRating_1}}</th>
-                      <th>{{totalPersonalRating_2}}</th>
-                      <th>{{totalPersonalRating_3}}</th>
-                      <th>{{totalPersonalRating_4}}</th>
-                      <th>{{totalPersonalRating_5}}</th>
-                      <th class="total-each-survey">{{personalFinancingCount}}</th>
-                    </tr>
-                    <tr class="star-counter">
-                      <div class="service-name" (click)="setSelectedProduct('Home Financing-i')" >Home Financing-i</div>
-                      <th>{{totalHomeRating_1}}</th>
-                      <th>{{totalHomeRating_2}}</th>
-                      <th>{{totalHomeRating_3}}</th>
-                      <th>{{totalHomeRating_4}}</th>
-                      <th>{{totalHomeRating_5}}</th>
-                      <th class="total-each-survey">{{homeFinancingCount}}</th>
-                  </tr>
-                  <tr class="star-counter">
-                    <div class="service-name" (click)="setSelectedProduct('Vehicle Financing')">Vehicle Financing</div>
-                    <th>{{totalVechicleRating_1}}</th>
-                    <th>{{totalVechicleRating_2}}</th>
-                    <th>{{totalVechicleRating_3}}</th>
-                    <th>{{totalVechicleRating_4}}</th>
-                    <th>{{totalVechicleRating_5}}</th>
-                    <th class="total-each-survey">{{vehicleFinancingCount}}</th>
-                  </tr>
-                  <tr class="star-counter">
-                    <div class="service-name" (click)="setSelectedProduct('Takaful')">Takaful</div>
-                    <th>{{totalTakafulRating_1}}</th>
-                    <th>{{totalTakafulRating_2}}</th>
-                    <th>{{totalTakafulRating_3}}</th>
-                    <th>{{totalTakafulRating_4}}</th>
-                    <th>{{totalTakafulRating_5}}</th>
-                    <th class="total-each-survey">{{takafulCount}}</th>
-                  </tr> 
-                  <tr class="star-counter">
-                    <div class="service-name" (click)="setSelectedProduct('Saving-i')">Saving-i</div>
-                    <th>{{totalSavingRating_1}}</th>
-                    <th>{{totalSavingRating_2}}</th>
-                    <th>{{totalSavingRating_3}}</th>
-                    <th>{{totalSavingRating_4}}</th>
-                    <th>{{totalSavingRating_5}}</th>
-                    <th class="total-each-survey">{{savingCount}}</th>
-                  </tr> 
-                  <tr class="star-counter">
-                    <div class="service-name" (click)="setSelectedProduct('Pawn Broking-i')">Pawn Broking-i</div>
-                    <th>{{totalPawnRating_1}}</th>
-                    <th>{{totalPawnRating_2}}</th>
-                    <th>{{totalPawnRating_3}}</th>
-                    <th>{{totalPawnRating_4}}</th>
-                    <th>{{totalPawnRating_5}}</th>
-                    <th class="total-each-survey">{{pawnBankingCount}}</th>
-                  </tr>
-                  <tr class="star-counter">
-                    <div class="service-name" (click)="setSelectedProduct('Credit Card-i')">Credit Card-i</div>
-                    <th>{{totalCreditRating_1}}</th>
-                    <th>{{totalCreditRating_2}}</th>
-                    <th>{{totalCreditRating_3}}</th>
-                    <th>{{totalCreditRating_4}}</th>
-                    <th>{{totalCreditRating_5}}</th>
-                    <th class="total-each-survey">{{creditCardCount}}</th>
-                  </tr>
-                  <tr class="star-counter">
-                    <th class="service-name-total-submit" colspan="6">TOTAL</th>
-                      <th class="service-name-total">{{totalSubmissions}}</th>
-                  </tr>
-                </thead>
-                <tbody>
-              </table>
-              </div>
-          </div>
-        </div>  
-      </div>
-
-      
-
-      <div class="bar-chart-box">
-        <div class="chart-container">
-            <div class="chart-title">
-              <!-- <h3>Service Type Bar Chart <span class="submission-value">{{this.totalSubmissions}} Submissions</span></h3> -->
+                    </div>
+                </div>
+                <div class="bar-chart-box">
+                    <div class="chart-container">
+                        <div class="chart-title">
+                        </div>
+                        <canvas class="line-chart" #barChart></canvas>
+                    </div>
+                </div>
             </div>
-            <canvas #barChart></canvas> 
         </div>
-      </div>
+    </div>  
+</div>
 
-      <div *ngIf="dateClick">
-        <div class="card-overlay-card-2">
-          <div class="card">
-            <button (click)="closeDate()" class="x-button">X</button>
-            <p class="total-submission-box">Date</p>
-            <div class="date-box">
+<div class="summary-box">
 
-              <!-- Year Selection -->
-              <div class="year-box-date">
-                <label for="">Year</label>
-                <select class="select-date" [(ngModel)]="selectedYear" (ngModelChange)="setDefaultDateRange()" (change)="onDateChange()">
-                  <option *ngFor="let year of yearOptions" [value]="year">{{ year }}</option>
-                </select>
-              </div>
-              
-              
-              <!-- Month Selection -->
-              <div class="year-box-date">
-              <label for="">Month</label>
-              <select class="select-date" [(ngModel)]="selectedMonth" (ngModelChange)="setDefaultDateRange()" (change)="onDateChange()" [disabled]="selectedYear === 'All'">
-                <option *ngFor="let month of monthOptions" [value]="month">{{ month }}</option>
-              </select>
+    <div class="summary-controller">
+        <div id="content">
+            <div class="survey-summary-2">
+                <h3>Submission Summary</h3>
+                <span>Click on the product category to view the rating of each product</span>
+
+                <div class="container-to-table">
+
+                    
+
+                    <table>
+                        <thead class="service-name-1">
+                            <tr>
+                                <th class="service-text">Service</th>
+                                <th>
+                                    <span class="fa fa-star checked"></span>
+                                </th>
+                                <th>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </th>
+                                <th>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </th>
+                                <th>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </th>
+                                <th>
+
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </th>
+                                <th class="service-text">
+                                    Total Submission
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <thead >
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Personal Financing-i')">Personal Financing-i</div>
+                                <th>{{totalPersonalRating_1}}</th>
+                                <th>{{totalPersonalRating_2}}</th>
+                                <th>{{totalPersonalRating_3}}</th>
+                                <th>{{totalPersonalRating_4}}</th>
+                                <th>{{totalPersonalRating_5}}</th>
+                                <th class="total-each-survey">{{personalFinancingCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Home Financing-i')">Home Financing-i</div>
+                                <th>{{totalHomeRating_1}}</th>
+                                <th>{{totalHomeRating_2}}</th>
+                                <th>{{totalHomeRating_3}}</th>
+                                <th>{{totalHomeRating_4}}</th>
+                                <th>{{totalHomeRating_5}}</th>
+                                <th class="total-each-survey">{{homeFinancingCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Vehicle Financing')">Vehicle Financing</div>
+                                <th>{{totalVechicleRating_1}}</th>
+                                <th>{{totalVechicleRating_2}}</th>
+                                <th>{{totalVechicleRating_3}}</th>
+                                <th>{{totalVechicleRating_4}}</th>
+                                <th>{{totalVechicleRating_5}}</th>
+                                <th class="total-each-survey">{{vehicleFinancingCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Takaful')">Takaful</div>
+                                <th>{{totalTakafulRating_1}}</th>
+                                <th>{{totalTakafulRating_2}}</th>
+                                <th>{{totalTakafulRating_3}}</th>
+                                <th>{{totalTakafulRating_4}}</th>
+                                <th>{{totalTakafulRating_5}}</th>
+                                <th class="total-each-survey">{{takafulCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Saving-i')">Saving-i</div>
+                                <th>{{totalSavingRating_1}}</th>
+                                <th>{{totalSavingRating_2}}</th>
+                                <th>{{totalSavingRating_3}}</th>
+                                <th>{{totalSavingRating_4}}</th>
+                                <th>{{totalSavingRating_5}}</th>
+                                <th class="total-each-survey">{{savingCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Pawn Broking-i')">Pawn Broking-i</div>
+                                <th>{{totalPawnRating_1}}</th>
+                                <th>{{totalPawnRating_2}}</th>
+                                <th>{{totalPawnRating_3}}</th>
+                                <th>{{totalPawnRating_4}}</th>
+                                <th>{{totalPawnRating_5}}</th>
+                                <th class="total-each-survey">{{pawnBankingCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <div class="service-name" (click)="setSelectedProduct('Credit Card-i')">Credit Card-i</div>
+                                <th>{{totalCreditRating_1}}</th>
+                                <th>{{totalCreditRating_2}}</th>
+                                <th>{{totalCreditRating_3}}</th>
+                                <th>{{totalCreditRating_4}}</th>
+                                <th>{{totalCreditRating_5}}</th>
+                                <th class="total-each-survey">{{creditCardCount}}</th>
+                            </tr>
+                            <tr class="star-counter">
+                                <th class="service-name-total-submit" colspan="6">TOTAL</th>
+                                <th class="service-name-total">{{totalSubmissions}}</th>
+                            </tr>
+                        </thead>
+                        <tbody></table>
+                    </div>
+
+                </div>
             </div>
-          </div>
-          </div>
         </div>
-      </div>
+    </div>
 
+    <!-- <div *ngIf="dateClick"> <div class="card-overlay-card-2"> <div
+    class="card"> </div> </div> </div> -->
 
+    <!-- Filter Box -->
 
-      <!-- Filter Box -->
- 
-<!-- <div class="filter-box-1">
-  <div class="all-filter-box-date">
-    <p>From</p>
-    <input class="date-input" type="date" [(ngModel)]="startDate" placeholder="From" (change)="onDateChange()">
-    
-    <p>To</p>
-    <input class="date-input" type="date" [(ngModel)]="endDate" placeholder="To" (change)="onDateChange()">
-  </div>
-</div> -->
-
-      
-
-    
-
-
-
-
-
-     
-      
-
-    
-    
-    
-    
+    <!-- <div class="filter-box-1"> <div class="all-filter-box-date"> <p>From</p>
+    <input class="date-input" type="date" [(ngModel)]="startDate" placeholder="From"
+    (change)="onDateChange()"> <p>To</p> <input class="date-input" type="date"
+    [(ngModel)]="endDate" placeholder="To" (change)="onDateChange()"> </div> </div>
+    -->

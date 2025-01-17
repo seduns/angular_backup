@@ -3,12 +3,13 @@
 <span *ngIf="isAuthenticated">
     <abp-loader-bar></abp-loader-bar> 
     <abp-dynamic-layout></abp-dynamic-layout>
+    <!-- <app-survey></app-survey> -->
 </span>
 
 
 <!-- user view -->
 <span *ngIf="!isAuthenticated">
-    <app-survey></app-survey>
+    <app-survey-user></app-survey-user>
     <app-test-entity></app-test-entity> 
 </span>
 

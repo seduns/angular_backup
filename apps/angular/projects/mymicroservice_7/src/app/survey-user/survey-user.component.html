@@ -1,0 +1,253 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="brick-website"></div> -->
+    <!-- <div class="nav-bar">
+      asdasd
+    </div> -->
+
+    <header class="nav-bar">
+      <!-- <div class="brick-text">BRICK SURVEY</div> -->
+    </header>
+    <div class="nav-bar-2">
+      <a href="https://brick.bankrakyat.com.my/" class="brick-link">...</a>
+    </div>
+    
+  <main>
+    <div class="form-controller">
+      <div class="box-image">
+        
+      </div>
+      <!-- <h3>Survey Form</h3> -->
+  
+      <!-- Form submission handled by `createSurvey()` -->
+      <form #myForm="ngForm" (ngSubmit)="create(myForm)" class="survey-form">
+
+        <div class="user-information">
+            
+          <!-- User Name -->
+          <div class="username-name"> 
+            <!-- <p class="text-title-2">Name</p> -->
+            <input
+            type="text"
+            placeholder="Enter your name"
+            [(ngModel)]="newSurvey.name"
+            name="username"
+            required
+            maxlength="30" 
+            class="form-control focus-blue name"
+            #name="ngModel"
+            pattern="^[A-Z][a-zA-Z\s]*$"
+            [ngClass]="{'error-border': name.invalid && name.touched, 'valid-border': name.valid && name.touched}"
+          >
+                     
+            <!-- Validation Name -->
+            <div *ngIf="(name.invalid && name.touched) || isCharacterLimitExceededName()">
+              <small *ngIf="name.errors?.required" class="error-message-name">
+                Please enter your name
+              </small>
+              <small *ngIf="isCharacterLimitExceededName()" class="error-message-name">
+                Name cannot exceed 30 characters
+              </small>
+              <small *ngIf="name.errors?.pattern" class="error-message-name">
+                Name must start with a capital letter and contain no numbers
+              </small>
+            </div>
+            
+          </div>
+            
+          <!-- PHONE NUMBER -->
+            <div class="username-age">
+              <!-- Phone No -->
+              <input type="text"
+                     id="phoneNumber"
+                     placeholder="Phone Number"
+                     [(ngModel)]="newSurvey.phoneNumber"
+                     name="phoneNumber"
+                     required
+                     class="form-control focus-blue"
+                     #phoneNumber="ngModel"
+                     [ngClass]="{'error-border': phoneNumber.invalid && phoneNumber.touched, 'valid-border': phoneNumber.valid && phoneNumber.touched}"
+                     maxlength="10"
+                     (keydown)="validateNumberInput($event)"
+                     (paste)="onPaste($event)"
+                     [ngModelOptions]="{ updateOn: 'blur' }"
+                     [pattern]="'^[0-9]*$'" 
+                     minlength="10">
+          
+              <!-- Validation Messages -->
+              <div *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                <small *ngIf="phoneNumber.errors?.required" class="error-message-email">Please enter your phone number</small>
+                <small *ngIf="phoneNumber.errors?.minlength" class="error-message-email">Please enter a valid phone number</small>
+                <small *ngIf="phoneNumber.errors?.pattern" class="error-message-email">Phone number can only contain digits</small>
+              </div>
+            </div>          
+        </div>
+        
+        <!-- assign to top -->
+        
+        <div class="username"> 
+          <!-- Email Address -->
+          <!-- <p class="text-title-2">Email</p> -->
+          <input type="email" placeholder="Enter your email" [(ngModel)]="newSurvey.emailAddress" name="email" required class="form-control focus-blue" #email="ngModel" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" [ngClass]="{'error-border': email.invalid && email.touched, 'valid-border': email.valid && email.touched}">
+          
+          <!-- Validation Email -->
+          <div *ngIf="email.invalid && email.touched">
+            <small *ngIf="email.errors?.required" class="error-message">Please enter your email</small>
+            <small *ngIf="email.errors?.pattern" class="error-message">Please enter a valid email address</small>
+          </div>
+        </div>
+          
+          <!-- SELECTION PRODUCT -->
+          
+          <!-- <h5 class="text-title">What service do you use?</h5> -->
+          
+          <div class="selection-box">
+            <div class="service-box">
+
+              <h5 class="text-title">Do you ever use BRICK? Please select the service first?</h5>
+              
+              <select
+              [(ngModel)]="newSurvey.financingType"
+              (ngModelChange)="onServiceChange(newSurvey.financingType)"
+              name="financingType"
+              required
+              #serviceType="ngModel"
+              class="select-service"
+              [ngClass]="{
+                'error-border': serviceType.invalid && serviceType.touched,
+                'valid-border': serviceType.valid && serviceType.touched
+              }"
+            >
+              <option value="">Select a service</option>
+              <option value="Personal Financing-i">Personal Financing-i</option>
+              <option value="Home Financing-i">Home Financing-i</option>
+              <option value="Vehicle Financing">Vehicle Financing</option>
+              <option value="Takaful">Takaful</option>
+              <option value="Saving-i">Saving-i</option>
+              <option value="Pawn Broking-i">Pawn Broking-i</option>
+              <option value="Credit Card-i">Credit Card-i</option>
+            </select>
+            
+              
+              <!-- Validation ServiceType -->
+              <div *ngIf="serviceType.invalid && serviceType.touched">
+                <small *ngIf="serviceType.errors?.required" class="error-message">Please choose the service type</small>
+              </div>
+            </div>
+
+            <div class="service-box">
+              <div *ngIf="newSurvey.financingType">
+                <h5 class="text-title">Choose a product based on the selected service</h5>
+                <select [(ngModel)]="newSurvey.prodId" name="product" class="select-service" required #productType="ngModel">
+                  <option value="">Selected Product</option>
+                  <option *ngFor="let product of filteredProducts" [ngValue]="product.prodId">
+                    {{ product.productName }}
+                  </option>
+                </select>
+            
+                <!-- Validation Product -->
+                <div *ngIf="productType.invalid && productType.touched">
+                  <small *ngIf="productType.errors?.required" class="error-message">Please choose the product</small>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+             
+        <div class="rating-box">
+
+          <p class="text-title-2-rating">How would you rate our service?</p>
+          <div class="rating">
+            <input id="rating1" type="radio" name="rating" [(ngModel)]="newSurvey.starRating" value="1" required>
+            <label for="rating1">1</label>
+            
+            <input id="rating2" type="radio" name="rating" [(ngModel)]="newSurvey.starRating" value="2" required>
+            <label for="rating2">2</label>
+            
+            <input id="rating3" type="radio" name="rating" [(ngModel)]="newSurvey.starRating" value="3" required>
+            <label for="rating3">3</label>
+            
+            <input id="rating4" type="radio" name="rating" [(ngModel)]="newSurvey.starRating" value="4" required>
+            <label for="rating4">4</label>
+            
+            <input id="rating5" type="radio" name="rating" [(ngModel)]="newSurvey.starRating" value="5" required>
+            <label for="rating5">5</label>
+          </div>
+          
+          <!-- Show an error if the rating is not selected when submitting -->
+          <!-- <div *ngIf="newSurvey.starRating == 0" class="error-message">
+            <p>Please rate our services.</p>
+          </div> -->
+          
+          <p class="text-title-2">Your Rating: {{ newSurvey.starRating }}</p>
+          
+        </div>
+
+              
+        <p class="text-title-2">Leave a comment for us</p>
+
+        <!-- Predefined Comments -->
+        <div class="predefined-comments">
+          <div 
+            class="select-cmnt" 
+            *ngFor="let option of predefinedComments" 
+            [class.selected] = "option === newSurvey.comment"
+            (click)="selectPredefinedComment(option)" required>
+            {{ option }} 
+          </div>
+          <div class="select-cmnt" (click)="toggleCommentBox()">More...</div>
+        </div>
+        
+        <!-- Custom Comment Box -->
+        <div class="username" *ngIf="showCommentBox">
+          <textarea 
+            type="text" 
+            [(ngModel)]="newSurvey.comment" 
+            (ngModelChange)="clearPredefinedComment()" 
+            placeholder="Write your comment here..." 
+            name="comment" 
+            class="form-control focus-blue" 
+            required 
+            #comment="ngModel"
+            [ngClass]="{'error-border': comment.invalid && comment.touched, 'valid-border': comment.valid && comment.touched}">
+          </textarea>
+        
+          <!-- Validation for Comment -->
+          <div *ngIf="comment.invalid && comment.touched">
+            <small *ngIf="comment.errors?.required" class="error-message">
+              Please enter your comment (use '-' if none).
+            </small>
+          </div>
+        
+          <!-- Character Count -->
+          <div *ngIf="getCharacterCount() > 0">
+            <div *ngIf="isCharacterLimitExceeded()">
+              <small class="comment-count">
+                Comment must be under 100 characters. Current character count: {{ getCharacterCount() }}
+              </small>
+            </div>
+          </div>
+        </div>
+              
+              <!-- Submit Button -->
+              <button class="btn btn-primary btn-submit" type="submit">Submit</button>
+
+            </form>
+          </div>
+        </main>
+        
+        <!-- <footer>
+          Bank Rakyat
+        </footer> -->
+    </body>
+  </html>
+  
+ 

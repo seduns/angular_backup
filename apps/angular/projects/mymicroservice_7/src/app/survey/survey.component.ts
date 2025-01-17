@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, ViewChild  } from '@angular/core';
 import { SurveyService } from './survey-service/controller/survey.service';
 import { CreditCardProductDto, HomeProductDto, PawnBrokingProductDto, SavingProductDto, surveyItemDto, TakafulProductDto, VehicleProductDto } from './survey-service/dto/model';
 import { personalProductDto } from '../survey/survey-service/dto/model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, isFormRecord } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
 import { AuthService, isNumber } from '@abp/ng.core';
 import { NgForm } from '@angular/forms';
@@ -12,6 +12,7 @@ import { ProductService } from './survey-service/controller/product.services';
 import { HttpClient } from '@angular/common/http';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { TENANT_FORM_VALIDATORS_TOKEN } from '@volo/abp.ng.saas';
 
 @Component({
   selector: 'app-survey',
@@ -120,6 +121,7 @@ export class SurveyComponent implements OnInit {
     this.surveyService.get().subscribe(
       (response) => {
         this.surveys = response;
+        console.log(response);
         this.totalSubmissions = this.surveys.length; //get the lenght of the submission 
         this.filterSurveysByProduct(); // Call product filtering after loading surveys
         
@@ -153,7 +155,7 @@ export class SurveyComponent implements OnInit {
       comment : '',
       financingType : '' ,
       starRating: 0,
-      submissionDate: new Date,
+      submissionDate: new Date().toISOString(),
       prodId : 0
   }
 
@@ -202,7 +204,7 @@ export class SurveyComponent implements OnInit {
           comment: '',
           financingType: '',
           starRating: 0,
-          submissionDate: new Date, 
+          submissionDate: new Date().toISOString(), 
           prodId: 0  // Reset the product ID as well
         };
         alert('Congratulations! Your form has been submitted.');
@@ -283,12 +285,20 @@ export class SurveyComponent implements OnInit {
   }
 
   @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event): void {
-    const target = event.target as HTMLElement;
-    if(target && !target.closest('.dropdown') && !target.closest('.btn-edit')) {
-      this.selectedSurvey = null;
-    } 
+onClickOutside(event: Event): void {
+  const target = event.target as HTMLElement;
+
+  // Correct use of `closest` with a `.` prefix for class selectors
+  const toggleAction = target.closest('.btn-edit'); 
+  const actionList = target.closest('.view-survey');
+
+  // Close dropdown if the click is outside both toggle button and dropdown menu
+  if (!toggleAction && !actionList) {
+    console.log('Closing dropdown:', this.isDropdown);
+    this.isDropdown = null; // Close the currently opened dropdown
   }
+}
+
 
   //STORE ITEM
   view(survey: surveyItemDto): void {
@@ -302,9 +312,15 @@ export class SurveyComponent implements OnInit {
     this.starRating = survey.starRating;  
   }
 
-  
+  isDropdown: number | null = null; // Track the currently selected survey ID
 
-  viewUpdate(survey: surveyItemDto): void {
+  toggleAction(surveyId : number): void {
+    this.isDropdown = this.isDropdown === surveyId ? null : surveyId; // Toggle for the specific survey ID
+  }
+  
+  viewUpdate(survey: any): void {
+    this.isDropdown = null;
+
     this.updateSurvey = survey;
     
     // Populate the form fields with the survey data
@@ -313,6 +329,7 @@ export class SurveyComponent implements OnInit {
     this.newSurveyComment = survey.comment;
     this.personalFinancingType = survey.financingType;
     this.starRating = survey.starRating;  
+
   }
 
   filterSurveysByProduct(): void {
@@ -321,12 +338,6 @@ export class SurveyComponent implements OnInit {
     if (!this.selectedProduct) {
         return; // No product selected, do not filter
     }
-
-    // const filteredSurveys = this.surveys.filter(survey => 
-    //     survey.productSelection.trim().toLowerCase() === this.selectedProduct.trim().toLowerCase());
-
-    // console.log('Filtered surveys:', filteredSurveys);
-    // this.surveys = filteredSurveys; // Update the surveys to only show filtered results
   }
 
   get filteredSurveys(): surveyItemDto[] {
@@ -427,7 +438,8 @@ export class SurveyComponent implements OnInit {
       'Name': survey.name,
       'Email': survey.emailAddress,
       'Comment': survey.comment,
-      'Financing Type': survey.financingType,
+      'Service Type': survey.financingType,
+      'Product Selection': this.getProductNameById(survey.prodId),
       'Star Rating': survey.starRating,
       'Submission Date': survey.submissionDate ? new Date(survey.submissionDate).toLocaleDateString() : ''
     }));

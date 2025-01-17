@@ -31,7 +31,7 @@ import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { NgxPrintModule } from 'ngx-print';
 import { TestEntityComponent } from './test-entity/test-entity.component';
-import { RouteInitializationService } from './bar-chart/auth-service/routeInitializedService';
+import { SurveyUserComponent } from './survey-user/survey-user.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +39,7 @@ import { RouteInitializationService } from './bar-chart/auth-service/routeInitia
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ThemeSharedModule,  
+    ThemeSharedModule,      
     CoreModule, 
     IdentityConfigModule, 
     BarChartComponent,
@@ -53,12 +53,11 @@ import { RouteInitializationService } from './bar-chart/auth-service/routeInitia
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
     SurveyComponent,
+    SurveyUserComponent,
     ThemeLeptonXModule
 ],
   providers: [
-    APP_ROUTE_PROVIDER,
-    RouteInitializationService,
-    AuthService,
+    APP_ROUTE_PROVIDER, 
     provideAbpCore(
       withOptions({
         environment,

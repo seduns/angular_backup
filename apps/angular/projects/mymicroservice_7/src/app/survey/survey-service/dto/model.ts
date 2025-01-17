@@ -5,7 +5,7 @@
     comment?: string;
     financingType?: string;
     starRating?: number;
-    submissionDate?: Date;
+    submissionDate?: string;
     selected?: boolean;
     phoneNumber?: string;
     

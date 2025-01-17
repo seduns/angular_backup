@@ -5,34 +5,39 @@ import { SurveyComponent } from './survey/survey.component';
 import { HomeComponent } from './home/home.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { ChatBaseComponent } from './chat-base/chat-base.component';
-// import { TestEntityComponent } from './test-entity/test-entity.component';
+import { SurveyUserComponent } from './survey-user/survey-user.component';
 
 const routes: Routes = [
-
+  
   {
-    path: 'app',
-    component: HomeComponent,
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-    canActivate: [authGuard, permissionGuard],
+    path: '',
+    component: SurveyUserComponent,
     
   },
   {
-    path: 'chat-base',  
-    component: ChatBaseComponent,
+    path: 'app',
+    component: HomeComponent,
+    data: { title : 'HomePage'},
     canActivate: [authGuard, permissionGuard],
+    
   },
-  {
-    path: 'bar-chart',  
-    component: BarChartComponent, 
-    canActivate: [authGuard, permissionGuard],
-  },
-  
   {
     path: 'survey',
     component: SurveyComponent,
     canActivate: [authGuard, permissionGuard],
     
   },
+  {
+    path: 'bar-chart',  
+    component: BarChartComponent, 
+    canActivate: [authGuard, permissionGuard],
+  },  
+  {
+    path: 'chat-base',  
+    component: ChatBaseComponent,
+    canActivate: [authGuard, permissionGuard],
+  },
+  
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),

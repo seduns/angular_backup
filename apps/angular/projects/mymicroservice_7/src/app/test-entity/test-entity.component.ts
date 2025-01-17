@@ -215,9 +215,9 @@ export class TestEntityComponent implements OnInit {
           this.startInactivityTimer();
 
           
-          // console.log('Chat Before', this.contextBefore);
+          console.log('Chat Before', this.contextBefore);
           console.log('Chat History', this.chatHistory);
-          // console.log('Simple Question: ', this.simpleQuestion);
+          console.log('Simple Question: ', this.simpleQuestion);
 
           this.scrollToBottom();
 

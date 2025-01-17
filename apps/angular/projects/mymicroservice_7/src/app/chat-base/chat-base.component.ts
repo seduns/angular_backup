@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { EditionDeleteComponent } from '@volo/abp.ng.saas';
 
 @Component({
   selector: 'app-chat-base',
@@ -33,7 +32,7 @@ export class ChatBaseComponent implements OnInit {
   // Toggle the action menu for a specific file by its ID
   toggleActions(fileId: number, event: MouseEvent): void {
     // Close all action lists first
-    if (this.actionStates[fileId]) {
+    if (this.actionStates[fileId  ]   ) {
       this.actionStates[fileId] = false; // If clicked again on the same file, close it
     } else {
       // Close any other action list first, then toggle the current one
@@ -42,7 +41,7 @@ export class ChatBaseComponent implements OnInit {
     }
     console.log(fileId);
 
-    // Stop the event from propagating to avoid immediate closing after clicking
+    // Stop the event from pro  pagating to avoid immediate closing after clicking
   }
 
   // Check if the actions are visible for a specific file

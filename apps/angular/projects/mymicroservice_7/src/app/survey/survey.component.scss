@@ -22,7 +22,7 @@ a, i, u{
     color: #0004ff
 }
 
-
+    
 
 .nav-bar { 
     text-align: center;
@@ -340,7 +340,9 @@ main {
 //admin
 
 .btn-edit {
-    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     padding: -20px;
     
 }   
@@ -355,36 +357,27 @@ main {
     
 }
 
-
-/* General Dropdown Container */
 .dropdown {
     position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Button */
-  .dropdown .btn-edit {
-    cursor: pointer;
-  }
-  
-  /* Dropdown Menu (Initially Hidden) */
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%; /* Position below the button */
-    left: 0;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    margin: 0;
+}
+
+.dropdown-menu {
     list-style: none;
-    border: 1px solid #ddd;
-    z-index: 10;
-  }
-  
-  /* Dropdown Menu Items */
-  .dropdown-menu li {
-    padding: 10px 15px;
+    display: flex;
+    padding: 10px;
+    background-color: rgb(255, 255, 253);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.393);
+}
+/* Dropdown Button */
+.dropdown .btn-edit {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu li {
     cursor: pointer;
     border-bottom: 1px solid #ddd;
   }
@@ -394,23 +387,20 @@ main {
   }
   
   /* Dropdown Menu Links */
-  .dropdown-menu li a {
+  .dropdown-menu li .view-survey{
     text-decoration: none;
-    color: #333;
-    display: block;
-  }
-  
-  .dropdown-menu li:hover {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-  }
-  
-  /* Show Dropdown Menu on Hover */
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-  
+    width: 100%;
+    padding: 7px 50px;
+    background-color: rgba(83, 83, 1, 0.352);
+    color: #6e6e6e;
+}
 
+.dropdown-menu li .view-survey:hover{
+    text-decoration: none;
+    background-color: rgba(60, 60, 0, 0.352);
+    color: #333;
+  }
+  
 .card-overlay {
     position: fixed; /* Stays in place */
     top: 0;

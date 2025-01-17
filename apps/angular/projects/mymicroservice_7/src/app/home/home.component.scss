@@ -36,6 +36,38 @@
   
 } 
 
+.container {
+  // border: 1px solid black;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.date-select {
+  // border: 2px solid rgb(9, 114, 195);
+  width: 100%;
+  display: flex;
+  // flex-direction: column;
+}
+
+.btn-date-on {
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: blueviolet;
+  border: none;
+  color: white;
+  font-size: 13px;
+  margin-left: 10px;
+  // text-wrap: nowrap;
+  display: flex;
+  transition: 0.2s;
+}
+
+.btn-date-on:hover {
+  background-color: #024388;
+}
+
 // th, td {
 //     padding: 8px;
 //     border: 1px solid #d66700;
@@ -66,13 +98,23 @@
 .bar-chart-box {
   transition: 0.4s;
   background-color: white;
-  box-shadow: 0px 4px 6px #ff6a0070;
   padding: 10px;
   border-radius: 10px;
+  height: 100%;
+  border: 1px solid rgba(73, 73, 73, 0.378);
+  box-shadow: 0px 4px 6px #343de343;
+  margin-right: 5px;
 }
 
 canvas {  
-  width: 500px;
+  width: 300px;
+  height: 400px;
+}
+
+
+.container-to-table {
+  // border: 1px solid blue;
+  display: flex;
 }
 
 .bar-chart-box:hover{
@@ -232,6 +274,11 @@ td {
   background-color: #343de335;
 }
 
+// .bold-text {
+//   color: rgb(113, 200, 0);
+//   text-shadow: 0px 0px 10px yel;
+// } 
+
 .service-name-total{
   background-color: #343de38e;
   color: white;
@@ -266,6 +313,21 @@ td {
   position: fixed; /* Becomes fixed when scrolled down */
   top: 10px; /* Adjust as needed */
   right: 10px; /* Optional: Place it in a specific position on the screen */
+}
+
+.date-container-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // width: 100%;
+}
+
+.title-date-container-date {
+  display: flex;
+  justify-content: space-around;
+  // border: 1px solid black;
+  // width: 100%;
+  transition: 0.3s;
 }
 
 
@@ -307,11 +369,30 @@ td {
   border-right: none;
   padding: 8px;
   text-align: center;
-  color: rgb(255, 255, 255);
+  // color: rgb(255, 255, 255);
 }
 
 .product-header-table { 
   background-color: #31006af3;
+}
+
+
+.btn-close-year {
+  width: 6vh;
+  border: none;
+  color: white;
+  margin-right: 10px;
+  background-color: #343de3;
+  border-radius: 20px;
+  transition: 0.1s;
+}
+
+.btn-close-year:hover {
+  width: 6vh;
+    border: none;
+    margin-right: 10px; 
+    background-color: #ff6a00;
+    border-radius: 5px;
 }
 
 .x-button {
@@ -339,7 +420,27 @@ td {
     border-radius: 10px;                 /* Rounded corners for aesthetics */
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.328); /* Subtle shadow for depth */
     padding: 20px;      
+    overflow: auto;
+    height: 100%;
+    max-height: 70vh;
+  }
+
+
+ td .rating-count {
+  color: yellow;
+ }
+  
+ .bold-text {
+  font-weight: 600;
+  text-shadow: 0px 0px 5px rgba(115, 255, 0, 0.694);
 }
+
+/* Change the color of the rating-count element when it has bold-text */
+.rating-count.bold-text {
+  color: yellow;  /* New color for bold text ratings */
+}
+
+
 
 .card-overlay {
   position: fixed; /* Stays in place */
@@ -426,8 +527,8 @@ td {
 
 .date-filter-box {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  // flex-direction: column;
+  justify-content: center;
   margin: 10px;
   font-size: 10px;
   border-radius: 10px;
@@ -440,6 +541,7 @@ td {
   padding: 20px;       
   box-shadow: 0px 4px 6px #ff6a0044;
   transition: 0.4s; 
+  width: 100%;
 }
   
 .date-filter-box:hover {
@@ -466,11 +568,20 @@ select {
 }
 
 .select-date {
-  width: 100%;
+  width: 10vh;
   margin: 10px;
+  margin-left: auto;
+  display: flex;
+  justify-content: end;
 }
 
+.select-date.disable-month {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.128);
+  background-color: rgba(0, 0, 0, 0.183);
+}
 
+  
 .buton-row {
   display: flex;  
   justify-content: end;
@@ -485,19 +596,102 @@ select {
 .date-box {
   display: flex;
   // border: 1px solid black;
+  width: 100%;
 }
 
 .year-box-date {
-  display: column;
+  display: flex;
   // border: 1px solid black;
-  width: 100%;
+  // width: 100%;
   margin-left: 10px;
   margin-right: 10px;
   padding-left: 10px;
 }
 
 
+.title-select-year {
+  border: none;
+  background-color: rgba(23, 23, 201, 0.908);
+  border-radius: 10px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100% ;
+  color: white;
+  font-size: 12px;
+}
 
+
+.title-month-select {
+  margin-top: -10px;
+  margin-left: -30px; 
+  
+}
+
+.todayDate {
+  display: flex;
+  background-color: rgb(54, 66, 199);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.title-date-container-date.hide {
+  display: none;
+}
+
+.prompt-day {
+  background-color: rgb(2, 39, 113);
+  font-size: 13px;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  margin-left: auto;
+    width: 100%;
+    margin-left: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.376);
+
+    
+  }
+  
+  .prompt-date {
+  background-color: rgb(2, 39, 113);  
+  font-size: 13px;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.376);
+
+
+}
+
+.prompt-7-last-day-date{
+  background-color: rgb(2, 39, 113);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  font-size: 13px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.376);
+}
+
+.custom-container {
+  // border: 1px solid yellow;
+  margin-top: 10px;
+  display: flex;
+
+}
+
+.service-display {
+  border: 1px solid black;
+  display: flex;
+}
 
 @media (min-width: 1199px) {
   .h-lg-100 {
