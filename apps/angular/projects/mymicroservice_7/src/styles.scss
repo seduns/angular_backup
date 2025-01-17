@@ -131,12 +131,43 @@
     color: white;
   }
 
-  
+  .bot-chat  p{ 
+    
+    color: rgb(51, 53, 51);
+    
+}
 
+.editor-textarea {
+  background-color: rgb(15, 15, 15);
+  color: rgba(255, 255, 255, 0.788);
+}
 
-  
+.required-form {
+  background-color: rgb(15, 15, 15);
+  color: rgba(255, 255, 255, 0.788);
 
 }
+
+.card-2 {
+  background-color: rgba(0, 0, 0, 0.711);
+    border: 1px solid rgba(255, 255, 255, 0.275);
+    box-shadow: 0px 4px 6px rgba(0, 0, 255, 0.592);
+}
+
+.card-2 input {
+  background-color: rgba(0, 0, 0, 0.711);
+  color: rgba(255, 255, 255, 0.723);
+    border: 1px solid rgba(255, 255, 255, 0.275);
+    box-shadow: 0px 0px 6px rgba(0, 0, 255, 0.701);
+}
+
+.card-2 label {
+  color: rgb(0, 0, 255);
+  text-shadow: 0px 0px 2px rgba(67, 67, 254, 0.57);
+}
+  
+
+} 
 
           
   :root .lpx-theme-light {
@@ -242,6 +273,8 @@
   border: 2px solid #0004ff;
   color: white;
 }
+
+
 
   
 } 

@@ -249,6 +249,8 @@
       <!-- admin view -->
       <span *ngIf="isUserAdmin || isUserOfficer">
         
+
+        
         <div class="filter-box">
           <div class="all-btn-admin-survey-list">
             <button class="btn btn-primary btn-reset-filter" (click)="resetFilters()">Reset Filter</button>
@@ -412,7 +414,7 @@
               <td>{{ survey.emailAddress }}</td>
               <td>{{ survey.phoneNumber }}</td>
               <td>{{ survey.financingType }}</td>
-              <td>{{ getProductNameById(survey.prodId)}}</td>
+              <td >{{ getProductNameById(survey.prodId)}}</td>
               <td>
                 <div class="comment-section">
                   <textarea name="" id="" readonly class="form-control comment-area">{{ survey.comment || 'No Comment' }}</textarea>

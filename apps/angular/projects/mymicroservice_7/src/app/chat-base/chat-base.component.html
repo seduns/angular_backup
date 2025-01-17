@@ -1,39 +1,39 @@
-<div *ngIf="editingFileId" class="card-overlay">
-    <div class="card">
-        <form #myForm="ngForm" (ngSubmit)="updateFileContent(myForm, $event)">
-            <h2>Editing: {{ editingFileName }}</h2>
-          
-            <!-- Display a message if the content is empty and has been touched -->
-            <div *ngIf="myForm.controls['content']?.touched && myForm.controls['content']?.invalid" class="error-message">
-              Please fill out the content.
-            </div>
-            <textarea [(ngModel)]="editingFileContent" name="content" class="editor-textarea" required></textarea>
-          
-            <!-- Display a message if the reasonForChanges is empty and has been touched -->
-            <div *ngIf="myForm.controls['reasonForChanges']?.touched && myForm.controls['reasonForChanges']?.invalid " class="error-message">
-              Please provide a reason for changes.
-            </div>
-            <textarea [(ngModel)]="reasonForChanges" name="reasonForChanges" placeholder="Reason for changes" required class="required-form"></textarea>
-          
-            <!-- Display a message if the changesMade is empty and has been touched -->
-            <div *ngIf="myForm.controls['changesMade']?.touched && myForm.controls['changesMade']?.invalid " class="error-message">
-              Please describe the changes made.
-            </div>
-            <textarea [(ngModel)]="changesMade" name="changesMade" placeholder="Changes made" required class="required-form"></textarea>
-          
-            <div class="editor-actions">
-              <!-- Disable button if the form is invalid or formSubmit is true -->
-              <button type="submit" class="save-btn">
-                Save
-              </button>
-              <button type="button" class="cancel-btn" (click)="cancelEditing()">Cancel</button>
-            </div>
-          </form>
-          
-          
-          
+  <div *ngIf="editingFileId" class="card-overlay">
+      <div class="card">
+          <form #myForm="ngForm" (ngSubmit)="updateFileContent(myForm, $event)">
+              <h2>Editing: {{ editingFileName }}</h2>
+            
+              <!-- Display a message if the content is empty and has been touched -->
+              <div *ngIf="myForm.controls['content']?.touched && myForm.controls['content']?.invalid" class="error-message">
+                Please fill out the content.
+              </div>
+              <textarea [(ngModel)]="editingFileContent" name="content" class="editor-textarea" required></textarea>
+            
+              <!-- Display a message if the reasonForChanges is empty and has been touched -->
+              <div *ngIf="myForm.controls['reasonForChanges']?.touched && myForm.controls['reasonForChanges']?.invalid " class="error-message">
+                Please provide a reason for changes.
+              </div>
+              <textarea [(ngModel)]="reasonForChanges" name="reasonForChanges" placeholder="Reason for changes" required class="required-form"></textarea>
+            
+              <!-- Display a message if the changesMade is empty and has been touched -->
+              <div *ngIf="myForm.controls['changesMade']?.touched && myForm.controls['changesMade']?.invalid " class="error-message">
+                Please describe the changes made.
+              </div>
+              <textarea [(ngModel)]="changesMade" name="changesMade" placeholder="Changes made" required class="required-form"></textarea>
+            
+              <div class="editor-actions">
+                <!-- Disable button if the form is invalid or formSubmit is true -->
+                <button type="submit" class="save-btn">
+                  Save
+                </button>
+                <button type="button" class="cancel-btn" (click)="cancelEditing()">Cancel</button>
+              </div>
+            </form>
+            
+            
+            
+      </div>
     </div>
-  </div>
 
 
 <!-- View Info Card -->
@@ -51,7 +51,7 @@
           type="text"
           id="editBy"
           [value]="infoEditBy ? infoEditBy : 'Not modified'"
-          readonly
+          [disabled]="true"
         />
       
         <!-- Reason Change -->
@@ -60,7 +60,7 @@
           type="text"
           id="reasonForChanges"
           [value]="viewReasonForChanges ? viewReasonForChanges : 'Not modified'"
-          readonly
+          [disabled]="true"
         />
       
         <!-- Changes Made -->
@@ -69,7 +69,7 @@
           type="text"
           id="changeMade"
           [value]="viewChangesMade ? viewChangesMade : 'Not modified'"
-          readonly
+          [disabled]="true"
         />
       
         <!-- Uploaded At -->
@@ -78,7 +78,7 @@
           type="text"
           id="uploadedAt"
           [value]="infoUploadDate | date: 'dd/MM/yyyy, HH:mm'"
-          readonly
+          [disabled]="true"
         />
       
         <!-- Last Edited -->
@@ -87,7 +87,7 @@
           type="text"
           id="editedDate"
           [value]="infoNewUploadDate ? (infoNewUploadDate | date: 'dd/MM/yyyy, HH:mm') : 'Not modified'"
-          readonly
+          [disabled]="true"
         />
       
         <button type="button" (click)="close()">Close</button>
@@ -115,35 +115,17 @@
          <table *ngIf="files.length > 0 && !editingFileId">
             <thead>
                 <tr>
-                    <th>No</th>
+                  <th>Actions</th>
+                    <!-- <th>No</th> -->
                     <th>File Name</th>
                     <th>Uploaded At</th>
                     <th>Last Edit</th>
                     <th>Edit By</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let file of files; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ file.fileName }}</td>
-                    <td>{{ file.uploadedAt | date: 'dd/MM/yyyy, HH:mm a' }}</td>
-                    
-                    <!-- Conditionally show editedDate only if it's not null -->
-                    <td *ngIf="file.editedDate !== null; else noEditedDate">
-                        {{ file.editedDate | date: 'dd/MM/yyyy, HH:mm a' }}
-                    </td>
-                    <ng-template #noEditedDate>
-                        <td>-</td>
-                    </ng-template>
-                    <td class="info-column" *ngIf="file.editBy !== ''; else noEditor">
-                        <span>{{ file.editBy }}</span>
-                    </td>
-                    <ng-template #noEditor>
-                        <td>-</td>
-                    </ng-template>
-        
-                    <td>
+                      <td>
                         <!-- Action Button -->
                         <div class="action-list-hover">
                             <!-- Action Button -->
@@ -161,10 +143,29 @@
                         </div>
                         
                     </td>
+                    <!-- <td>{{ i + 1 }}</td> -->
+                    <td>{{ file.fileName }}</td>
+                    <td>{{ file.uploadedAt | date: 'dd/MM/yyyy, HH:mm a' }}</td>
+                    
+                    <!-- Conditionally show editedDate only if it's not null -->
+                    <td *ngIf="file.editedDate !== null; else noEditedDate">
+                        {{ file.editedDate | date: 'dd/MM/yyyy, HH:mm a' }}
+                    </td>
+                    <ng-template #noEditedDate>
+                        <td>-</td>
+                    </ng-template>
+                    <td class="info-column" *ngIf="file.editBy !== ''; else noEditor">
+                        <span>{{ file.editBy }}</span>
+                    </td>
+                    <ng-template #noEditor>
+                        <td>-</td>
+                    </ng-template>
+        
+                    
                 </tr>
             </tbody>
         </table>
-        
+
 </div>
 </div>
 

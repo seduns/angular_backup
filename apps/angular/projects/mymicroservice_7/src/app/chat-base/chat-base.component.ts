@@ -141,16 +141,14 @@ loadFileForEditing(fileId: string): void {
   // Fetch the file details using the fileId
   this.http.get<any>(`http://localhost:44305/FileItem/${fileId}`).subscribe({
     next: (file) => {
-      // Populate the form with the file details
+      console.log('Fetched file:', file);  // Log the fetched file
       this.editingFileId = file.id;
-      this.editingFileName = file.name;
+      this.editingFileName = file.fileName;
       this.editingFileContent = file.content;
       this.uploadDate = file.uploadedAt;
-      
-      // Set reasonForChanges to null or empty string to clear the field
-      this.reasonForChanges = null;  // or '' to clear the text area
-      
-      // Reset other necessary fields here, if needed
+  
+      // Reset fields
+      this.reasonForChanges = null;
       this.changesMade = '';
     },
     error: (err) => {
@@ -158,6 +156,7 @@ loadFileForEditing(fileId: string): void {
       alert('Failed to load the file for editing.');
     },
   });
+  
 }
 
 
@@ -217,6 +216,8 @@ resetForm() {
 viewInfo(fileId: number): void {
 
 this.isOpen = true;
+
+this.actionStates[fileId] = null;
 
   this.http.get<any>(`http://localhost:44305/FileItem/${fileId}`).subscribe({
     next: (file) => {

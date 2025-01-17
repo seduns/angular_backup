@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild  } from '@angular/core';
 import { SurveyService } from './survey-service/controller/survey.service';
-import { CreditCardProductDto, HomeProductDto, PawnBrokingProductDto, SavingProductDto, surveyItemDto, TakafulProductDto, VehicleProductDto } from './survey-service/dto/model';
+import { CreditCardProductDto, HomeProductDto, PawnBrokingProductDto, productDto, SavingProductDto, surveyItemDto, TakafulProductDto, VehicleProductDto } from './survey-service/dto/model';
 import { personalProductDto } from '../survey/survey-service/dto/model';
 import { FormsModule, isFormRecord } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
@@ -134,6 +134,8 @@ export class SurveyComponent implements OnInit {
 
     );
   }
+
+  
   
   loadProduct(): void {
     this.productService.get().subscribe(
@@ -262,17 +264,25 @@ export class SurveyComponent implements OnInit {
   
   //DELETE
   deleteSurvey(id: string): void {
-    this.surveyService.delete(id).subscribe(() => {
-      console.log(`Survey with ID ${id} deleted successfully.`);
-      this.loadSurveys(); // Refresh surveys after deletion
-      this.toasterService.success('item has been delete');
-      this.editedSurvey = null;
-      this.updateSurvey = null;
-      
-    }, (error) => {
-      console.error('Failed to delete survey', error);
-    });
+    const confirmation = window.confirm('Are you sure you want to delete this survey?');
+  
+    if (confirmation) {
+      // Proceed with the deletion if the user confirms
+      this.surveyService.delete(id).subscribe(() => {
+        console.log(`Survey with ID ${id} deleted successfully.`);
+        this.loadSurveys(); // Refresh surveys after deletion
+        this.toasterService.success('Item has been deleted');
+        this.editedSurvey = null;
+        this.updateSurvey = null;
+      }, (error) => {
+        console.error('Failed to delete survey', error);
+      });
+    } else {
+      // Do nothing if the user cancels
+      console.log('Survey deletion cancelled');
+    }
   }
+  
 
   //OPEN DROPDOWN
   edit(survey: any): void {
