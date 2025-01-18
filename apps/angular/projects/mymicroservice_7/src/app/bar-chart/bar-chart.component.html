@@ -42,7 +42,6 @@
                                 required="required"
                                 maxlength="40"/>
                                 <button type="submit" class="btn btn-primary">Submit</button>
-
                                 <span *ngIf="newProduct.productName.length > 40">Product cannot exceed 40 characters</span>
                               </form>
                             </div>
@@ -72,15 +71,6 @@
                                         <i class="fa fa-edit"></i>
                                         Action
                                       </button>
-                                      
-                                      <!-- Dropdown for View/Update options -->
-                                      <!-- <div *ngIf="selectedProduct === product" class="dropdown">
-                                        <ul>
-                                          <li>
-                                            <a (click)="viewUpdate(product)">View</a>
-                                          </li>
-                                        </ul>
-                                      </div>   -->
                                     </div>
                                 </td>
                                 <td class="product-name-table">{{ product.productName }}</td>
@@ -106,6 +96,7 @@
     </div>
 </div>
 
+<!-- update product name -->
 <div *ngIf="showModal">
     <div class="card-overlay">
         <div class="card-product-updt">

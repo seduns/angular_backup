@@ -396,35 +396,35 @@
                   
               </tr>
           </thead>
-          <tbody>
-            
-            <tr *ngFor="let survey of pageinatedSurveys; let i = index" class="table-hover">
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-primary btn-edit" (click)="toggleAction(survey.id)">
-                    Action
-                  </button>
-                  <ul class="dropdown-menu" *ngIf="isDropdown === survey.id">
-                    <li><a (click)="viewUpdate(survey)" class="view-survey">View</a></li>
-                  </ul>
-                </div>
-              </td>
-              <td>{{ survey.submissionDate | date: 'dd/MM/yyyy' }}</td>
-              <td>{{ survey.name }}</td>
-              <td>{{ survey.emailAddress }}</td>
-              <td>{{ survey.phoneNumber }}</td>
-              <td>{{ survey.financingType }}</td>
-              <td >{{ getProductNameById(survey.prodId)}}</td>
-              <td>
-                <div class="comment-section">
-                  <textarea name="" id="" readonly class="form-control comment-area">{{ survey.comment || 'No Comment' }}</textarea>
-                </div>
-              </td>
-              <td>{{ survey.starRating }}</td>
-            </tr>
-            
-            
-          </tbody>
+            <tbody>
+              
+              <tr *ngFor="let survey of pageinatedSurveys; let i = index" class="table-hover" [ngClass]="{'inactive-row': !isProductActive(survey.prodId)}" >
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-primary btn-edit" (click)="toggleAction(survey.id)">
+                      Action
+                    </button>
+                    <ul class="dropdown-menu" *ngIf="isDropdown === survey.id">
+                      <li><a (click)="viewUpdate(survey)" class="view-survey">View</a></li>
+                    </ul>
+                  </div>
+                </td>
+                <td>{{ survey.submissionDate | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ survey.name }}</td>
+                <td>{{ survey.emailAddress }}</td>
+                <td>{{ survey.phoneNumber }}</td>
+                <td>{{ survey.financingType }}</td>
+                <td >{{ getProductNameById(survey.prodId)}}</td>
+                <td>
+                  <div class="comment-section">
+                    <textarea name="" id="" readonly class="form-control comment-area">{{ survey.comment || 'No Comment' }}</textarea>
+                  </div>
+                </td>
+                <td>{{ survey.starRating }}</td>
+              </tr>
+              
+              
+            </tbody>
           <tbody *ngIf="filteredSurveys.length === 0">
             <tr>
               <td colspan="10"><p style="font-size: 17px; margin-top: 10px;">No Results Found</p></td>

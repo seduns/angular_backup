@@ -162,6 +162,8 @@ tr:hover {
 }
 
 
+
+
   
 
 
@@ -213,7 +215,9 @@ tr:hover {
 
 /* Card Content */
 .card {
-  background-color: white; /* The actual box */
+  background-color: rgba(255, 255, 255, 0.812); /* The actual box */
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
   padding: 20px;
   border-radius: 8px; /* Rounded corners for aesthetics */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
@@ -243,7 +247,9 @@ tr:hover {
 
 /* Card Content */
 .card-2{
-  background-color: white; /* The actual box */
+  background-color: rgba(255, 255, 255, 0.812); /* The actual box */
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
   padding: 20px;
   border-radius: 8px; /* Rounded corners for aesthetics */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */

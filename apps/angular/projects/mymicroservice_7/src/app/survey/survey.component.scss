@@ -415,8 +415,10 @@ main {
 }
 
 .card{ 
-    background-color: white; /* The actual box */
+    background-color: rgba(255, 255, 255, 0.812); /* The actual box */
     padding: 20px;
+    backdrop-filter: blur(10px);          /* Blur the background */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     border-radius: 8px; /* Rounded corners for aesthetics */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
     width: 50%; /* Set a width for the content box */
@@ -961,10 +963,16 @@ text-align: center;
     color: #ff6a00;
 }
 
-    
+.inactive-row td{
+    background-color: rgba(255, 0, 0, 0.306);
+    color: rgba(255, 255, 255, 0.423); /* Optional: change text color for better readability */
+}
 
+.inactive-row:hover td {
+    background-color: rgba(255, 0, 0, 0.47);
+    color: white; /* Optional: change text color for better readability */
+  }
   
-
 .brick-website {
     width: 100vw; /* Full width of the viewport */
     height: 100vh; /* Full height of the viewport */
@@ -986,10 +994,6 @@ html, body {
     height: 100%; /* Match full viewport height */
     overflow: hidden; /* Prevent scrolling */
 }
-
-
-
-  
 
 @media (max-width: 650px) {
     .form-controller {

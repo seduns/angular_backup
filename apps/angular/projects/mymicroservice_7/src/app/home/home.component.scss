@@ -415,8 +415,8 @@ td {
 
 .financial-product {
     margin-top: 10px;
-    backdrop-filter: blur(10px);          /* Blur the background */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    // backdrop-filter: blur(10px);          /* Blur the background */
+    // -webkit-backdrop-filter: blur(10px); /* Safari support */
     border-radius: 10px;                 /* Rounded corners for aesthetics */
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.328); /* Subtle shadow for depth */
     padding: 20px;      
@@ -425,20 +425,16 @@ td {
     max-height: 70vh;
   }
 
-
- td .rating-count {
-  color: yellow;
- }
   
- .bold-text {
-  font-weight: 600;
-  text-shadow: 0px 0px 5px rgba(115, 255, 0, 0.694);
-}
+//  .bold-text {
+//   font-weight: 600;
+//   text-shadow: 0px 0px 5px rgba(115, 255, 0, 0.694);
+// }
 
-/* Change the color of the rating-count element when it has bold-text */
-.rating-count.bold-text {
-  color: yellow;  /* New color for bold text ratings */
-}
+// /* Change the color of the rating-count element when it has bold-text */
+// .rating-count.bold-text {
+//   color: yellow;  /* New color for bold text ratings */
+// }
 
 
 
@@ -470,13 +466,15 @@ td {
 }
 
 .card{ 
-  background-color: white; /* The actual box */
+  background-color: rgba(255, 255, 255, 0.812); /* The actual box */
   padding: 20px;
   border-radius: 8px; /* Rounded corners for aesthetics */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
   width: 50%; /* Set a width for the content box */
   max-width: 1000px; /* Prevent it from getting too wide */
   min-height: 200px; /* Ensure it has some height */
+  backdrop-filter: blur(10px);          /* Blur the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
 }
 
 .button-group {

@@ -210,8 +210,20 @@ export class BarChartComponent implements OnInit {
   }
 
   toggleActiveCreditCard(product: surveyItemDto): void {
+
+    const productCategory = this.productList.filter(
+      p => p.serviceName ===  product.serviceName
+    )
+
+    const activeProduct = productCategory.filter(p => p.isActive);
+
+    if(activeProduct.length === 1 && product.isActive) {
+      alert(`You must have at least one active product in the ${product.serviceName} `);
+      return;
+    }
+
     // Toggle the isActive value
-    product.isActive = !product.isActive;
+    product.isActive = !product.isActive; 
 
     // Optionally, if you want to persist this change to the backend:
     this.productService.update(product.prodId, product).subscribe(

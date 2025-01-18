@@ -655,11 +655,22 @@ onClickOutside(event: Event): void {
     }
   }
 
+  isProductActive(prodId: number): boolean {
+    const product = this.productList.find(p => p.prodId === prodId);
+    return product ? product.isActive : false; // Return false if product not found
+  }
+  
+
 
   getProductNameById(prodId: number): string {
     const product = this.productList.find(p => p.prodId === prodId);
-    return product ? product.productName : 'Unknown'; // Return 'Unknown' if no matching product is found
-  }
+    if (product) {
+        // Check if the product is inactive
+        return product.isActive ? product.productName : `${product.productName} (Inactive Product)`;
+    }
+    return 'Unknown'; // Return 'Unknown' if no matching product is found
+}
+
 
   generatePdf(): void {
     const elementToPrint = document.getElementById('content');
