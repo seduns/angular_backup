@@ -2,7 +2,7 @@
     id?: number;
     name?: string;
     emailAddress?: string;
-    comment?: string;
+    comment?: string ;
     financingType?: string;
     starRating?: number;
     submissionDate?: string;

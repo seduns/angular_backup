@@ -54,7 +54,7 @@ export class BarChartComponent implements OnInit {
 
     if (!this.newProduct.serviceName || !this.newProduct.productName) {
       console.error('Service name and product name are required.');
-      alert('Fail to create produc  t, Please insert product name');
+      alert('Fail to create product, Please insert product name');
       return;
     }
     
