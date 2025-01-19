@@ -290,7 +290,7 @@ main {
     height: 48px;
     overflow: hidden;
     padding: 48px 0 0;
-    background: url('../../assets/images/stars.svg') no-repeat top left;
+    background: url('../../assets/images/star-new.svg') no-repeat top left;
   }
 
 .predefined-comments {
@@ -300,21 +300,23 @@ main {
 
 .select-cmnt {
     cursor: pointer;
-    border: 2px solid #0004ff;
+    border: 2px solid #0004ff00;
     border-radius: 5px;
     padding: 10px;
-    background-color: #0004ff00;
+    background-color: #0004ff70;
     margin: 5px;
-    color: #0004ff;
+    color: #00028d97;
     width: 100%;    
     align-items: center;
     text-align: center;
     user-select: none;
+    transition: 0.2s;
 }
 
 .select-cmnt:hover {
-    border: 2px solid #000293;
-    color: #000293;
+    border: 2px solid #00029300;
+    background-color: #0004ff;
+    color: #ffffff;
     padding: 10px;
     font-weight: 450;
     // margin-left: 10px;
@@ -587,8 +589,8 @@ select {
 }
   
 body {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(55, 147, 233) 0%, rgb(231, 213, 202) 100%);
+    // background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(182, 220, 255) 0%, rgb(231, 213, 202) 100%);
     top: 50%;
 
 }

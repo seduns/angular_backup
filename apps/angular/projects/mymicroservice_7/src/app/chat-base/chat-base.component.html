@@ -136,7 +136,7 @@
                             <!-- List of Actions (Shown/Hidden for each file) -->
                             <ul *ngIf="areActionsVisible(file.id)" class="action-list">
                                 <li><button class="btn-download" (click)="downloadFile(file.id)">Download</button></li>
-                                <li><button class="btn-delete" (click)="deleteFile(file.id)">Delete</button></li>
+                                <li *ngIf="userName === 'admin'" ><button class="btn-delete" (click)="deleteFile(file.id)">Delete</button></li>
                                 <li><button class="btn-edit" (click)="loadFileForEditing(file.id)">Edit</button></li>
                                 <li><button  (click)="viewInfo(file.id)">Info</button></li>
                             </ul>

@@ -210,7 +210,7 @@
             class="form-control focus-blue" 
             required 
             #comment="ngModel"
-            [ngClass]="{ 'valid-border': comment.valid && comment.touched}">
+            [ngClass]="{ 'error-border': comment.invalid && comment.touched, 'valid-border': comment.valid && comment.touched}">
           </textarea>
         
           <!-- Validation for Comment -->

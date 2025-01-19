@@ -14,6 +14,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class ChatBaseComponent implements OnInit {
 
+
+
+  isUserAdmin: boolean = false;
+  isUserOfficer: boolean = false;
+  isUserManager: boolean = false;
+
+  userName: string | null = null;
+
+
   file: File | null = null;
   message: string = ''; // To store success or error messages
   files: any[] = []; // Store the list of files
@@ -24,7 +33,22 @@ export class ChatBaseComponent implements OnInit {
     this.loadFiles();
     this.setUserDetails(); // Retrieve user details
 
+    if (this.authService.isAuthenticated) {
+      const token = this.authService.getAccessToken();
+      const payload = this.parseJwt(token);
+      this.isUserAdmin = payload?.role === 'admin';
+      this.isUserOfficer = payload?.role === 'officer';
+      this.isUserManager = payload?.role === 'manager';
+    }
+
     
+  }
+
+  private parseJwt(token: string): any {
+    if (!token) return null;
+    const payloadBase64 = token.split('.')[1];
+    const payloadJson = atob(payloadBase64);
+    return JSON.parse(payloadJson);
   }
 
   actionStates: { [fileId: number]: boolean } = {}; // Track visibility for each file
@@ -64,7 +88,6 @@ export class ChatBaseComponent implements OnInit {
     }
   }
 
-  userName: string = '';
 
   private setUserDetails(): void {
       const token = this.authService.getAccessToken(); // Get the access token
