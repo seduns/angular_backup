@@ -1,12 +1,3 @@
-<!-- <span> -->
-<!-- <h1>SURVEY STATUS</h1> -->
-
-<!-- <button (click)="generatePdf()" class="btn btn-primary
-btn-print">Print</button> -->
-
-<!-- Product filter dropdown -->
-
-<!-- Only show the filtered results after a product is selected -->
 <div *ngIf="selectedProduct2 && selectedProduct2.length">
     <div class="card-overlay">
         <div class="card">
@@ -52,7 +43,10 @@ btn-print">Print</button> -->
                             class="product-hover">
                             <td>{{i + 1}}</td>
                             <td>{{ product.productName }}</td>
-                            <td class="rating-count" *ngFor="let rating of product.ratings" [ngClass]="{'bold-text' : rating}" >{{ rating }}</td>
+                            <td
+                                class="rating-count"
+                                *ngFor="let rating of product.ratings"
+                                [ngClass]="{'bold-text' : rating}">{{ rating }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -79,20 +73,11 @@ btn-print">Print</button> -->
         </div>
 
         <div class="date-filter-box">
-
-            <!-- <button class="btn btn-primary" (click)="toggleDateClick()">Date</button>
-            -->
-
-            <!-- <button (click)="closeDate()" class="x-button">X</button> -->
             <div class="container">
-
-                <!-- <p class="total-submission-box">Date</p> -->
-
                 <div class="date-box">
                     <div class="date-select">
-
                         <div class="date-container-date">
-                            <div class="todayDate" >
+                            <div class="todayDate">
                                 <div class="prompt-date" *ngIf="showDateDay">{{todayDate | date : 'dd/MM/yyyy'}}</div>
                                 <div class="prompt-day" *ngIf="showDateDay">{{todayDate | date : 'EEEE'}}</div>
                                 <div class="prompt-7-last-day-date" *ngIf="showSevenLastDay">({{sevenDayStart | date : 'EE'}})
@@ -103,7 +88,9 @@ btn-print">Print</button> -->
                                 </div>
                                 <div class="prompt-day" *ngIf="isSelectYear">{{promptYearSelect}}
                                 </div>
-                                <div class="prompt-day" *ngIf="isSelectYearAll ">{{promptYearSelect | date : 'yyyy'}} - {{promptYearSelectEnd | date : 'yyyy'}}
+                                <div class="prompt-day" *ngIf="isSelectYearAll ">{{promptYearSelect | date : 'yyyy'}}
+                                    -
+                                    {{promptYearSelectEnd | date : 'yyyy'}}
                                 </div>
                             </div>
                             <!-- <label for="">Data</label> -->
@@ -116,7 +103,7 @@ btn-print">Print</button> -->
                                 <button class="btn-date-on" (click)="customDate()">Year</button>
                             </div>
                             <div class="custom-container" *ngIf="isCustom">
-                                
+
                                 <!-- Year Selection -->
                                 <div class="year-box-date">
                                     <button class="btn-close-year" (click)="customDate()">x</button>
@@ -132,7 +119,7 @@ btn-print">Print</button> -->
                                     </div>
                                 </div>
                                 <!-- Year Selection -->
-    
+
                                 <!-- Month Selection -->
                                 <div class="year-box-date">
                                     <div class="title-select-year">
@@ -148,24 +135,21 @@ btn-print">Print</button> -->
                                         </select>
                                     </div>
                                 </div>
-                                
                                 <!-- Month Selection -->
+
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
                 <div class="bar-chart-box">
                     <div class="chart-container">
-                        <div class="chart-title">
-                        </div>
+                        <div class="chart-title"></div>
                         <canvas class="line-chart" #barChart></canvas>
                     </div>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </div>
 
 <div class="summary-box">
@@ -177,8 +161,6 @@ btn-print">Print</button> -->
                 <span>Click on the product category to view the rating of each product</span>
 
                 <div class="container-to-table">
-
-                    
 
                     <table>
                         <thead class="service-name-1">
@@ -292,14 +274,3 @@ btn-print">Print</button> -->
             </div>
         </div>
     </div>
-
-    <!-- <div *ngIf="dateClick"> <div class="card-overlay-card-2"> <div
-    class="card"> </div> </div> </div> -->
-
-    <!-- Filter Box -->
-
-    <!-- <div class="filter-box-1"> <div class="all-filter-box-date"> <p>From</p>
-    <input class="date-input" type="date" [(ngModel)]="startDate" placeholder="From"
-    (change)="onDateChange()"> <p>To</p> <input class="date-input" type="date"
-    [(ngModel)]="endDate" placeholder="To" (change)="onDateChange()"> </div> </div>
-    -->

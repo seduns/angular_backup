@@ -1537,6 +1537,22 @@ export class HomeComponent implements AfterViewInit {
     selectedYear: string = '';
     selectedMonth: string = '';
     yearOptions: string[] = [];
+
+    promptYearSelect: string | null = null;
+    promptYearSelectEnd: string | null = null;
+    promptMonthSelect: number | null = null;
+    isSelectYear: boolean = false;
+    isSelectMonth: boolean = false;
+    isSelectYearAll: boolean = false;
+
+    todayDate: string | null = null;
+    sevenDayStart: string | null = null;
+    sevenDayEnd: string | null = null;
+
+    showDateDay: boolean = false;
+    showSevenLastDay: boolean = false;
+
+
     monthOptions = [
         {
             value: '01',
@@ -1591,12 +1607,7 @@ export class HomeComponent implements AfterViewInit {
         'December'
     ];
 
-    promptYearSelect: string | null = null;
-    promptYearSelectEnd: string | null = null;
-    promptMonthSelect: number | null = null;
-    isSelectYear: boolean = false;
-    isSelectMonth: boolean = false;
-    isSelectYearAll: boolean = false;
+   
 
     setDefaultDateRange(): void {
 
@@ -1612,21 +1623,16 @@ export class HomeComponent implements AfterViewInit {
             console.log(new Date().getFullYear());
             
             this.showDateDay = false;
-            this.showSevenLastDay = false;
-            // this.selectedYear = "All";
             
-            this.isSelectMonth = false;
             this.selectedMonth = 'All';
+            this.isSelectMonth = false;
+            this.showSevenLastDay = false;
             
             this.isSelectYear = false;
             this.isSelectYearAll = true;
             
-            this.promptYearSelect = this
-            .startDate
-            .toDateString();
-            this.promptYearSelectEnd = this
-            .endDate
-            .toDateString();
+            this.promptYearSelect = this.startDate.toDateString();
+            this.promptYearSelectEnd = this.endDate.toDateString();
             
             console.log(`Current Year from System: ${new Date().getFullYear()}`);
 
@@ -1635,7 +1641,6 @@ export class HomeComponent implements AfterViewInit {
 
             this.showDateDay = false;
             this.showSevenLastDay = false;
-
             this.isSelectYearAll = false;
             this.isSelectYear = true;
             this.promptYearSelect = this.selectedYear;
@@ -1661,17 +1666,9 @@ export class HomeComponent implements AfterViewInit {
                 console.log(`Selected Year: ${year}, Selected Month: ${month + 1}`);
             }
         }
-
-        // Log the computed dates for debugging console.log(`Start Date:
-        // ${this.startDate}`); console.log(`End Date: ${this.endDate}`);
     }
 
-    todayDate: string | null = null;
-    sevenDayStart: string | null = null;
-    sevenDayEnd: string | null = null;
-
-    showDateDay: boolean = false;
-    showSevenLastDay: boolean = false;
+   
 
     onToday() {
       this.showDateDay = true;
@@ -1762,6 +1759,174 @@ export class HomeComponent implements AfterViewInit {
         this.CalculateTotalSubmissionsForButton();
     }
 
+    createBarChart(): void {
+  
+        // Define colors for light and dark themes
+        const isDarkTheme = document.documentElement.classList.contains('lpx-theme-dark');
+  
+        let textColor: string;
+        if (isDarkTheme) {
+          textColor = 'yellow'
+        } else  {
+          textColor  = 'blue'
+        }
+        
+        // Generate labels dynamically based on the selected year range
+        const startYear = this.startDate.getFullYear();
+        const endYear = this.endDate.getFullYear();
+        const labels = [];
+        for (let year = startYear; year <= endYear; year++) {
+            labels.push(year);
+        }
+    
+        const context = this.barChart.nativeElement.getContext('2d'); // Access canvas
+        if (this.chart) {
+          this.chart.destroy(); // Destroy the old chart instance
+      }
+    
+        this.chart = new Chart(context!, {
+            type: 'line', // Line chart type
+            data: {
+                labels: labels, // Use dynamically generated labels
+                datasets: [
+                    {
+                        label: 'Total Submissions',
+                        data: labels.map((year) => this.getDataForYear(year)), // Replace with your logic to fetch data
+                        borderColor: 'blue', // Line color
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)', // Area under line (optional)
+                        borderWidth: 2,
+                        tension: 0.4 // Smooth curve
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: `Total Submissions from ${startYear} to ${endYear}`,
+                        color: textColor,
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: textColor,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+            }
+        });
+    }
+    
+  
+  
+    // Helper method to get data for a specific year
+    getDataForYear(year: number): number {
+      const submissionForYear = this.surveys.filter((survey => {
+        const submissionDate = new Date(survey.submissionDate);
+        return submissionDate.getFullYear() === year;
+      }));
+  
+      return submissionForYear.length;
+  
+    }
+  
+     // Helper method to get the total submissions for a specific month and year
+     getDataForMonth(month: number, year: number): number {
+      const submissionForMonth = this.surveys.filter((survey) => {
+          const submissionDate = new Date(survey.submissionDate);
+          return submissionDate.getMonth() === month && submissionDate.getFullYear() === year;
+      });
+  
+      return submissionForMonth.length;
+    }
+  
+    isCustom: boolean = false;
+  
+    customDate(): void {
+        this.isCustom = !this.isCustom;
+        this.selectedYear = "All";
+        this.isSelectMonth = false;
+        
+    }
+  
+      updateBarChart(): void {
+        const startYear = this.startDate.getFullYear();
+        const endYear = this.endDate.getFullYear();
+  
+  
+        const isDarkTheme = document.documentElement.classList.contains('lpx-theme-dark');
+  
+        let textColor: string;
+        if (isDarkTheme) {
+          textColor = 'yellow'
+        } else  {
+          textColor  = 'blue'
+        }
+  
+        // Define month names
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+  
+        const labels = monthNames; // Use month names for the x-axis labels
+  
+        const context = this.barChart.nativeElement.getContext('2d'); // Access canvas
+  
+        if (this.chart) {
+            this.chart.destroy(); // Destroy the old chart instance
+        }
+  
+        // Generate the total submissions for each month of the selected year(s)
+        const monthData = monthNames.map((month, index) => {
+            return this.getDataForMonth(index, startYear); // Fetch data for each month
+        });
+  
+        this.chart = new Chart(context!, {
+            type: 'line',
+            data: {
+                labels: labels, // Use month names for the x-axis
+                datasets: [{
+                    label: 'Total Submissions',
+                    data: monthData, // Use the calculated submission data for each month
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: `Total Submissions for ${startYear}`,
+                        color: textColor,
+                        font: { size: 16 }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: { font: { size: 12 } }
+                    }
+                },
+                scales : {
+                  y: {
+                    ticks : {
+                      stepSize: 0
+                    }
+                  }
+                }
+            }
+        });
+      }
+
     applyDateRanges() {
         this.calcPersonal(); // This will trigger the filtering and counting
         this.calcHome();
@@ -1817,175 +1982,8 @@ export class HomeComponent implements AfterViewInit {
         console.log(this.dateClick);
     }
 
-    createBarChart(): void {
-  
-      // Define colors for light and dark themes
-      const isDarkTheme = document.documentElement.classList.contains('lpx-theme-dark');
+    
 
-      let textColor: string;
-      if (isDarkTheme) {
-        textColor = 'yellow'
-      } else  {
-        textColor  = 'blue'
-      }
-      
-      // Generate labels dynamically based on the selected year range
-      const startYear = this.startDate.getFullYear();
-      const endYear = this.endDate.getFullYear();
-      const labels = [];
-      for (let year = startYear; year <= endYear; year++) {
-          labels.push(year);
-      }
-  
-      const context = this.barChart.nativeElement.getContext('2d'); // Access canvas
-      if (this.chart) {
-        this.chart.destroy(); // Destroy the old chart instance
-    }
-  
-      this.chart = new Chart(context!, {
-          type: 'line', // Line chart type
-          data: {
-              labels: labels, // Use dynamically generated labels
-              datasets: [
-                  {
-                      label: 'Total Submissions',
-                      data: labels.map((year) => this.getDataForYear(year)), // Replace with your logic to fetch data
-                      borderColor: 'blue', // Line color
-                      backgroundColor: 'rgba(0, 123, 255, 0.2)', // Area under line (optional)
-                      borderWidth: 2,
-                      tension: 0.4 // Smooth curve
-                  }
-              ]
-          },
-          options: {
-              responsive: true,
-              plugins: {
-                  title: {
-                      display: true,
-                      text: `Total Submissions from ${startYear} to ${endYear}`,
-                      color: textColor,
-                      font: {
-                          size: 16
-                      }
-                  },
-                  legend: {
-                      position: 'top',
-                      labels: {
-                          color: textColor,
-                          font: {
-                              size: 12
-                          }
-                      }
-                  }
-              },
-          }
-      });
-  }
-  
-  // Helper method to get data for a specific year
-  getDataForYear(year: number): number {
-    const submissionForYear = this.surveys.filter((survey => {
-      const submissionDate = new Date(survey.submissionDate);
-      return submissionDate.getFullYear() === year;
-    }));
-
-    return submissionForYear.length;
-
-  }
-
-  
-
-  
-
-    updateBarChart(): void {
-      const startYear = this.startDate.getFullYear();
-      const endYear = this.endDate.getFullYear();
-
-
-      const isDarkTheme = document.documentElement.classList.contains('lpx-theme-dark');
-
-      let textColor: string;
-      if (isDarkTheme) {
-        textColor = 'yellow'
-      } else  {
-        textColor  = 'blue'
-      }
-
-      // Define month names
-      const monthNames = [
-          'January', 'February', 'March', 'April', 'May', 'June',
-          'July', 'August', 'September', 'October', 'November', 'December'
-      ];
-
-      const labels = monthNames; // Use month names for the x-axis labels
-
-      const context = this.barChart.nativeElement.getContext('2d'); // Access canvas
-
-      if (this.chart) {
-          this.chart.destroy(); // Destroy the old chart instance
-      }
-
-      // Generate the total submissions for each month of the selected year(s)
-      const monthData = monthNames.map((month, index) => {
-          return this.getDataForMonth(index, startYear); // Fetch data for each month
-      });
-
-      this.chart = new Chart(context!, {
-          type: 'line',
-          data: {
-              labels: labels, // Use month names for the x-axis
-              datasets: [{
-                  label: 'Total Submissions',
-                  data: monthData, // Use the calculated submission data for each month
-                  borderColor: 'blue',
-                  backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                  borderWidth: 2,
-                  tension: 0.4
-              }]
-          },
-          options: {
-              responsive: true,
-              plugins: {
-                  title: {
-                      display: true,
-                      text: `Total Submissions for ${startYear}`,
-                      color: textColor,
-                      font: { size: 16 }
-                  },
-                  legend: {
-                      position: 'top',
-                      labels: { font: { size: 12 } }
-                  }
-              },
-              scales : {
-                y: {
-                  ticks : {
-                    stepSize: 0
-                  }
-                }
-              }
-          }
-      });
-    }
-
-    // Helper method to get the total submissions for a specific month and year
-    getDataForMonth(month: number, year: number): number {
-      const submissionForMonth = this.surveys.filter((survey) => {
-          const submissionDate = new Date(survey.submissionDate);
-          return submissionDate.getMonth() === month && submissionDate.getFullYear() === year;
-      });
-
-      return submissionForMonth.length;
-    }
-
-
-    isCustom: boolean = false;
-
-    customDate(): void {
-        this.isCustom = !this.isCustom;
-        this.selectedYear = "All";
-        this.isSelectMonth = false;
-        
-    }
+   
 
 }

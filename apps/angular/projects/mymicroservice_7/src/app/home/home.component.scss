@@ -54,9 +54,9 @@
   border-radius: 10px;
   margin-top: 10px;
   padding: 10px;
-  background-color: blueviolet;
-  border: none;
+  background-color: #0004ff;
   color: white;
+  border: none;
   font-size: 13px;
   margin-left: 10px;
   // text-wrap: nowrap;
@@ -65,7 +65,7 @@
 }
 
 .btn-date-on:hover {
-  background-color: #024388;
+  background-color: #ff6a00;  
 }
 
 // th, td {
@@ -324,7 +324,8 @@ td {
 
 .title-date-container-date {
   display: flex;
-  justify-content: space-around;
+  padding: 0px 20px;
+
   // border: 1px solid black;
   // width: 100%;
   transition: 0.3s;
@@ -601,8 +602,6 @@ select {
   display: flex;
   // border: 1px solid black;
   // width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
   padding-left: 10px;
 }
 
